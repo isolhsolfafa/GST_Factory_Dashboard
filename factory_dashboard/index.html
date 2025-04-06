@@ -1,0 +1,126 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Factory Dashboard</title>
+        <style>
+            body {
+                font-family: 'NanumGothic', sans-serif;
+                background-color: #1a2526;
+                color: white;
+                margin: 20px;
+            }
+            h1 {
+                text-align: center;
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+            .dashboard-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+                gap: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .chart-section {
+                background-color: #2a3a3b;
+                padding: 15px;
+                border-radius: 8px;
+                position: relative;
+            }
+            .chart-section h2 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .slideshow-container {
+                position: relative;
+                width: 100%;
+            }
+            .slide {
+                display: none;
+                width: 100%;
+            }
+            .slide.active {
+                display: block;
+            }
+            img {
+                width: 100%;
+                height: auto;
+            }
+            .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: auto;
+                padding: 10px;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                background-color: rgba(0,0,0,0.5);
+                user-select: none;
+            }
+            .next {
+                right: 0;
+            }
+            .prev:hover, .next:hover {
+                background-color: rgba(0,0,0,0.8);
+            }
+        </style>
+        <script>
+            function initSlideshow(slideshowId) {
+                let slides = document.querySelectorAll(`#${slideshowId} .slide`);
+                if (slides.length === 0) return; // 슬라이드가 없으면 초기화하지 않음
+                let currentSlide = 0;
+                slides[currentSlide].classList.add('active');
+
+                document.querySelector(`#${slideshowId} .prev`).onclick = function() {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                };
+
+                document.querySelector(`#${slideshowId} .next`).onclick = function() {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                };
+            }
+            window.onload = function() {
+                initSlideshow('progressSlideshow');
+                initSlideshow('timeSlideshow');
+            };
+        </script>
+    </head>
+    <body>
+        <h1>FACTORY DASHBOARD Week 15</h1>
+<div class="dashboard-container">
+<div class="chart-section">
+<h2>Units Produced by Model</h2>
+<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Model_Production_Week_15.png" alt="Units Produced by Model">
+</div>
+<div class="chart-section">
+<h2>Average Progress by Order</h2>
+<div id="progressSlideshow" class="slideshow-container">
+<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Progress_Order_5441.png" alt="Progress"></div>
+<a class="prev">❮</a>
+<a class="next">❯</a>
+</div>
+</div>
+<div class="chart-section">
+<h2>Work Time by Order</h2>
+<div id="timeSlideshow" class="slideshow-container">
+<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/WorkTime_Order_5441.png" alt="Work Time"></div>
+<a class="prev">❮</a>
+<a class="next">❯</a>
+</div>
+</div>
+<div class="chart-section">
+<h2>Reserved for Future Use</h2>
+<p>추후 확장 예정</p>
+</div>
+</div>
+    </body>
+    </html>
+    

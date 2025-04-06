@@ -2,18 +2,19 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Factory Dashboard</title>
+        <title>GAON 생산현황 모니터링</title>
         <style>
             body {
                 font-family: 'NanumGothic', sans-serif;
-                background-color: #1a2526;
-                color: white;
+                background-color: #f2f4f8;
+                color: #333;
                 margin: 20px;
             }
             h1 {
                 text-align: center;
-                font-size: 36px;
+                font-size: 32px;
                 margin-bottom: 20px;
+                color: #2c3e50;
             }
             .dashboard-container {
                 display: grid;
@@ -24,14 +25,16 @@
                 margin: 0 auto;
             }
             .chart-section {
-                background-color: #2a3a3b;
-                padding: 15px;
-                border-radius: 8px;
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
                 position: relative;
             }
             .chart-section h2 {
-                font-size: 18px;
-                margin-bottom: 10px;
+                font-size: 20px;
+                margin-bottom: 12px;
+                color: #34495e;
             }
             .slideshow-container {
                 position: relative;
@@ -47,6 +50,7 @@
             img {
                 width: 100%;
                 height: auto;
+                border-radius: 6px;
             }
             .prev, .next {
                 cursor: pointer;
@@ -55,23 +59,25 @@
                 transform: translateY(-50%);
                 width: auto;
                 padding: 10px;
-                color: white;
+                color: #2c3e50;
                 font-weight: bold;
                 font-size: 18px;
-                background-color: rgba(0,0,0,0.5);
+                background-color: rgba(255,255,255,0.7);
                 user-select: none;
+                border-radius: 6px;
             }
             .next {
                 right: 0;
             }
             .prev:hover, .next:hover {
-                background-color: rgba(0,0,0,0.8);
+                background-color: rgba(52,73,94,0.8);
+                color: white;
             }
         </style>
         <script>
             function initSlideshow(slideshowId) {
                 let slides = document.querySelectorAll(`#${slideshowId} .slide`);
-                if (slides.length === 0) return; // 슬라이드가 없으면 초기화하지 않음
+                if (slides.length === 0) return;
                 let currentSlide = 0;
                 slides[currentSlide].classList.add('active');
 
@@ -80,7 +86,6 @@
                     currentSlide = (currentSlide - 1 + slides.length) % slides.length;
                     slides[currentSlide].classList.add('active');
                 };
-
                 document.querySelector(`#${slideshowId} .next`).onclick = function() {
                     slides[currentSlide].classList.remove('active');
                     currentSlide = (currentSlide + 1) % slides.length;
@@ -94,6 +99,12 @@
         </script>
     </head>
     <body>
+        <!-- ✅ GST 슬로건 배너 이미지 삽입 -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="https://rainbow-haupia-cd8290.netlify.app/GST_banner.jpg" 
+                 alt="Build up GST Banner" style="max-width: 100%; height: auto;">
+        </div>
+
         <h1>FACTORY DASHBOARD Week 15</h1>
 <div class="dashboard-container">
 <div class="chart-section">

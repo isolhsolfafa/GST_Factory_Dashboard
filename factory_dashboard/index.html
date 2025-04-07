@@ -74,29 +74,6 @@
                 color: #ffffff;
             }
         </style>
-        <script>
-            function initSlideshow(slideshowId) {
-                let slides = document.querySelectorAll(#${slideshowId} .slide);
-                if (slides.length === 0) return;
-                let currentSlide = 0;
-                slides[currentSlide].classList.add('active');
-
-                document.querySelector(#${slideshowId} .prev).onclick = function() {
-                    slides[currentSlide].classList.remove('active');
-                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                    slides[currentSlide].classList.add('active');
-                };
-                document.querySelector(#${slideshowId} .next).onclick = function() {
-                    slides[currentSlide].classList.remove('active');
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    slides[currentSlide].classList.add('active');
-                };
-            }
-            window.onload = function() {
-                initSlideshow('progressSlideshow');
-                initSlideshow('timeSlideshow');
-            };
-        </script>
     </head>
     <body>
         <!-- ✅ GST 슬로건 배너 이미지 삽입 -->
@@ -109,16 +86,12 @@
 <div class="dashboard-container">
 <div class="chart-section">
 <h2>모델별 생산 대수</h2>
-<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Model_Production_Week_15_20250407_125622.png" alt="모델별 생산 대수" onerror="this.onerror=null; this.parentNode.innerHTML='<p>⚠️ 데이터 없음</p>';">
+<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Model_Production_Week_15_20250407_130633.png" alt="모델별 생산 대수" onerror="this.onerror=null; this.parentNode.innerHTML='<p>⚠️ 데이터 없음</p>';">
 </div>
 <div class="chart-section">
 <h2>오더별 평균 진행률</h2>
 <div id="progressSlideshow" class="slideshow-container">
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Progress_Order_5400_20250407_125623.png" alt="진행률"></div>
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Progress_Order_5441_20250407_125623.png" alt="진행률"></div>
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Progress_Order_5465_20250407_125623.png" alt="진행률"></div>
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Progress_Order_5491_20250407_125623.png" alt="진행률"></div>
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Progress_Order_5497_20250407_125623.png" alt="진행률"></div>
+<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Progress_Order_5400_20250407_130634.png" alt="진행률"></div>
 <a class="prev">❮</a>
 <a class="next">❯</a>
 </div>
@@ -126,11 +99,7 @@
 <div class="chart-section">
 <h2>오더별 작업 소요 시간</h2>
 <div id="timeSlideshow" class="slideshow-container">
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/WorkTime_Order_5400_20250407_125635.png" alt="작업 소요 시간"></div>
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/WorkTime_Order_5441_20250407_125635.png" alt="작업 소요 시간"></div>
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/WorkTime_Order_5465_20250407_125635.png" alt="작업 소요 시간"></div>
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/WorkTime_Order_5491_20250407_125635.png" alt="작업 소요 시간"></div>
-<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/WorkTime_Order_5497_20250407_125635.png" alt="작업 소요 시간"></div>
+<div class="slide"><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/WorkTime_Order_5400_20250407_130637.png" alt="작업 소요 시간"></div>
 <a class="prev">❮</a>
 <a class="next">❯</a>
 </div>
@@ -140,6 +109,48 @@
 <p>추후 확장 예정</p>
 </div>
 </div>
+
+        <script>
+            function initSlideshow(slideshowId, interval) {
+                let slides = document.querySelectorAll(`#${slideshowId} .slide`);
+                if (slides.length === 0) return;
+                let currentSlide = 0;
+                slides[currentSlide].classList.add('active');
+
+                // 자동 슬라이드 기능
+                function autoSlide() {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
+
+                // interval에 따라 자동 슬라이드 시작
+                let slideInterval = setInterval(autoSlide, interval);
+
+                // 이전 버튼 클릭 시
+                document.querySelector(`#${slideshowId} .prev`).onclick = function() {
+                    clearInterval(slideInterval); // 자동 슬라이드 중지
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                    slideInterval = setInterval(autoSlide, interval); // 자동 슬라이드 재시작
+                };
+
+                // 다음 버튼 클릭 시
+                document.querySelector(`#${slideshowId} .next`).onclick = function() {
+                    clearInterval(slideInterval); // 자동 슬라이드 중지
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                    slideInterval = setInterval(autoSlide, interval); // 자동 슬라이드 재시작
+                };
+            }
+            window.onload = function() {
+                initSlideshow('progressSlideshow', 5000);
+                initSlideshow('timeSlideshow', 5000);
+            };
+        </script>
+        
     </body>
     </html>
     

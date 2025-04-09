@@ -82,16 +82,30 @@
                  alt="Build up GST Banner" style="max-width: 100%; height: auto;">
         </div>
 
-        <h1>제조기술1팀 공장 대시보드 - 2025년 15주차</h1>
-<p>실행 시간: 2025-04-09 00:35:19 (KST)</p>
-<div class="dashboard-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <h1>제조기술1팀 공장 대시보드 - 2025년 14주차</h1>
+<p>실행 시간: 2025-04-09 09:26:47 (KST)</p>
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 <div class="chart-section">
 <h2>주간 생산 지표</h2>
-<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Weekly_Production_15_20250409_003519.png" alt="주간 생산 지표 그래프" onerror="this.onerror=null; this.parentNode.innerHTML='<p>데이터 없음</p>';">
+<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Weekly_Production_20250409_092644.png" alt="주간 생산 지표 그래프" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
+</div>
+<div class="chart-section">
+<h2>월간 생산 지표</h2>
+<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Monthly_Production_20250409_092644.png" alt="월간 생산 지표 그래프" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
+</div>
+<div class="chart-section">
+<h2>불량 지표 (추후 구현)</h2>
+<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Defect_Chart_Placeholder.png" alt="불량 지표 placeholder" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
+</div>
+<div class="chart-section">
+<h2>제조품질검사 연동 (추후 연동)</h2>
+<p>데이터 없음 (추후 구현 예정)</p>
+</div>
 </div>
 <div class="chart-section">
 <h2>생산물량 요약 테이블</h2>
-<div id="summary-table-slide" style="max-width: 100%; overflow:hidden;">
+<div id="summary-table-slide" style="max-width:100%; overflow:hidden;">
 <table border="1" style="border-collapse: collapse; width: 100%; font-size: 13px;">
 <tr style="background-color: #f2f2f2;">
 <th>Order</th><th>모델명</th><th>기구협력사</th><th>전장협력사</th>
@@ -105,19 +119,17 @@
 </table>
 </div>
 </div>
-<div class="chart-section">
-<h2>월간 생산 지표</h2>
-<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Monthly_Production_202504_20250409_003519.png" alt="월간 생산 지표 그래프" onerror="this.onerror=null; this.parentNode.innerHTML='<p>데이터 없음</p>';">
-</div>
-<div class="chart-section">
-<h2>불량 그래프 (추후 구현)</h2>
-<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Defect_Chart_Placeholder.png" alt="불량 그래프 placeholder" onerror="this.onerror=null; this.parentNode.innerHTML='<p>데이터 없음</p>';">
-</div>
 </div>
 
         <script>
-            // 현재 요약 테이블은 단일 페이지로 구성되어 있습니다.
-            // 추후 .slide 클래스를 가진 요소로 분할하여 슬라이드 전환 기능 구현 가능
+            function initSummarySlide(interval) {
+                let container = document.getElementById("summary-table-slide");
+                if (!container) return;
+                // 현재 단일 페이지로 구성; 추후 슬라이드 페이지 전환 기능 추가 가능.
+            }
+            window.onload = function() {
+                initSummarySlide(5000);
+            };
         </script>
         
     </body>

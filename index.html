@@ -20,7 +20,7 @@
 <div class="tab">
   <button class="tablinks active" onclick="openTab('html_factory_20250415.html', this)">🏭 공장 대시보드</button>
   <button class="tablinks" onclick="openTab('partner.html', this)">🤝 협력사 대시보드</button>
-  <button class="tablinks" onclick="openTab('internal.html', this)">🔒 내부 대시보드</button>
+  <button class="tablinks" onclick="openProtectedTab('internal.html', this)">🔒 내부 대시보드</button>
 </div>
 
 <iframe id="dashboardFrame" src="html_factory_20250415.html"></iframe>
@@ -33,6 +33,15 @@
       tabs[i].classList.remove("active");
     }
     btn.classList.add("active");
+  }
+
+  function openProtectedTab(page, btn) {
+    const password = prompt("🔐 내부 대시보드 접근을 위한 비밀번호를 입력하세요:");
+    if (password === "0979") {
+      openTab(page, btn);
+    } else {
+      alert("❌ 비밀번호가 틀렸습니다. 접근이 제한됩니다.");
+    }
   }
 </script>
 

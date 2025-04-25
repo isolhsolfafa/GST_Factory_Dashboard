@@ -11,7 +11,7 @@
 <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 <div class="chart-section">
-<h2>주간 생산 지표(Planned Finish)</h2>
+<h2>📌주간 생산 지표(Planned Finish)</h2>
 <img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Weekly_Production_20250423_112852.png" alt="주간 생산 지표 그래프" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
 </div>
 <div class="chart-section">
@@ -19,9 +19,27 @@
 <img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Monthly_Production_20250424_135222.png" alt="월간 생산 지표 그래프" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
 </div>
 <div class="chart-section">
-<h2>부적합 지표</h2>
-<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Defect_Chart_Placeholder.png" alt="불량 지표 placeholder" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
-</div>
+<h2>📌 부적합 지표</h2>
+<!-- ✅ 인터랙티브 트리맵 삽입 -->
+<iframe 
+  src="https://your-dashboard.netlify.app/treemap_interactive.html"
+  id="defect-treemap"
+  width="100%" 
+  height="600" 
+  style="border: none; border-radius: 10px;"
+  loading="lazy"
+  allowfullscreen
+  onerror="this.outerHTML='<p style=\'color:red;text-align:center;\'>트리맵 로드 실패 😢</p>';">
+</iframe>
+
+<!-- ✅ 모바일 대응 CSS (넣는 위치: <style> 또는 CSS 파일) -->
+<style>
+  @media (max-width: 768px) {
+    #defect-treemap {
+      height: 400px !important;
+    }
+  }
+</style>
 <div class="chart-section">
 <h2>제조품질검사 실시간</h2>
 <p>업데이트 예정</p>

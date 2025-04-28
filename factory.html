@@ -5,11 +5,13 @@
   <title>Factory Dashboard</title>
   <style>
     .card-container {
-    display: flex;
-    flex-wrap: nowrap; /* 🔥 세로 줄바꿈 없이 가로로 */
-    gap: 16px;
-    justify-content: center; /* 중앙 정렬 */
-    overflow-x: auto; /* 🔥 화면이 좁으면 가로 스크롤 생성 */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2열 */
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1000px; /* 위에 그래프 영역과 비슷한 너비로 제한 */
+    margin: 0 auto;
   }
   .summary-card {
     flex: 0 0 auto; /* 🔥 고정 너비로 */
@@ -92,6 +94,13 @@
           <h3>GAIA-P</h3>
           <p>총 불량: <strong>2건</strong></p>
           <p>주요 중분류: 전장작업</p>
+          <a href="https://rainbow-haupia-cd8290.netlify.app/" target="_blank">→ 상세 보기</a>
+        </div>
+
+        <div class="summary-card">
+          <h3>GAIA-I</h3>
+          <p>총 불량: <strong>2건</strong></p>
+          <p>주요 중분류: 부품불량</p>
           <a href="https://rainbow-haupia-cd8290.netlify.app/" target="_blank">→ 상세 보기</a>
         </div>
       </div>

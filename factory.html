@@ -1,28 +1,100 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Factory Dashboard</title>
+  <meta charset="UTF-8">
+  <title>Factory Dashboard</title>
+  <style>
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center; /* 중앙 정렬 */
+    }
+    .summary-card {
+      width: 280px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+      background: #fff;
+      color: #000000; /* 글자 검정 */
+    }
+    .summary-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #000000;
+    }
+    .summary-card p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: #000000;
+    }
+    .summary-card a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #007bff;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .summary-card a:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
+
 <body>
-<div style="text-align: center; margin-bottom: 20px;"><img src="https://rainbow-haupia-cd8290.netlify.app/GST_banner.jpg" alt="Build up GST Banner" style="max-width: 100%; height: auto;"></div>
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="https://rainbow-haupia-cd8290.netlify.app/GST_banner.jpg" alt="Build up GST Banner" style="max-width: 100%; height: auto;">
+</div>
+
 <h1>제조기술1팀 공장 대시보드 - 2025년 18주차</h1>
 <p>실행 시간: 2025-04-28 17:15:14 (KST)</p>
+
 <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-<div class="chart-section">
-<h2>주간 생산 지표(Planned Finish)</h2>
-<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Weekly_Production_20250428_171510.png" alt="주간 생산 지표 그래프" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
-</div>
-<div class="chart-section">
-<h2>월간 생산 지표(Planned Mech)</h2>
-<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Monthly_Production_20250428_171510.png" alt="월간 생산 지표 그래프" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
-</div>
-<div class="chart-section">
-<h2>부적합 지표</h2>
-<img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Defect_Chart_Placeholder.png" alt="불량 지표 placeholder" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
-</div>
-<div class="chart-section">
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    
+    <div class="chart-section">
+      <h2>주간 생산 지표(Planned Finish)</h2>
+      <img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Weekly_Production_20250428_171510.png" alt="주간 생산 지표 그래프" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
+    </div>
+
+    <div class="chart-section">
+      <h2>월간 생산 지표(Planned Mech)</h2>
+      <img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Monthly_Production_20250428_171510.png" alt="월간 생산 지표 그래프" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
+    </div>
+
+    <div class="chart-section">
+      <h2>부적합 지표</h2>
+
+      <!-- 카드뷰 시작 -->
+      <div class="card-container">
+        <div class="summary-card">
+          <h3>GAIA-I DUAL</h3>
+          <p>총 불량: <strong>8건</strong></p>
+          <p>주요 중분류: 오조립, 전장</p>
+          <a href="https://rainbow-haupia-cd8290.netlify.app/" target="_blank">→ 상세 보기</a>
+        </div>
+
+        <div class="summary-card">
+          <h3>GAIA-II</h3>
+          <p>총 불량: <strong>5건</strong></p>
+          <p>주요 중분류: 마무리작업</p>
+          <a href="https://rainbow-haupia-cd8290.netlify.app/" target="_blank">→ 상세 보기</a>
+        </div>
+
+        <div class="summary-card">
+          <h3>GAIA-P</h3>
+          <p>총 불량: <strong>2건</strong></p>
+          <p>주요 중분류: 전장작업</p>
+          <a href="https://rainbow-haupia-cd8290.netlify.app/" target="_blank">→ 상세 보기</a>
+        </div>
+      </div>
+      <!-- 카드뷰 끝 -->
+
 <h2>제조품질검사 실시간</h2>
 <p>업데이트 예정</p>
 </div>

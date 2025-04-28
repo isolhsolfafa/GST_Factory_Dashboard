@@ -5,19 +5,21 @@
   <title>Factory Dashboard</title>
   <style>
     .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center; /* 중앙 정렬 */
-    }
-    .summary-card {
-      width: 280px;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-      background: #fff;
-      color: #000000; /* 글자 검정 */
+    display: flex;
+    flex-wrap: nowrap; /* 🔥 세로 줄바꿈 없이 가로로 */
+    gap: 16px;
+    justify-content: center; /* 중앙 정렬 */
+    overflow-x: auto; /* 🔥 화면이 좁으면 가로 스크롤 생성 */
+  }
+  .summary-card {
+    flex: 0 0 auto; /* 🔥 고정 너비로 */
+    width: 280px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+    background: #fff;
+    color: #000000;
     }
     .summary-card h3 {
       margin: 0 0 8px;

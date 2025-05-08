@@ -72,18 +72,24 @@
 
 <div class="bottom-grid">
   <div>
-    <h2>Defect 지표 (Sample_data)</h2>
+    <h2>Defect 지표</h2>
     <div class="card-container">
       <div class="summary-card">
         <h3>DRAGON AB DUAL</h3>
         <p>총 불량: <strong>1건</strong></p>
-        <p>주요 중분류: 부품불량, 품질</p>
+        <p>주요 중분류: 부품불량</p>
+        <a href="https://rainbow-haupia-cd8290.netlify.app/">→ 상세 보기</a>
+      </div>
+      <div class="summary-card">
+        <h3>GAIA-I DUAL</h3>
+        <p>총 불량: <strong>2건</strong></p>
+        <p>주요 중분류: 부품불량, 작업불량</p>
         <a href="https://rainbow-haupia-cd8290.netlify.app/">→ 상세 보기</a>
       </div>
     </div>
   </div>
   <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-    <h2>협력사 KPI 지수 (Sample_data)</h2>
+    <h2>협력사 KPI 지수 (🚨불량 ➕ ⚠️NaN)</h2>
     <div style="display:flex;gap:20px;margin-top:10px;">
       <div style="width:300px;height:300px;">
         <canvas id="mechPartnerChart" style="width:100%;height:100%;"></canvas>
@@ -110,8 +116,8 @@
   }
   window.onload = function() { initSummarySlide(7000); };
 
-  const mechPartnerData = { labels: ["FNI", "BAT", "TMS(m)"], datasets: [{ data: [1, 1, 1], backgroundColor: ["#4e79a7", "#f28e2b", "#e15759"], borderWidth: 1 }] };
-  const elecPartnerData = { labels: ["C&A", "P&S", "TMS(e)"], datasets: [{ data: [1, 1, 1], backgroundColor: ["#76b7b2", "#59a14f", "#edc948"], borderWidth: 1 }] };
+  const mechPartnerData = { labels: ["FNI", "BAT", "TMS(m)"], datasets: [{ data: [0.9, 1.9, 0.9], backgroundColor: ["#4e79a7", "#f28e2b", "#e15759"], borderWidth: 1 }] };
+  const elecPartnerData = { labels: ["C&A", "P&S", "TMS(e)"], datasets: [{ data: [0, 1.4, 0], backgroundColor: ["#76b7b2", "#59a14f", "#edc948"], borderWidth: 1 }] };
   new Chart(document.getElementById("mechPartnerChart"), { type: "doughnut", data: mechPartnerData, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } } });
   new Chart(document.getElementById("elecPartnerChart"), { type: "doughnut", data: elecPartnerData, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } } });
 </script>

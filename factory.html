@@ -36,13 +36,33 @@
 </div>
 
 <div class="top-grid">
-  <div class="chart-section"><h2>주간 생산 지표 (Planned Finish)</h2><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Weekly_Production_20250509_085712.png" alt="주간 생산 지표" style="width:100%;" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';"></div>
-  <div class="chart-section"><h2>월간 생산 지표 (Planned Mech)</h2><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Monthly_Production_20250509_085713.png" alt="월간 생산 지표" style="width:100%;" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';"></div>
-  <div class="chart-section"><h2>모델별 진행률%</h2><img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Defect_Chart_Placeholder.png" alt="진행률 지표" style="width:100%;" onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';"></div>
+  <div class="chart-section">
+    <h2>🗓️ 주간 생산 지표 [Planned Finish]</h2>
+    <img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Weekly_Production_20250509_085712.png"
+         alt="주간 생산 지표"
+         style="width:100%;"
+         onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
+  </div>
+
+  <div class="chart-section">
+    <h2>📅 월간 생산 지표 [Planned Mech]</h2>
+    <img src="https://isolhsolfafa.github.io/GST_Factory_Dashboard/factory_dashboard/images/Monthly_Production_20250509_085713.png"
+         alt="월간 생산 지표"
+         style="width:100%;"
+         onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
+  </div>
+
+  <div class="chart-section">
+    <h2>🔍 모델별불량예상[ML기반]-TEST</h2>
+    <iframe src="https://isolhsolfafa.github.io/Defect_ML/pie_defect.html"
+            style="width:100%; height:250px; border:none;"
+            onerror="this.onerror=null;this.parentNode.innerHTML='<p>데이터 없음</p>';">
+    </iframe>
+  </div>
 </div>
 
 <div class="chart-section" style="margin: 30px auto; max-width: 1300px;">
-<h2>생산 요약 테이블 (Planned Mech)</h2>
+<h2>📋 생산 요약 테이블 [Planned Mech]</h2>
 <div id="summary-table-slide" style="max-width:100%; overflow:hidden;">
 
     <style>
@@ -72,7 +92,7 @@
 
 <div class="bottom-grid">
   <div>
-    <h2>Defect 지표 🚨🚨</h2>
+    <h2>🚨 Defect 지표 🚨</h2>
     <div class="card-container">
       <div class="summary-card">
         <h3>DRAGON AB</h3>
@@ -128,8 +148,8 @@
   }
   window.onload = function() { initSummarySlide(7000); };
 
-  const mechPartnerData = { labels: ["FNI", "BAT", "TMS(m)"], datasets: [{ data: [1.9, 0.9, 1.7], backgroundColor: ["#4e79a7", "#f28e2b", "#e15759"], borderWidth: 1 }] };
-  const elecPartnerData = { labels: ["C&A", "P&S", "TMS(e)"], datasets: [{ data: [0, 2.2, 0], backgroundColor: ["#76b7b2", "#59a14f", "#edc948"], borderWidth: 1 }] };
+  const mechPartnerData = { labels: ["BAT", "FNI", "TMS(m)"], datasets: [{ data: [3, 2.9, 2.7], backgroundColor: ["#4e79a7", "#f28e2b", "#e15759"], borderWidth: 1 }] };
+  const elecPartnerData = { labels: ["C&A", "P&S", "TMS(e)"], datasets: [{ data: [0, 2.8, 0.7], backgroundColor: ["#76b7b2", "#59a14f", "#edc948"], borderWidth: 1 }] };
   new Chart(document.getElementById("mechPartnerChart"), { type: "doughnut", data: mechPartnerData, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } } });
   new Chart(document.getElementById("elecPartnerChart"), { type: "doughnut", data: elecPartnerData, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } } });
 </script>

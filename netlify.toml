@@ -1,4 +1,5 @@
+
 [[redirects]]
   from = "/*"
-  to = "/factory.html"  # 경로를 루트의 factory.html로 변경
+  to = "/factory_dashboard/factory.html"
   status = 200

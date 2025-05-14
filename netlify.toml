@@ -1,19 +1,5 @@
-[[redirects]]
-  from = "/partner"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/factory"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/internal"
-  to = "/index.html"
-  status = 200
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/factory_dashboard/factory.html"
   status = 200

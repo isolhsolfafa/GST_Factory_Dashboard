@@ -60,7 +60,7 @@
 
   <script>
     // 데이터 로드 및 렌더링
-    fetch('/data.json')  // Netlify 환경에서 정적 파일 경로
+    fetch('/data.json')
       .then(response => {
         if (!response.ok) throw new Error('Failed to load data.json: ' + response.status);
         return response.json();
@@ -68,7 +68,6 @@
       .then(data => renderCards(data))
       .catch(error => {
         console.error('Error loading data:', error);
-        // fetch 실패 시 에러 메시지 표시
         const cardsContainer = document.getElementById('cards');
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error';
@@ -79,7 +78,7 @@
     // 카드 렌더링 함수
     function renderCards(data) {
       const cardsContainer = document.getElementById('cards');
-      cardsContainer.innerHTML = ''; // 기존 내용 초기화
+      cardsContainer.innerHTML = '';
       if (!data.predictions || data.predictions.length === 0) {
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error';

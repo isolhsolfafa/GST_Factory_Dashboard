@@ -1,0 +1,118 @@
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>모델별 불량예상 대시보드</title>
+  <style>
+    body {
+      font-family: 'NanumGothic', sans-serif;
+      background: white;
+      margin: 0; padding: 5px;
+    }
+    .container {
+      width: 350px;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cards {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: transparent; /* 백그라운드 색상 제거 */
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card {
+      display: none;
+      border: 2px solid #ddd;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      animation: fadein 0.5s;
+      font-size: 12px;
+      line-height: 1.5;
+      width: 90%; /* 카드뷰 가로 10% 축소 */
+      height: 90%; /* 카드뷰 세로 10% 축소 */
+      box-sizing: border-box;
+    }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cards" id="cards"></div>
+  </div>
+
+  <script>
+    // 데이터 로드 및 렌더링
+    fetch('/data.json')  // Netlify 환경에서 정적 파일 경로
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to load data.json: ' + response.status);
+        return response.json();
+      })
+      .then(data => renderCards(data))
+      .catch(error => {
+        console.error('Error loading data:', error);
+        // fetch 실패 시 에러 메시지 표시
+        const cardsContainer = document.getElementById('cards');
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error';
+        errorDiv.textContent = '데이터를 로드할 수 없습니다.';
+        cardsContainer.appendChild(errorDiv);
+      });
+
+    // 카드 렌더링 함수
+    function renderCards(data) {
+      const cardsContainer = document.getElementById('cards');
+      cardsContainer.innerHTML = ''; // 기존 내용 초기화
+      if (!data.predictions || data.predictions.length === 0) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error';
+        errorDiv.textContent = '표시할 데이터가 없습니다.';
+        cardsContainer.appendChild(errorDiv);
+        return;
+      }
+      data.predictions.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.display = index === 0 ? 'block' : 'none';
+        card.innerHTML = `
+          <h3>${item.모델} <span style='font-size:12px'>(${item.예상불량률.toFixed(1)}%)</span></h3>
+          <p>🛠 불량유형: <b>${item.불량유형}</b></p>
+          <p>🔧 주요부품: <b>${item.부품}</b></p>
+          <p>📊 누적 건수: <b>${item.누적}건</b></p>
+          <p>🔍 주요 키워드: <b>${item.키워드}</b></p>
+          <p>💡 제안: <b>${item.제안}</b></p>
+        `;
+        cardsContainer.appendChild(card);
+      });
+
+      // 슬라이드 전환
+      let cards = document.querySelectorAll('.card');
+      let index = 0;
+      function showNextCard() {
+        cards.forEach((card, i) => {
+          card.style.display = (i === index) ? 'block' : 'none';
+        });
+        index = (index + 1) % cards.length;
+      }
+      setInterval(showNextCard, 5000);
+    }
+  </script>
+</body>
+</html>

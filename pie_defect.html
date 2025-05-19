@@ -1,13 +1,15 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <title>모델별 불량예상 대시보드</title>
+  <base href="https://isolhsolfafa.github.io/GST_Factory_Dashboard/" />
   <style>
     body {
       font-family: 'NanumGothic', sans-serif;
       background: white;
-      margin: 0; padding: 5px;
+      margin: 0;
+      padding: 5px;
     }
     .container {
       width: 350px;
@@ -59,7 +61,7 @@
   </div>
 
   <script>
-    fetch('/data.json')
+    fetch('data.json')  // base href 덕분에 실제로는 /GST_Factory_Dashboard/data.json 요청됨
       .then(response => {
         if (!response.ok) throw new Error('Failed to load data.json: ' + response.status);
         return response.json();
@@ -77,6 +79,7 @@
     function renderCards(data) {
       const cardsContainer = document.getElementById('cards');
       cardsContainer.innerHTML = '';
+
       if (!data.predictions || data.predictions.length === 0) {
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error';
@@ -84,6 +87,7 @@
         cardsContainer.appendChild(errorDiv);
         return;
       }
+
       data.predictions.forEach((item, index) => {
         const card = document.createElement('div');
         card.className = 'card';

@@ -1,5 +1,23 @@
-
+# 기본 공장 대시보드
 [[redirects]]
-  from = "/*"
+  from = "/"
   to = "/factory_dashboard/factory.html"
+  status = 200
+
+# 협력사 대시보드
+[[redirects]]
+  from = "/partner.html"
+  to = "/partner.html"
+  status = 200
+
+# 출입 인원 그래프
+[[redirects]]
+  from = "/partner_entry_chart.html"
+  to = "/partner_entry_chart.html"
+  status = 200
+
+# 불량 분석 차트
+[[redirects]]
+  from = "/pie_defect.html"
+  to = "/pie_defect.html"
   status = 200

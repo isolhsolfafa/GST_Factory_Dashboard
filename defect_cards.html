@@ -1,3 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { margin: 0; font-family: 'NanumGothic', sans-serif; background: #f8f9fa; }
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+      box-sizing: border-box;
+      max-height: 500px;
+      overflow-y: auto;
+      padding: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: #007bff #e9ecef;
+    }
+    .card-container::-webkit-scrollbar {
+      width: 8px;
+    }
+    .card-container::-webkit-scrollbar-track {
+      background: #e9ecef;
+      border-radius: 4px;
+    }
+    .card-container::-webkit-scrollbar-thumb {
+      background: #007bff;
+      border-radius: 4px;
+    }
+    .summary-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+      min-height: 180px;
+    }
+    .summary-content { flex-grow: 1; }
+    .summary-card h3 { margin: 0 0 10px; font-size: 16px; }
+    .summary-card p { margin: 2px 0; font-size: 14px; }
+    .summary-card a {
+      display: inline-block;
+      margin-top: 8px;
+      background: #007bff;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 12px;
+      transition: background 0.3s;
+      align-self: flex-start;
+    }
+    .summary-card a:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+<div class="card-container">
 <div class="summary-card">
   <div class="summary-content">
     <h3>DRAGON AB</h3>
@@ -70,3 +131,6 @@
   </div>
   <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-P DUAL 불량 상세 보기">→ 상세 보기</a>
 </div>
+</div>
+</body>
+</html>

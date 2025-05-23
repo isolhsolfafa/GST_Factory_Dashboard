@@ -73,7 +73,11 @@
     title: '🏭협력사별 출입 인원 수',
     hovermode: 'closest'
   };
-  Plotly.newPlot('bar-chart', data, layout);
+  Plotly.newPlot('bar-chart', data, layout, {
+    displayModeBar: false,
+    scrollZoom: false,
+    staticPlot: true
+  });
 
   // ✅ 토글 기능 추가 (같은 막대 두 번 클릭시 닫기)
   var lastOpened = null;

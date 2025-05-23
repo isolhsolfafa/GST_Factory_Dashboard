@@ -164,80 +164,18 @@
 <div class="bottom-grid">
   <div>
     <h2>🚨 Defect 지표 🚨</h2>
-    <div class="card-container">
-      <div class="summary-card">
-        <div class="summary-content">
-          <h3>DRAGON AB</h3>
-          <p>총 불량: <strong>3건</strong></p>
-          <p>주요 중분류: 부품불량, 기구작업불량, 작업불량</p>
-        </div>
-        <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="DRAGON AB 불량 상세 보기">→ 상세 보기</a>
-      </div>
-      <div class="summary-card">
-        <div class="summary-content">
-          <h3>DRAGON AB DUAL</h3>
-          <p>총 불량: <strong>21건</strong></p>
-          <p>주요 중분류: 기구작업불량, 전장작업불량, 부품불량</p>
-        </div>
-        <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="DRAGON AB DUAL 불량 상세 보기">→ 상세 보기</a>
-      </div>
-      <div class="summary-card">
-        <div class="summary-content">
-          <h3>DRAGON AB SINGLE</h3>
-          <p>총 불량: <strong>1건</strong></p>
-          <p>주요 중분류: 부품불량</p>
-        </div>
-        <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="DRAGON AB SINGLE 불량 상세 보기">→ 상세 보기</a>
-      </div>
-      <div class="summary-card">
-        <div class="summary-content">
-          <h3>DRAGON LE DUAL</h3>
-          <p>총 불량: <strong>3건</strong></p>
-          <p>주요 중분류: 전장작업불량, 기구작업불량</p>
-        </div>
-        <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="DRAGON LE DUAL 불량 상세 보기">→ 상세 보기</a>
-      </div>
-      <div class="summary-card">
-        <div class="summary-content">
-          <h3>DRAGON-DUAL</h3>
-          <p>총 불량: <strong>1건</strong></p>
-          <p>주요 중분류: 설계불량</p>
-        </div>
-        <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="DRAGON-DUAL 불량 상세 보기">→ 상세 보기</a>
-      </div>
-      <div class="summary-card">
-        <div class="summary-content">
-          <h3>GAIA-I</h3>
-          <p>총 불량: <strong>5건</strong></p>
-          <p>주요 중분류: 설계불량, 기구작업불량</p>
-        </div>
-        <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-I 불량 상세 보기">→ 상세 보기</a>
-      </div>
-      <div class="summary-card">
-        <div class="summary-content">
-          <h3>GAIA-I DUAL</h3>
-          <p>총 불량: <strong>20건</strong></p>
-          <p>주요 중분류: 기구작업불량, 설계불량, 부품불량</p>
-        </div>
-        <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-I DUAL 불량 상세 보기">→ 상세 보기</a>
-      </div>
-      <div class="summary-card">
-        <div class="summary-content">
-          <h3>GAIA-P</h3>
-          <p>총 불량: <strong>3건</strong></p>
-          <p>주요 중분류: 부품불량, 기구작업불량, 작업불량</p>
-        </div>
-        <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-P 불량 상세 보기">→ 상세 보기</a>
-      </div>
-      <div class="summary-card">
-        <div class="summary-content">
-          <h3>GAIA-P DUAL</h3>
-          <p>총 불량: <strong>7건</strong></p>
-          <p>주요 중분류: 설계불량, 기구작업불량, 부품불량</p>
-        </div>
-        <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-P DUAL 불량 상세 보기">→ 상세 보기</a>
-      </div>
-    </div>
+    <div class="card-container" id="defect-cards-container"></div>
+    <script>
+    fetch("https://isolhsolfafa.github.io/PDA_Dashboard/defect_cards.html")
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("defect-cards-container").innerHTML = html;
+      })
+      .catch(error => {
+        console.error("📛 카드뷰 로딩 실패:", error);
+        document.getElementById("defect-cards-container").innerHTML = "<p>불량 카드 데이터를 불러올 수 없습니다.</p>";
+      });
+    </script>
   </div>
   <div class="chart-section">
     <h2 style="text-align: center;">🏆 협력사 KPI 지수 [ 불량 ➕ 작업미기입 ]</h2>

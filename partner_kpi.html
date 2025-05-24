@@ -1,0 +1,104 @@
+
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>협력사 KPI 대시보드</title>
+        
+    <style>
+        .chart-section { margin: 20px; }
+        .kpi-container { display: flex; flex-wrap: wrap; justify-content: center; }
+        .kpi-card { 
+            width: 150px; height: 150px; margin: 10px; 
+            background: #f8f9fa; border-radius: 8px; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        .emoji { font-size: 2em; }
+        .label { font-size: 1.2em; font-weight: bold; }
+        .tooltip { 
+            visibility: hidden; width: 200px; background-color: #555; color: #fff; 
+            text-align: center; border-radius: 6px; padding: 5px; 
+            position: absolute; z-index: 1; top: 100%; left: 50%; 
+            transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; 
+        }
+        .kpi-card:hover .tooltip { visibility: visible; opacity: 1; }
+    </style>
+    
+    </head>
+    <body>
+        <div class="chart-section">
+            <h2 style="text-align: center;">🏆 기구 협력사 KPI 지수 [ 불량 ➕ 작업미기입 ] - 2025-05</h2>
+            <div class="kpi-container">
+    
+                <div class="kpi-card" aria-describedby="tooltip-bat">
+                    <div class="emoji">🥇</div>
+                    <div class="label">BAT</div>
+                    <div class="tooltip" id="tooltip-bat">
+                        평가점수: 8.2 / A등급<br>
+                        불량건수: 9건<br>
+                        누락비율: 0.4%
+                    </div>
+                </div>
+        
+                <div class="kpi-card" aria-describedby="tooltip-tmsm">
+                    <div class="emoji">🥈</div>
+                    <div class="label">TMS(M)</div>
+                    <div class="tooltip" id="tooltip-tmsm">
+                        평가점수: 6.5 / B등급<br>
+                        불량건수: 13건<br>
+                        누락비율: 4.2%
+                    </div>
+                </div>
+        
+                <div class="kpi-card" aria-describedby="tooltip-fni">
+                    <div class="emoji">🥉</div>
+                    <div class="label">FNI</div>
+                    <div class="tooltip" id="tooltip-fni">
+                        평가점수: 5.8 / B등급<br>
+                        불량건수: 11건<br>
+                        누락비율: 9.1%
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+        <div class="chart-section">
+            <h2 style="text-align: center;">🏆 전장 협력사 KPI 지수 [ 불량 ➕ 작업미기입 ] - {month}</h2>
+            <div class="kpi-container">
+    
+                <div class="kpi-card" aria-describedby="tooltip-c&a">
+                    <div class="emoji">🥇</div>
+                    <div class="label">C&A</div>
+                    <div class="tooltip" id="tooltip-c&a">
+                        평가점수: 10.0 / A등급<br>
+                        불량건수: 0건<br>
+                        누락비율: 0.0%
+                    </div>
+                </div>
+        
+                <div class="kpi-card" aria-describedby="tooltip-tmse">
+                    <div class="emoji">🥈</div>
+                    <div class="label">TMS(E)</div>
+                    <div class="tooltip" id="tooltip-tmse">
+                        평가점수: 8.2 / A등급<br>
+                        불량건수: 2건<br>
+                        누락비율: 0.0%
+                    </div>
+                </div>
+        
+                <div class="kpi-card" aria-describedby="tooltip-p&s">
+                    <div class="emoji">🥉</div>
+                    <div class="label">P&S</div>
+                    <div class="tooltip" id="tooltip-p&s">
+                        평가점수: 5.8 / B등급<br>
+                        불량건수: 5건<br>
+                        누락비율: 9.1%
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </body>
+    </html>
+    

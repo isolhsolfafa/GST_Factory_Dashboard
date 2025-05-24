@@ -27,3 +27,11 @@
   from = "/defect_cards.html"
   to = "/defect_cards.html"
   status = 200  
+
+# KPI 지표
+[[redirects]]
+  from = "/partner_kpi.html"
+  to = "/partner_kpi.html"
+  status = 200  
+  
+

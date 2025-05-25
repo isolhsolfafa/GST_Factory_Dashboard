@@ -1,4 +1,13 @@
-# 기본 공장 대시보드
+
+[[redirects]]
+  from = "/*"
+  to = "/factory_dashboard/factory.html"
+  status = 200
+[[redirects]]
+  from = "/*"
+  to = "/factory_dashboard/factory.html"
+  status = 200
+  # 기본 공장 대시보드
 [[redirects]]
   from = "/"
   to = "/factory_dashboard/factory.html"
@@ -26,12 +35,10 @@
 [[redirects]]
   from = "/defect_cards.html"
   to = "/defect_cards.html"
-  status = 200  
+  status = 200
 
-# KPI 지표
 [[redirects]]
   from = "/partner_kpi.html"
   to = "/partner_kpi.html"
   status = 200  
   
-

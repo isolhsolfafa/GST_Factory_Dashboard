@@ -33,6 +33,16 @@
         }
         .defect-table th { background-color: #f2f2f2; }
         .hidden { display: none; }
+        .download-btn { 
+            margin: 10px 0; 
+            padding: 5px 10px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        }
+        .download-btn:hover { background-color: #45a049; }
     </style>
     
         <script>
@@ -79,6 +89,47 @@
                     table.classList.add('hidden');
                 }
             }
+
+            function downloadCSV(partnerId) {
+                const partner = idToPartnerMap[partnerId];
+                const details = defectDetails[partner] || [];
+                console.log("DEBUG: Downloading CSV for partner:", partner, details);
+                if (details.length === 0) {
+                    alert('다운로드할 데이터가 없습니다.');
+                    return;
+                }
+
+                // CSV 헤더
+                let csvContent = '제품정보,상세불량내용,상세조치내용\n';
+
+                // CSV 데이터 생성
+                details.forEach(item => {
+                    const row = [
+                        `"${item.productInfo.replace(/"/g, '""')}"`,
+                        `"${item.defect.replace(/"/g, '""')}"`,
+                        `"${item.action.replace(/"/g, '""')}"`
+                    ];
+                    csvContent += row.join(',') + '\n';
+                });
+
+                // 현재 날짜 생성 (YYYYMMDD 형식)
+                const today = new Date();
+                const dateStr = today.getFullYear() + '' + 
+                               String(today.getMonth() + 1).padStart(2, '0') + '' + 
+                               String(today.getDate()).padStart(2, '0');
+
+                // 파일 이름 생성
+                const fileName = `${partner}_불량내역_${dateStr}.csv`;
+
+                // CSV 파일 다운로드
+                const encodedUri = encodeURI('data:text/csv;charset=utf-8,' + csvContent);
+                const link = document.createElement('a');
+                link.setAttribute('href', encodedUri);
+                link.setAttribute('download', fileName);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
         </script>
     </head>
     <body>
@@ -118,15 +169,36 @@
         
             </div>
             <table id="defect-table-bat" class="defect-table hidden">
-                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <button class="download-btn" onclick="downloadCSV('bat')">CSV 다운로드</button>
+                        </th>
+                    </tr>
+                    <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr>
+                </thead>
                 <tbody></tbody>
             </table>
             <table id="defect-table-fni" class="defect-table hidden">
-                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <button class="download-btn" onclick="downloadCSV('fni')">CSV 다운로드</button>
+                        </th>
+                    </tr>
+                    <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr>
+                </thead>
                 <tbody></tbody>
             </table>
             <table id="defect-table-tmsm" class="defect-table hidden">
-                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <button class="download-btn" onclick="downloadCSV('tmsm')">CSV 다운로드</button>
+                        </th>
+                    </tr>
+                    <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr>
+                </thead>
                 <tbody></tbody>
             </table>
         </div>
@@ -166,15 +238,36 @@
         
             </div>
             <table id="defect-table-pns" class="defect-table hidden">
-                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <button class="download-btn" onclick="downloadCSV('pns')">CSV 다운로드</button>
+                        </th>
+                    </tr>
+                    <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr>
+                </thead>
                 <tbody></tbody>
             </table>
             <table id="defect-table-tmse" class="defect-table hidden">
-                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <button class="download-btn" onclick="downloadCSV('tmse')">CSV 다운로드</button>
+                        </th>
+                    </tr>
+                    <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr>
+                </thead>
                 <tbody></tbody>
             </table>
             <table id="defect-table-cna" class="defect-table hidden">
-                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <button class="download-btn" onclick="downloadCSV('cna')">CSV 다운로드</button>
+                        </th>
+                    </tr>
+                    <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr>
+                </thead>
                 <tbody></tbody>
             </table>
         </div>

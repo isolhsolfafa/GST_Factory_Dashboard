@@ -9,7 +9,7 @@
         .chart-section { margin: 10px; }
         .kpi-container { display: flex; flex-wrap: wrap; justify-content: center; }
         .kpi-card { 
-            width: 130px; height: 130px; margin: 10px; 
+            width: 110px; height: 130px; margin: 3px; 
             background: #f8f9fa; border-radius: 8px; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
             position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
@@ -100,7 +100,8 @@
                 }
 
                 // CSV 헤더
-                let csvContent = '제품정보,상세불량내용,상세조치내용\n';
+                let csvContent = '\ufeff'; // UTF-8 BOM 추가
+                csvContent += '제품정보,상세불량내용,상세조치내용\n';
 
                 // CSV 데이터 생성
                 details.forEach(item => {
@@ -134,7 +135,7 @@
     </head>
     <body>
         <div class="chart-section">
-            <h2 style="text-align: center;">🏆 기구 협력사 KPI 지수</h2>
+            <h2 style="text-align: center;">🏆 기구 협력사 KPI 지수 [ 불량 ➕ 작업미기입 ] - 2025-05</h2>
             <div class="kpi-container">
     
                 <div class="kpi-card" onclick="toggleDefectTable('bat')">
@@ -203,7 +204,7 @@
             </table>
         </div>
         <div class="chart-section">
-            <h2 style="text-align: center;">🏆 전장 협력사 KPI 지수</h2>
+            <h2 style="text-align: center;">🏆 전장 협력사 KPI 지수 [ 불량 ➕ 작업미기입 ] - {month}</h2>
             <div class="kpi-container">
     
                 <div class="kpi-card" onclick="toggleDefectTable('cna')">

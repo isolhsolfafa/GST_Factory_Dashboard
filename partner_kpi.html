@@ -6,13 +6,14 @@
         <title>협력사 KPI 대시보드</title>
         
     <style>
-        .chart-section { margin: 20px; }
+        .chart-section { margin: 10px; }
         .kpi-container { display: flex; flex-wrap: wrap; justify-content: center; }
         .kpi-card { 
-            width: 140px; height: 150px; margin: 10px; 
+            width: 110px; height: 130px; margin: 3px; 
             background: #f8f9fa; border-radius: 8px; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
             position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            cursor: pointer;
         }
         .emoji { font-size: 2em; }
         .label { font-size: 1.2em; font-weight: bold; }
@@ -23,15 +24,69 @@
             transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; 
         }
         .kpi-card:hover .tooltip { visibility: visible; opacity: 1; }
+        .defect-table { 
+            width: 100%; max-width: 600px; margin: 10px auto; border-collapse: collapse; 
+            background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        .defect-table th, .defect-table td { 
+            border: 1px solid #ddd; padding: 8px; text-align: left; 
+        }
+        .defect-table th { background-color: #f2f2f2; }
+        .hidden { display: none; }
     </style>
     
+        <script>
+            // 불량 세부 정보 데이터
+            const defectDetails = {"BAT": [{"productInfo": "41200149 / GAIA-I DUAL", "defect": "CDA 주입 BULKHEAD UNION 하단부 Fitting Nut Leak / CDA 주입 BULKHEAD UNION BU 08 하단부 Fitting Nut Leak", "action": "재체결"}, {"productInfo": "41000585 / GAIA-I DUAL", "defect": "MALE ELBOW JACO Fitting Nut Leak / MALE ELBOW 40-8-6-K-PG Fitting Nut Leak / 이동 및 조립과정 중 풀림 의심", "action": "재체결"}, {"productInfo": "41000514 / DRAGON LE DUAL", "defect": "MALE ELBOW JACO FITTING NUT 나사산파손 / Manifold 연결 MALE ELBOW KQ2H08-03NS Jaco Fitting Nut 과체결로 나사산파손", "action": "파트교체"}, {"productInfo": "41000584 / DRAGON AB DUAL", "defect": "MALE ELBOW JACO FITTING NUT Leak / Manifold 연결 MALE ELBOW KQ2H08-03NS Jaco Fitting Nut Leak / 재조립", "action": "재체결"}, {"productInfo": "41200076 / GAIA-I DUAL", "defect": "UNION ELBOW Fitting Nut Leak/ BYPASS#4 PE140 PFA 튜브 삽입부 Fitting Nut 체결강도부족 Leak", "action": "재체결"}, {"productInfo": "41100338 / GAIA-I", "defect": "PCW Bunner 연결부 UNION ELBOW Fitting Nut LEAK/UNION ELBOW 04 Fitting Nut 체결강도부족 Leak", "action": "재체결"}, {"productInfo": "41200076 / GAIA-I DUAL", "defect": "Cir' Water Quench Line Nut 부 미세 Water Leak 발생", "action": "재작업"}, {"productInfo": "41200046 / GAIA-I DUAL", "defect": "REDUCING UNION TEE(06M) Fitting Nut Leak / N.PE140 PFA 튜브 삽입부 Fitting Nut 체결강도부족 Leak", "action": "재체결"}, {"productInfo": "41200061 / GAIA-P DUAL", "defect": "Heating Jacket 부분 손상", "action": "신규 제작 후 Line 서 조치 예정"}], "FNI": [{"productInfo": "41200147 / GAIA-I DUAL", "defect": "UNION TEE Fitting Nut Leak / UNION TEE 70-8-K-PG 하단 JACO Fitting Nut 체결강도부족 , 가압 시 탈거 후 원복누락", "action": "재체결"}, {"productInfo": "41200087 / GAIA-I DUAL", "defect": "O-Ring 씹힘 /Temp Sensor SOKET 체결 O-RING AS568 015 씹힘 Leak", "action": "파트교체"}, {"productInfo": "41000598 / GAIA-P DUAL", "defect": "Circulation Line Teflon 부 Leak", "action": "Teflon 재작업"}, {"productInfo": "41000598 / GAIA-P DUAL", "defect": "Right Torch Voltage Hunting 발생으로 Burning 불가(Torch 내 Anode O-Ring 파손)", "action": "O-Ring 교체 후 재조립"}, {"productInfo": "41200155 / GAIA-P", "defect": "CDA 레귤레이터 튜빙 교차 연결(In, Out)", "action": "재연결"}, {"productInfo": "41000588 / DRAGON AB DUAL", "defect": "N2 TUBE SPLICER PU 12 삽입부 Leak / Diaphram Valve 간섭으로 인한 틀어짐 의심", "action": "재체결"}, {"productInfo": "41000588 / DRAGON AB DUAL", "defect": "Left Circulation Quench T LIne Teflon 부 Leak 발생", "action": "재작업"}, {"productInfo": "41000588 / DRAGON AB DUAL", "defect": "PCW-S MALE ELBOW Teflon 부족 / Heat Exchanger 조립 PCW-S IN단 MALE ELBOW ME08-08R 테퓨론부족 Leak", "action": "재작업"}, {"productInfo": "41000588 / DRAGON AB DUAL", "defect": "N2 REDUCING DOUBLE Y UNION 08 우레탄튜브 삽입부 Leak / REDUCING DOUBLE Y UNION PXG 08-06 08 우레탄튜브 삽입불량 Leak", "action": "파트교체"}, {"productInfo": "41100320 / GAIA-I DUAL", "defect": "CDA Male Connector Teflon 부족 / Main CDA Male Connector 테퓨론부 Leak / 파트 테퓨론 밀림 의심 , 테퓨론 추가작업 후 재조립", "action": "Teflon 작업"}, {"productInfo": "41200145 / GAIA-P", "defect": "N2 소화시스템 Sticker 및 방향식별 Sticker 누락", "action": "재작업"}], "TMS(M)": [{"productInfo": "41000584 / DRAGON AB DUAL", "defect": "MALE ELBOW JACO FITTING NUT Leak / Manifold 연결 MALE ELBOW KQ2H08-03NS Jaco Fitting Nut Leak / 재조립", "action": "재체결"}, {"productInfo": "41000584 / DRAGON AB DUAL", "defect": "TUBE SPLICER 삽입부 Leak / TUBE SPLICER PU12 Leak / 재조립 후 이상 없음 확인", "action": "재체결"}, {"productInfo": "41000584 / DRAGON AB DUAL", "defect": "O2 Line REDUCING UNION TEE Fitting Nut Leak / O2 Line REDUCING UNION TEE RT08-08-04 04 Fitting Nut", "action": "재체결"}, {"productInfo": "41000584 / DRAGON AB DUAL", "defect": "LNG Line REDUCING UNION TEE Fitting Nut Leak / LNG Line REDUCING UNION TEE RT08-08-06 06Fitting Nut", "action": "재체결"}, {"productInfo": "41100696 / DRAGON AB DUAL", "defect": "Circulation Quench Line PP Nut Leak", "action": "재체결"}, {"productInfo": "41100696 / DRAGON AB DUAL", "defect": "O-Ring 변형 / Swirl Guide 후면부 Nozzle 체결부 체결볼트 과체결로 O-ring P14 FKM 변형 Leak", "action": "파트교체"}, {"productInfo": "41100696 / DRAGON AB DUAL", "defect": "MALE ELBOW JACO FITTING NUT 체결불량 / Manifold 연결 MALE ELBOW KQ2H08-03NS Jaco Fitting Nut 체결 강도 부족 Lea", "action": "재체결"}, {"productInfo": "41100696 / DRAGON AB DUAL", "defect": "O-Ring 변형 / Swirl Guide 전면부 Nozzle 체결부 체결볼트 과체결로 O-ring P14 FKM 변형 Leak", "action": "파트교체"}, {"productInfo": "41100696 / DRAGON AB DUAL", "defect": "O-Ring 씹힘 / Bunner GAS Nozzle Top 체결부 O-Ring AS568 119 FKM 씹힘 Leak", "action": "파트교체"}, {"productInfo": "41100696 / DRAGON AB DUAL", "defect": "O-Ring 변형 / Swirl Guide 전면부 Nozzle 체결부 체결볼트 과체결로 O-ring P14 FKM 변형 Leak", "action": "파트교체"}, {"productInfo": "41100696 / DRAGON AB DUAL", "defect": "O-Ring 변형 / Swirl Guide 후면부 Nozzle 체결부 체결볼트 과체결로 O-ring P14 FKM 변형 Leak", "action": "파트교체"}, {"productInfo": "41100695 / DRAGON AB", "defect": "N2 MALE ELBOW Teflon 부족 / Main N2 MALE ELBOW PL10-02 Teflon 조립부 Leak (Teflon 코팅 후 입고파트)", "action": "Teflon 작업"}, {"productInfo": "41000588 / DRAGON AB DUAL", "defect": "Left, Right O2 MFC Sticker 오부착(FD312<>FD322)", "action": ""}], "P&S": [{"productInfo": "41000514 / DRAGON LE DUAL", "defect": "O-Ring 조립 불량 / Level Sensor 내부 O-Ring G50 조립 불량으로 Leak", "action": "재체결"}, {"productInfo": "41000514 / DRAGON LE DUAL", "defect": "O-Ring 조립 불량 / Level Sensor 내부 O-Ring G50 조립 불량으로 Leak", "action": "재체결"}, {"productInfo": "41100696 / DRAGON AB DUAL", "defect": "O-Ring 조립 불량 / Level Sensor 내부 O-Ring G50 조립 불량으로 Leak", "action": "재체결"}, {"productInfo": "41000588 / DRAGON AB DUAL", "defect": "Left, Right O2 MFC Connector 오체결(O2 Flow 불가/FD312<>FD322)", "action": "Connector 재체결"}, {"productInfo": "41100695 / DRAGON AB", "defect": "Tower Lamp Sticker 누락", "action": "Sticker 부착"}], "TMS(E)": [{"productInfo": "41000588 / DRAGON AB DUAL", "defect": "O-Ring 조립 불량 / Level Sensor 내부 O-Ring 조립 불량으로 Leak", "action": "재체결"}, {"productInfo": "41200039 / GAIA-I DUAL", "defect": "Level Sensor 체결 Nut Leak / Level Sensor 체결 Nut G2 1/4 PP(WHITE) Leak / TMS 모듈 가압시 이상없음 확인, 가압공정 재체결", "action": "재체결"}], "C&A": []};
+            console.log("DEBUG: defectDetails:", defectDetails);
+
+            // 협력사 이름과 ID 매핑
+            const partnerToIdMap = {
+                'BAT': 'bat',
+                'FNI': 'fni',
+                'TMS(M)': 'tmsm',
+                'P&S': 'pns',
+                'TMS(E)': 'tmse',
+                'C&A': 'cna'
+            };
+
+            // ID에서 협력사 이름으로 역매핑
+            const idToPartnerMap = Object.fromEntries(
+                Object.entries(partnerToIdMap).map(([partner, id]) => [id, partner])
+            );
+
+            function toggleDefectTable(partnerId) {
+                const partner = idToPartnerMap[partnerId];
+                console.log("DEBUG: Toggling table for partner:", partner);
+                const table = document.getElementById(`defect-table-${partnerId}`);
+                if (table.classList.contains('hidden')) {
+                    // 테이블 표시
+                    table.classList.remove('hidden');
+                    // 테이블 내용 생성
+                    const details = defectDetails[partner] || [];
+                    console.log("DEBUG: Details for partner:", partner, details);
+                    let tableBody = '';
+                    if (details.length === 0) {
+                        tableBody = '<tr><td colspan="3">불량 데이터 없음</td></tr>';
+                    } else {
+                        details.forEach(item => {
+                            tableBody += `<tr><td>${item.productInfo}</td><td>${item.defect}</td><td>${item.action}</td></tr>`;
+                        });
+                    }
+                    table.querySelector('tbody').innerHTML = tableBody;
+                } else {
+                    // 테이블 숨김
+                    table.classList.add('hidden');
+                }
+            }
+        </script>
     </head>
     <body>
         <div class="chart-section">
-            <h2 style="text-align: center;">🏆 기구 협력사 KPI 지수</h2>
+            <h2 style="text-align: center;">🏆 기구 협력사 KPI 지수 [ 불량 ➕ 작업미기입 ] - 2025-05</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card" aria-describedby="tooltip-bat">
+                <div class="kpi-card" onclick="toggleDefectTable('bat')">
                     <div class="emoji">🥇</div>
                     <div class="label">BAT</div>
                     <div class="tooltip" id="tooltip-bat">
@@ -41,7 +96,7 @@
                     </div>
                 </div>
         
-                <div class="kpi-card" aria-describedby="tooltip-tmsm">
+                <div class="kpi-card" onclick="toggleDefectTable('tmsm')">
                     <div class="emoji">🥈</div>
                     <div class="label">TMS(M)</div>
                     <div class="tooltip" id="tooltip-tmsm">
@@ -51,7 +106,7 @@
                     </div>
                 </div>
         
-                <div class="kpi-card" aria-describedby="tooltip-fni">
+                <div class="kpi-card" onclick="toggleDefectTable('fni')">
                     <div class="emoji">🥉</div>
                     <div class="label">FNI</div>
                     <div class="tooltip" id="tooltip-fni">
@@ -62,22 +117,34 @@
                 </div>
         
             </div>
+            <table id="defect-table-bat" class="defect-table hidden">
+                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <table id="defect-table-fni" class="defect-table hidden">
+                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <table id="defect-table-tmsm" class="defect-table hidden">
+                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <tbody></tbody>
+            </table>
         </div>
         <div class="chart-section">
-            <h2 style="text-align: center;">🏆 전장 협력사 KPI 지수</h2>
+            <h2 style="text-align: center;">🏆 전장 협력사 KPI 지수 [ 불량 ➕ 작업미기입 ] - {month}</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card" aria-describedby="tooltip-c&a">
+                <div class="kpi-card" onclick="toggleDefectTable('cna')">
                     <div class="emoji">🥇</div>
                     <div class="label">C&A</div>
-                    <div class="tooltip" id="tooltip-c&a">
+                    <div class="tooltip" id="tooltip-cna">
                         평가점수: 10.0 / A등급<br>
                         불량건수: 0건<br>
                         누락비율: 0.0%
                     </div>
                 </div>
         
-                <div class="kpi-card" aria-describedby="tooltip-tmse">
+                <div class="kpi-card" onclick="toggleDefectTable('tmse')">
                     <div class="emoji">🥈</div>
                     <div class="label">TMS(E)</div>
                     <div class="tooltip" id="tooltip-tmse">
@@ -87,10 +154,10 @@
                     </div>
                 </div>
         
-                <div class="kpi-card" aria-describedby="tooltip-p&s">
+                <div class="kpi-card" onclick="toggleDefectTable('pns')">
                     <div class="emoji">🥉</div>
                     <div class="label">P&S</div>
-                    <div class="tooltip" id="tooltip-p&s">
+                    <div class="tooltip" id="tooltip-pns">
                         평가점수: 5.8 / B등급<br>
                         불량건수: 5건<br>
                         누락비율: 9.1%
@@ -98,6 +165,18 @@
                 </div>
         
             </div>
+            <table id="defect-table-pns" class="defect-table hidden">
+                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <table id="defect-table-tmse" class="defect-table hidden">
+                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <table id="defect-table-cna" class="defect-table hidden">
+                <thead><tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th></tr></thead>
+                <tbody></tbody>
+            </table>
         </div>
     </body>
     </html>

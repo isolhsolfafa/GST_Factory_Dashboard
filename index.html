@@ -38,7 +38,7 @@
 
 <div id="dashboardContainer">
   <div class="tab">
-    <button class="tablinks active" onclick="openFactoryTab('factory.html#mech-summary', this)">🏭 공장 대시보드</button>
+    <button class="tablinks active" onclick="openTab('factory.html#mech-summary', this)">🏭 공장 대시보드</button>
     <button class="tablinks" onclick="openTab('partner.html', this)">🤝 협력사 대시보드</button>
     <button class="tablinks" onclick="openProtectedTab('internal.html', this)">🔒 내부 대시보드</button>
   </div>
@@ -52,7 +52,7 @@
 
   function promptPassword() {
     const password = prompt("🔐 페이지 접근을 위한 비밀번호를 입력하세요:");
-    if (password === "gst2025") {
+    if (password === "2025") {
       isAuthenticated = true;
       document.getElementById("authContainer").style.display = "none";
       document.getElementById("dashboardContainer").style.display = "block";
@@ -70,19 +70,6 @@
       tabs[i].classList.remove("active");
     }
     btn.classList.add("active");
-  }
-
-  function openFactoryTab(page, btn) {
-    if (!isAuthenticated) {
-      promptPassword();
-      return;
-    }
-    const password = prompt("🔐 공장 대시보드 접근을 위한 비밀번호를 입력하세요:");
-    if (password === "4047") {
-      openTab(page, btn);
-    } else {
-      alert("❌ 비밀번호가 틀렸습니다. 접근이 제한됩니다.");
-    }
   }
 
   function openProtectedTab(page, btn) {

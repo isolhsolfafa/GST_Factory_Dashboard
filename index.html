@@ -1,9 +1,11 @@
+여기에 공장 대시보드도 비번 설정 해줘 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <title>GST 통합 대시보드</title>
-  <meta http-equiv="refresh" content="3600">
+  <meta http-equiv="refresh" content="3600"> <!-- ✅ 자동 새로고침 (1시간) -->
   <style>
     body { font-family: 'NanumGothic', sans-serif; margin: 0; }
     .tab { display: flex; background: #333; color: white; }
@@ -30,55 +32,15 @@
 <body>
 
 <div class="tab">
-  <button class="tablinks active" onclick="openFactoryTab('factory.html#mech-summary', this)">🏭 공장 대시보드</button>
+  <button class="tablinks active" onclick="openTab('factory.html#mech-summary', this)">🏭 공장 대시보드</button>
   <button class="tablinks" onclick="openTab('partner.html', this)">🤝 협력사 대시보드</button>
   <button class="tablinks" onclick="openProtectedTab('internal.html', this)">🔒 내부 대시보드</button>
 </div>
 
+<!-- ✅ iframe 기본 로딩도 스크롤 위치 포함 -->
 <iframe id="dashboardFrame" src="factory.html#mech-summary"></iframe>
 
 <script>
-  // 공장 대시보드 비밀번호 (세션 스토리지로 유지)
-  function openFactoryTab(page, btn) {
-    const factoryAuth = sessionStorage.getItem("factory_auth");
-    if (!factoryAuth) {
-      const password = prompt("🔐 공장 대시보드 접근을 위한 비밀번호를 입력하세요:");
-      if (password === "2501") {
-        sessionStorage.setItem("factory_auth", "ok");
-      } else {
-        alert("❌ 비밀번호가 틀렸습니다. 접근이 제한됩니다.");
-        return; // 인증 실패 시 탭 이동 중단
-      }
-    }
-    document.getElementById("dashboardFrame").src = page;
-    const tabs = document.getElementsByClassName("tablinks");
-    for (let i = 0; i < tabs.length; i++) {
-      tabs[i].classList.remove("active");
-    }
-    btn.classList.add("active");
-  }
-
-  // 내부 대시보드 비밀번호
-  function openProtectedTab(page, btn) {
-    const internalAuth = sessionStorage.getItem("internal_auth");
-    if (!internalAuth) {
-      const password = prompt("🔐 내부 대시보드 접근을 위한 비밀번호를 입력하세요:");
-      if (password === "0979") {
-        sessionStorage.setItem("internal_auth", "ok");
-      } else {
-        alert("❌ 비밀번호가 틀렸습니다. 접근이 제한됩니다.");
-        return;
-      }
-    }
-    document.getElementById("dashboardFrame").src = page;
-    const tabs = document.getElementsByClassName("tablinks");
-    for (let i = 0; i < tabs.length; i++) {
-      tabs[i].classList.remove("active");
-    }
-    btn.classList.add("active");
-  }
-
-  // 기존 openTab 함수는 일반탭(협력사)만 담당
   function openTab(page, btn) {
     document.getElementById("dashboardFrame").src = page;
     const tabs = document.getElementsByClassName("tablinks");
@@ -86,6 +48,15 @@
       tabs[i].classList.remove("active");
     }
     btn.classList.add("active");
+  }
+
+  function openProtectedTab(page, btn) {
+    const password = prompt("🔐 내부 대시보드 접근을 위한 비밀번호를 입력하세요:");
+    if (password === "0979") {
+      openTab(page, btn);
+    } else {
+      alert("❌ 비밀번호가 틀렸습니다. 접근이 제한됩니다.");
+    }
   }
 </script>
 

@@ -52,7 +52,7 @@
 
   function promptPassword() {
     const password = prompt("🔐 페이지 접근을 위한 비밀번호를 입력하세요:");
-    if (password === "2025") {
+    if (password === "gst2025") {
       isAuthenticated = true;
       document.getElementById("authContainer").style.display = "none";
       document.getElementById("dashboardContainer").style.display = "block";
@@ -77,6 +77,13 @@
       promptPassword();
       return;
     }
+    const password = prompt("🔐 공장 대시보드 접근을 위한 비밀번호를 입력하세요:");
+    if (password === "4047") {
+      openTab(page, btn);
+    } else {
+      alert("❌ 비밀번호가 틀렸습니다. 접근이 제한됩니다.");
+    }
+  }
 
   function openProtectedTab(page, btn) {
     if (!isAuthenticated) {

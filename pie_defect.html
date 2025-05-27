@@ -1,3 +1,4 @@
+
 <html>
 <head>
   <meta charset="utf-8" />
@@ -58,7 +59,7 @@
   </div>
 
   <script>
-    fetch('https://isolhsolfafa.github.io/GST_Factory_Dashboard/data.json')
+    fetch('/data.json')
       .then(response => {
         if (!response.ok) throw new Error('Failed to load data.json: ' + response.status);
         return response.json();

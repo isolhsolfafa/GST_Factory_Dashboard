@@ -100,7 +100,8 @@
                 }
 
                 // CSV 헤더
-                let csvContent = '제품정보,상세불량내용,상세조치내용\n';
+                let csvContent = '﻿'; // UTF-8 BOM 추가
+                csvContent += '제품정보,상세불량내용,상세조치내용\n';
 
                 // CSV 데이터 생성
                 details.forEach(item => {
@@ -121,14 +122,16 @@
                 // 파일 이름 생성
                 const fileName = `${partner}_불량내역_${dateStr}.csv`;
 
-                // CSV 파일 다운로드
-                const encodedUri = encodeURI('data:text/csv;charset=utf-8,' + csvContent);
+                // Blob 객체로 CSV 파일 생성
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+                const url = window.URL.createObjectURL(blob);
                 const link = document.createElement('a');
-                link.setAttribute('href', encodedUri);
+                link.setAttribute('href', url);
                 link.setAttribute('download', fileName);
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
             }
         </script>
     </head>

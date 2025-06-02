@@ -46,11 +46,9 @@
     </style>
     
         <script>
-            // 불량 세부 정보 데이터
             const defectDetails = {"BAT": [], "FNI": [], "TMS(M)": [], "P&S": [], "TMS(E)": [], "C&A": []};
             console.log("DEBUG: defectDetails:", defectDetails);
 
-            // 협력사 이름과 ID 매핑
             const partnerToIdMap = {
                 'BAT': 'bat',
                 'FNI': 'fni',
@@ -60,7 +58,6 @@
                 'C&A': 'cna'
             };
 
-            // ID에서 협력사 이름으로 역매핑
             const idToPartnerMap = Object.fromEntries(
                 Object.entries(partnerToIdMap).map(([partner, id]) => [id, partner])
             );
@@ -70,9 +67,7 @@
                 console.log("DEBUG: Toggling table for partner:", partner);
                 const table = document.getElementById(`defect-table-${partnerId}`);
                 if (table.classList.contains('hidden')) {
-                    // 테이블 표시
                     table.classList.remove('hidden');
-                    // 테이블 내용 생성
                     const details = defectDetails[partner] || [];
                     console.log("DEBUG: Details for partner:", partner, details);
                     let tableBody = '';
@@ -85,7 +80,6 @@
                     }
                     table.querySelector('tbody').innerHTML = tableBody;
                 } else {
-                    // 테이블 숨김
                     table.classList.add('hidden');
                 }
             }
@@ -99,11 +93,9 @@
                     return;
                 }
 
-                // CSV 헤더
-                let csvContent = '﻿'; // UTF-8 BOM 추가
+                let csvContent = '﻿';
                 csvContent += '제품정보,상세불량내용,상세조치내용\n';
 
-                // CSV 데이터 생성
                 details.forEach(item => {
                     const row = [
                         `"${item.productInfo.replace(/"/g, '""')}"`,
@@ -113,16 +105,13 @@
                     csvContent += row.join(',') + '\n';
                 });
 
-                // 현재 날짜 생성 (YYYYMMDD 형식)
                 const today = new Date();
                 const dateStr = today.getFullYear() + '' + 
                                String(today.getMonth() + 1).padStart(2, '0') + '' + 
                                String(today.getDate()).padStart(2, '0');
 
-                // 파일 이름 생성
                 const fileName = `${partner}_불량내역_${dateStr}.csv`;
 
-                // Blob 객체로 CSV 파일 생성
                 const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
                 const url = window.URL.createObjectURL(blob);
                 const link = document.createElement('a');

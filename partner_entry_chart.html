@@ -137,7 +137,7 @@
           for (var i = 1; i < rows.length; i++) {
             var cells = rows[i].querySelectorAll("td"); // cells 정의 추가
             var rowData = [
-              `"${cells[0].innerText.replace(/"/g, '""')}"` ,
+              `"$\{cells[0].innerText.replace(/"/g, '""')}"` ,
               `"${cells[1].innerText.replace(/"/g, '""')}"`,
               `"${cells[2].innerText.replace(/"/g, '""')}"`
             ];

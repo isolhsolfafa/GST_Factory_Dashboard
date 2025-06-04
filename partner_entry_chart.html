@@ -73,6 +73,7 @@
       var hqBarColors = ["#2ca02c80", "#9467bd80", "#1f77b480", "#ff7f0e80", "#d6272880", "#8c564b80"];
       var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uad8c\ubbfc\uc218, \uae40\uc6a9\uc218, \ubc15\uc5f0\ud30c, \ubc15\uc8fc\uc131, \ubc15\ucc9c\uc77c, \ubc15\ucd98\uad11, \uc11c\uba85\ud658, \uc11c\uc815\uc6d0, \uc190\uad6d\uad8c, \uc548\uc720\uc131, \uc624\ub3d9\ud601, \uc720\uc2b9\ubbfc, \uc724\uad11\uc131, \uc724\uc11d\uc6b0, \uc724\ucd98\uad6d, \uc774\uc2b9\uc9c4, \uc774\uc601\uc2dd, \uc774\uc601\uc790, \uc774\uc740\ud559, \uc774\uc77c\ud638, \uc804\uc6b0\ubbfc, \ud5c8\ubb38\uc6a9, \ud64d\uc6a9\ucc9c, \ud669\uc9c4\ucda9", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uacf5\uc885\ud544, \uae40\uc0c1\uba85, \uae40\uc7ac\ud638, \uae40\uc8fc\uc6a9, \uae40\uc900, \uae40\ucc3d\uc870, \ub178\uc724\uc81c, \uc6b0\uac15, \uc724\uae08\ubd09, \uc774\uc885\uad11, \ucd5c\uad11\ud559, \ucd5c\uc774\uba85", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\uc6d0\ub3d9, \uae40\ucd98\ub3d9, \ubc15\ud638, \uc6b0\ubbf8\ud604, \uc870\ub3d9\ub798, \ucd5c\uc9c4\uc6b0, \ud5c8\ucc3d\ud559", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\uc6b0\ub78c, \uae40\ud0dc\uace4, \ubc15\uc740\ud61c, \uc774\uc131\ud6c8, \uc774\uc219\uc790, \uc774\uc6b0\uc131, \uc774\ud0dc\ud76c, \ud55c\uc0c1\ud638, \ud64d\uc218\ud76c", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ub0a8\ubbfc\uc218, \uc624\uad8c\uc11d, \uc774\uc6b4, \uc815\ubbfc\ud638", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc774\ub300\uade0, \uc774\uc120\ub9cc, \uc774\uc131\uade0, \ucd5c\ub3d9\ud638"];
       var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 24", "\ubcf8\uc0ac \uc778\uc6d0: 10, \uacf5\uc7a5 \uc778\uc6d0: 12", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 20", "\ubcf8\uc0ac \uc778\uc6d0: 4, \uacf5\uc7a5 \uc778\uc6d0: 14", "\ubcf8\uc0ac \uc778\uc6d0: 3, \uacf5\uc7a5 \uc778\uc6d0: 8", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 8"];
+      var weekNumber = 23; // Python에서 주 번호 전달
 
       var data = [
         {
@@ -135,17 +136,17 @@
           var csvContent = "﻿";
           csvContent += "이름,담당 업무,근무시간\n";
           for (var i = 1; i < rows.length; i++) {
-            var cells = rows[i].querySelectorAll("td"); // cells 정의 추가
+            var cells = rows[i].querySelectorAll("td");
             var rowData = [
-              `"$\{cells[0].innerText.replace(/"/g, '""')}"` ,
-              `"${cells[1].innerText.replace(/"/g, '""')}"`,
-              `"${cells[2].innerText.replace(/"/g, '""')}"`
+              '"' + cells[0].innerText.replace(/"/g, '""') + '"',
+              '"' + cells[1].innerText.replace(/"/g, '""') + '"',
+              '"' + cells[2].innerText.replace(/"/g, '""') + '"'
             ];
             csvContent += rowData.join(",") + "\n";
           }
 
           var weekData = [];
-          fetch(`/weekly_data/$P&S_week_$23.json`)
+          fetch(`/weekly_data/${company}_week_${weekNumber}.json`)
             .then(response => response.json())
             .then(data => {
               weekData = data;
@@ -153,19 +154,19 @@
               csvContent += "이름,담당 업무,기록 시간,퇴근 시간,근무시간,퇴근미체크\n";
               weekData.forEach(item => {
                 var rowData = [
-                  `"${(item["이름"] || "").replace(/"/g, '""')}"` ,
-                  `"${(item["담당 업무"] || "").replace(/"/g, '""')}"` ,
-                  `"${(item["기록 시간"] || "").replace(/"/g, '""')}"` ,
-                  `"${(item["퇴근 시간"] || "").replace(/"/g, '""')}"` ,
-                  `"${(item["근무시간(H:M)"] || "").replace(/"/g, '""')}"` ,
-                  `"${item["퇴근미체크"] ? "예" : "아니오"}"`
+                  '"' + (item["이름"] || "").replace(/"/g, '""') + '"',
+                  '"' + (item["담당 업무"] || "").replace(/"/g, '""') + '"',
+                  '"' + (item["기록 시간"] || "").replace(/"/g, '""') + '"',
+                  '"' + (item["퇴근 시간"] || "").replace(/"/g, '""') + '"',
+                  '"' + (item["근무시간(H:M)"] || "").replace(/"/g, '""') + '"',
+                  '"' + (item["퇴근미체크"] ? "예" : "아니오") + '"'
                 ];
                 csvContent += rowData.join(",") + "\n";
               });
 
               var today = new Date();
               var dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
-              var fileName = `$P&S_entry_list_${dateStr}.csv`;
+              var fileName = `${company}_entry_list_${dateStr}.csv`;
               var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
               var url = window.URL.createObjectURL(blob);
               var link = document.createElement('a');
@@ -181,7 +182,7 @@
               alert("주간 데이터를 가져오지 못했습니다. 당일 데이터만 다운로드됩니다.");
               var today = new Date();
               var dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
-              var fileName = `$P&S_entry_list_${dateStr}.csv`;
+              var fileName = `${company}_entry_list_${dateStr}.csv`;
               var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
               var url = window.URL.createObjectURL(blob);
               var link = document.createElement('a');

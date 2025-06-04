@@ -18,15 +18,16 @@
         .emoji { font-size: 2em; }
         .label { font-size: 1.2em; font-weight: bold; }
         .tooltip { 
-            visibility: hidden; width: 200px; background-color: #555; color: #fff; 
+            visibility: hidden; width: 200px; background-color: black; color: white; 
             text-align: center; border-radius: 6px; padding: 5px; 
             position: absolute; z-index: 1; top: 100%; left: 50%; 
-            transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; 
+            transform: translateX(-50%); 
+            opacity: 0; transition: opacity 0.3s; 
         }
         .kpi-card:hover .tooltip { visibility: visible; opacity: 1; }
         .defect-table { 
             width: 100%; max-width: 600px; margin: 10px auto; border-collapse: collapse; 
-            background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
         }
         .defect-table th, .defect-table td { 
             border: 1px solid #ddd; padding: 8px; text-align: left; 
@@ -34,19 +35,14 @@
         .defect-table th { background-color: #f2f2f2; }
         .hidden { display: none; }
         .download-btn { 
-            margin: 10px 0; 
-            padding: 5px 10px; 
-            background-color: #4CAF50; 
-            color: white; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer; 
+            margin: 10px 0; padding: 10px 20px; background-color: #4CAF50; 
+            color: white; border: none; border-radius: 4px; cursor: pointer; 
         }
         .download-btn:hover { background-color: #45a049; }
     </style>
     
         <script>
-            const defectDetails = {"BAT": [{"productInfo": "41200157 / GAIA-I DUAL", "defect": "FEMALE CONNECTOR Fitting Nut Leak / HeatExchanger 연결 PCW-R FEMALE CONNECTOR FC08-12R Fitting Nut 체결강", "action": "재체결", "responsible": "자체조치"}], "FNI": [{"productInfo": "41200076 / GAIA-I DUAL", "defect": "Circulation 라인 NUT부 Leak 발생", "action": "Nut 부 재조립", "responsible": "TMS"}], "TMS(M)": [], "P&S": [], "TMS(E)": [], "C&A": []};
+            const defectDetails = {"BAT": [{"productInfo": "41200157 / GAIA-I DUAL", "defect": "FEMALE CONNECTOR Fitting Nut Leak / HeatExchanger 연결 PCW-R FEMALE CONNECTOR FC08-12R Fitting Nut 체결강", "action": "재체결", "responsible": "자체조치"}], "FNI": [], "TMS(M)": [{"productInfo": "41200076 / GAIA-I DUAL", "defect": "Circulation 라인 NUT부 Leak 발생", "action": "Nut 부 재조립", "responsible": "TMS"}], "P&S": [], "TMS(E)": [], "C&A": []};
             console.log("DEBUG: defectDetails:", defectDetails);
 
             const partnerToIdMap = {
@@ -69,7 +65,6 @@
                 if (table.classList.contains('hidden')) {
                     table.classList.remove('hidden');
                     const details = defectDetails[partner] || [];
-                    console.log("DEBUG: Details for partner:", partner, details);
                     let tableBody = '';
                     if (details.length === 0) {
                         tableBody = '<tr><td colspan="4">불량 데이터 없음</td></tr>';
@@ -87,14 +82,14 @@
             function downloadCSV(partnerId) {
                 const partner = idToPartnerMap[partnerId];
                 const details = defectDetails[partner] || [];
-                console.log("DEBUG: Downloading CSV for partner:", partner, details);
                 if (details.length === 0) {
-                    alert('다운로드할 데이터가 없습니다.');
+                    alert('No data to download.');
                     return;
                 }
 
                 let csvContent = '﻿';
-                csvContent += '제품정보,상세불량내용,상세조치내용,조치자(외주)\n';
+                csvContent += '제품정보,상세불량내용,상세조치내용,조치자(외주)
+';
 
                 details.forEach(item => {
                     const row = [
@@ -103,7 +98,8 @@
                         `"${item.action.replace(/"/g, '""')}"`,
                         `"${item.responsible.replace(/"/g, '""')}"`
                     ];
-                    csvContent += row.join(',') + '\n';
+                    csvContent += row.join(',') + '
+';
                 });
 
                 const today = new Date();
@@ -136,7 +132,7 @@
                     <div class="tooltip" id="tooltip-bat">
                         평가점수: 10.0 / A등급<br>
                         불량건수: 1건<br>
-                        누락비율: 0.7%
+                        누락비율: 0.2%
                     </div>
                 </div>
         
@@ -145,8 +141,8 @@
                     <div class="label">TMS(M)</div>
                     <div class="tooltip" id="tooltip-tmsm">
                         평가점수: 10.0 / A등급<br>
-                        불량건수: 0건<br>
-                        누락비율: 3.0%
+                        불량건수: 1건<br>
+                        누락비율: 0.5%
                     </div>
                 </div>
         
@@ -155,8 +151,8 @@
                     <div class="label">FNI</div>
                     <div class="tooltip" id="tooltip-fni">
                         평가점수: 9.2 / A등급<br>
-                        불량건수: 1건<br>
-                        누락비율: 8.1%
+                        불량건수: 0건<br>
+                        누락비율: 8.3%
                     </div>
                 </div>
         
@@ -190,7 +186,7 @@
                             <button class="download-btn" onclick="downloadCSV('tmsm')">CSV 다운로드</button>
                         </th>
                     </tr>
-                    <tr><th>제품정보</th><th>상세불량내용</th><th>조치자(외주)</th></tr>
+                    <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th><th>조치자(외주)</th></tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -205,27 +201,27 @@
                     <div class="tooltip" id="tooltip-cna">
                         평가점수: 10.0 / A등급<br>
                         불량건수: 0건<br>
-                        누락비율: 0.2%
+                        누락비율: 0.4%
+                    </div>
+                </div>
+        
+                <div class="kpi-card" onclick="toggleDefectTable('pns')">
+                    <div class="emoji">🥈</div>
+                    <div class="label">P&S</div>
+                    <div class="tooltip" id="tooltip-pns">
+                        평가점수: 10.0 / A등급<br>
+                        불량건수: 0건<br>
+                        누락비율: 2.7%
                     </div>
                 </div>
         
                 <div class="kpi-card" onclick="toggleDefectTable('tmse')">
-                    <div class="emoji">🥈</div>
+                    <div class="emoji">🥉</div>
                     <div class="label">TMS(E)</div>
                     <div class="tooltip" id="tooltip-tmse">
                         평가점수: 10.0 / A등급<br>
                         불량건수: 0건<br>
                         누락비율: 0.0%
-                    </div>
-                </div>
-        
-                <div class="kpi-card" onclick="toggleDefectTable('pns')">
-                    <div class="emoji">🥉</div>
-                    <div class="label">P&S</div>
-                    <div class="tooltip" id="tooltip-pns">
-                        평가점수: 9.2 / A등급<br>
-                        불량건수: 0건<br>
-                        누락비율: 7.2%
                     </div>
                 </div>
         

@@ -59,65 +59,82 @@
             );
 
             function toggleDefectTable(partnerId) {
-                const partner = idToPartnerMap[partnerId];
-                console.log("DEBUG: Toggling table for partner:", partner);
-                const table = document.getElementById(`defect-table-${partnerId}`);
-                if (table.classList.contains('hidden')) {
-                    table.classList.remove('hidden');
-                    const details = defectDetails[partner] || [];
-                    let tableBody = '';
-                    if (details.length === 0) {
-                        tableBody = '<tr><td colspan="4">불량 데이터 없음</td></tr>';
-                    } else {
-                        details.forEach(item => {
-                            tableBody += `<tr><td>${item.productInfo}</td><td>${item.defect}</td><td>${item.action}</td><td>${item.responsible}</td></tr>`;
-                        });
+                try {
+                    const partner = idToPartnerMap[partnerId];
+                    console.log("DEBUG: Toggling table for partner:", partner, "ID:", partnerId);
+                    const table = document.getElementById(`defect-table-${partnerId}`);
+                    if (!table) {
+                        console.error("ERROR: Table not found for ID:", `defect-table-${partnerId}`);
+                        return;
                     }
-                    table.querySelector('tbody').innerHTML = tableBody;
-                } else {
-                    table.classList.add('hidden');
+                    if (table.classList.contains('hidden')) {
+                        table.classList.remove('hidden');
+                        const details = defectDetails[partner] || [];
+                        console.log("DEBUG: Defect details for", partner, ":", details);
+                        let tableBody = '';
+                        if (details.length === 0) {
+                            tableBody = '<tr><td colspan="4">불량 데이터 없음</td></tr>';
+                        } else {
+                            details.forEach(item => {
+                                tableBody += `<tr><td>${item.productInfo}</td><td>${item.defect}</td><td>${item.action}</td><td>${item.responsible}</td></tr>`;
+                            });
+                        }
+                        table.querySelector('tbody').innerHTML = tableBody;
+                    } else {
+                        table.classList.add('hidden');
+                    }
+                } catch (error) {
+                    console.error("ERROR in toggleDefectTable:", error);
                 }
             }
 
             function downloadCSV(partnerId) {
-                const partner = idToPartnerMap[partnerId];
-                const details = defectDetails[partner] || [];
-                if (details.length === 0) {
-                    alert('No data to download.');
-                    return;
+                try {
+                    const partner = idToPartnerMap[partnerId];
+                    console.log("DEBUG: Downloading CSV for partner:", partner);
+                    const details = defectDetails[partner] || [];
+                    if (details.length === 0) {
+                        alert('다운로드할 데이터가 없습니다.');
+                        console.log("DEBUG: No data to download for", partner);
+                        return;
+                    }
+
+                    let csvContent = '﻿';
+                    csvContent += '제품정보,상세불량내용,상세조치내용,조치자(외주)
+';
+
+                    details.forEach(item => {
+                        const row = [
+                            `"${item.productInfo.replace(/"/g, '""')}"`,
+                            `"${item.defect.replace(/"/g, '""')}"`,
+                            `"${item.action.replace(/"/g, '""')}"`,
+                            `"${item.responsible.replace(/"/g, '""')}"`
+                        ];
+                        csvContent += row.join(',') + '
+';
+                    });
+
+                    const today = new Date();
+                    const dateStr = today.getFullYear() + '' + 
+                                   String(today.getMonth() + 1).padStart(2, '0') + '' + 
+                                   String(today.getDate()).padStart(2, '0');
+
+                    const fileName = `${partner}_불량내역_${dateStr}.csv`;
+
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', fileName);
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                    console.log("DEBUG: CSV download initiated for", fileName);
+                } catch (error) {
+                    console.error("ERROR in downloadCSV:", error);
+                    alert('CSV 다운로드 중 오류가 발생했습니다.');
                 }
-
-                let csvContent = '﻿';
-                csvContent += '제품정보,상세불량내용,상세조치내용,조치자(외주)
-';
-
-                details.forEach(item => {
-                    const row = [
-                        `"${item.productInfo.replace(/"/g, '""')}"`,
-                        `"${item.defect.replace(/"/g, '""')}"`,
-                        `"${item.action.replace(/"/g, '""')}"`,
-                        `"${item.responsible.replace(/"/g, '""')}"`
-                    ];
-                    csvContent += row.join(',') + '
-';
-                });
-
-                const today = new Date();
-                const dateStr = today.getFullYear() + '' + 
-                               String(today.getMonth() + 1).padStart(2, '0') + '' + 
-                               String(today.getDate()).padStart(2, '0');
-
-                const fileName = `${partner}_불량내역_${dateStr}.csv`;
-
-                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
-                const url = window.URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.setAttribute('href', url);
-                link.setAttribute('download', fileName);
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
             }
         </script>
     </head>

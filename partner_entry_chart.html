@@ -21,7 +21,7 @@
             <h3>C&A 근무자 목록</h3>
             <button onclick="downloadCSV('C&A')">CSV 다운로드</button>
             <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>성길용</td><td>공장</td><td>2025. 6. 6 오전 7:37:00 (퇴근 미체크)</td><td>2025. 6. 6 오전 7:37:00</td><td>미체크</td></tr><tr><td>정지성</td><td>공장</td><td>2025. 6. 6 오전 7:56:24 (퇴근 미체크)</td><td>2025. 6. 6 오전 7:56:24</td><td>미체크</td></tr><tr><td>조성수</td><td>공장</td><td>2025. 6. 6 오전 7:55:10 (퇴근 미체크)</td><td>2025. 6. 6 오전 7:55:10</td><td>미체크</td></tr>
+            <tr><td>김인욱</td><td>공장</td><td>2025. 6. 6 오전 8:17:35 (퇴근 미체크)</td><td>2025. 6. 6 오전 8:17:35</td><td>미체크</td></tr><tr><td>성길용</td><td>공장</td><td>2025. 6. 6 오전 7:37:00 (퇴근 미체크)</td><td>2025. 6. 6 오전 7:37:00</td><td>미체크</td></tr><tr><td>윤문빈</td><td>공장</td><td>2025. 6. 6 오전 8:07:10 (퇴근 미체크)</td><td>2025. 6. 6 오전 8:07:10</td><td>미체크</td></tr><tr><td>정지성</td><td>공장</td><td>2025. 6. 6 오전 7:56:24 (퇴근 미체크)</td><td>2025. 6. 6 오전 7:56:24</td><td>미체크</td></tr><tr><td>조성수</td><td>공장</td><td>2025. 6. 6 오전 7:55:10 (퇴근 미체크)</td><td>2025. 6. 6 오전 7:55:10</td><td>미체크</td></tr>
             </table>
         </div>
         
@@ -35,12 +35,12 @@
         
     <script>
       var companies = ["C&A", "TMS(M)"];
-      var factoryCounts = [3, 1];
+      var factoryCounts = [5, 1];
       var hqCounts = [0, 0];
       var barColors = ["#1f77b4", "#ff7f0e"];
       var hqBarColors = ["#1f77b480", "#ff7f0e80"];
-      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc131\uae38\uc6a9, \uc815\uc9c0\uc131, \uc870\uc131\uc218", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc774\uc120\ub9cc"];
-      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 3", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 1"];
+      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\uc778\uc6b1, \uc131\uae38\uc6a9, \uc724\ubb38\ube48, \uc815\uc9c0\uc131, \uc870\uc131\uc218", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc774\uc120\ub9cc"];
+      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 5", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 1"];
       var weekNumber = 23;
 
       var data = [

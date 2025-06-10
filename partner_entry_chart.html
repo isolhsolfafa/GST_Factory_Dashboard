@@ -2,17 +2,17 @@
     <!DOCTYPE html>
     <html lang="ko">
     <head>
-      <meta charset="UTF-8">
-      <title>협력사 출입 대시보드</title>
-      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-      <style>
+    <meta charset="UTF-8">
+    <title>협력사 출입 대시보드</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
         .company-table { display: none; margin-top: 30px; }
         table { width: 100%; border-collapse: collapse; }
         th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
         th { background-color: #f0f0f0; }
         button { margin: 10px; padding: 8px 16px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
         button:hover { background-color: #45a049; }
-      </style>
+    </style>
     </head>
     <body>
     <div id="bar-chart" style="width: 100%; height: 400px;"></div>
@@ -66,159 +66,163 @@
         </div>
         
     <script>
-      var companies = ["FNI", "TMS(E)", "BAT", "C&A", "P&S", "TMS(M)"];
-      var factoryCounts = [24, 12, 20, 14, 9, 9];
-      var hqCounts = [0, 10, 0, 4, 3, 0];
-      var barColors = ["#2ca02c", "#9467bd", "#1f77b4", "#ff7f0e", "#d62728", "#8c564b"];
-      var hqBarColors = ["#2ca02c80", "#9467bd80", "#1f77b480", "#ff7f0e80", "#d6272880", "#8c564b80"];
-      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uad8c\ubbfc\uc218, \uae40\uc6a9\uc218, \ubc15\uc5f0\ud30c, \ubc15\uc8fc\uc131, \ubc15\ucc9c\uc77c, \ubc15\ucd98\uad11, \uc11c\uba85\ud658, \uc11c\uc815\uc6d0, \uc190\uad6d\uad8c, \uc548\uc720\uc131, \uc624\ub3d9\ud601, \uc720\uc2b9\ubbfc, \uc724\uad11\uc131, \uc724\uc11d\uc6b0, \uc724\ucd98\uad6d, \uc774\uc2b9\uc9c4, \uc774\uc601\uc2dd, \uc774\uc601\uc790, \uc774\uc740\ud559, \uc774\uc77c\ud638, \uc804\uc6b0\ubbfc, \ud5c8\ubb38\uc6a9, \ud64d\uc6a9\ucc9c, \ud669\uc9c4\ucda9", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc724\uae08\ubd09, \ucd5c\uc774\uba85", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ubc15\uc885\ubc94, \uc724\uccad\uc6a9, \uc804\uc131\ud658, \uc815\ub300\ud55c, \uc870\ub3d9\ub798, \ud64d\uc0ac\ud604, \ud669\ud638", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\uc6b0\ub78c, \uae40\ud0dc\uace4, \ubc15\uc740\ud61c, \uc774\uc131\ud6c8, \uc774\uc219\uc790, \uc774\uc6b0\uc131, \uc774\ud0dc\ud76c, \ud55c\uc0c1\ud638, \ud64d\uc218\ud76c", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ub0a8\ubbfc\uc218, \uc624\uad8c\uc11d, \uc815\ubbfc\ud638, \uc870\ud64d\uc5f0", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc774\uc120\ub9cc"];
-      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 24", "\ubcf8\uc0ac \uc778\uc6d0: 10, \uacf5\uc7a5 \uc778\uc6d0: 12", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 20", "\ubcf8\uc0ac \uc778\uc6d0: 4, \uacf5\uc7a5 \uc778\uc6d0: 14", "\ubcf8\uc0ac \uc778\uc6d0: 3, \uacf5\uc7a5 \uc778\uc6d0: 9", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 9"];
-      var weekNumber = 24;
+        console.log("Companies:", ["FNI", "TMS(E)", "BAT", "C&A", "P&S", "TMS(M)"]);
+        console.log("Factory Counts:", [24, 12, 20, 14, 9, 9]);
+        console.log("HQ Counts:", [0, 10, 0, 4, 3, 0]);
+        console.log("Bar Colors:", ["#2ca02c", "#9467bd", "#1f77b4", "#ff7f0e", "#d62728", "#8c564b"]);
+        console.log("HQ Bar Colors:", ["#2ca02c80", "#9467bd80", "#1f77b480", "#ff7f0e80", "#d6272880", "#8c564b80"]);
+        console.log("Tooltip Miss:", ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uad8c\ubbfc\uc218, \uae40\uc6a9\uc218, \ubc15\uc5f0\ud30c, \ubc15\uc8fc\uc131, \ubc15\ucc9c\uc77c, \ubc15\ucd98\uad11, \uc11c\uba85\ud658, \uc11c\uc815\uc6d0, \uc190\uad6d\uad8c, \uc548\uc720\uc131, \uc624\ub3d9\ud601, \uc720\uc2b9\ubbfc, \uc724\uad11\uc131, \uc724\uc11d\uc6b0, \uc724\ucd98\uad6d, \uc774\uc2b9\uc9c4, \uc774\uc601\uc2dd, \uc774\uc601\uc790, \uc774\uc740\ud559, \uc774\uc77c\ud638, \uc804\uc6b0\ubbfc, \ud5c8\ubb38\uc6a9, \ud64d\uc6a9\ucc9c, \ud669\uc9c4\ucda9", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc724\uae08\ubd09, \ucd5c\uc774\uba85", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ubc15\uc885\ubc94, \uc724\uccad\uc6a9, \uc804\uc131\ud658, \uc815\ub300\ud55c, \uc870\ub3d9\ub798, \ud64d\uc0ac\ud604, \ud669\ud638", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\uc6b0\ub78c, \uae40\ud0dc\uace4, \ubc15\uc740\ud61c, \uc774\uc131\ud6c8, \uc774\uc219\uc790, \uc774\uc6b0\uc131, \uc774\ud0dc\ud76c, \ud55c\uc0c1\ud638, \ud64d\uc218\ud76c", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ub0a8\ubbfc\uc218, \uc624\uad8c\uc11d, \uc815\ubbfc\ud638, \uc870\ud64d\uc5f0", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc774\uc120\ub9cc"]);
+        console.log("Tooltip HQ:", ["\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 24", "\ubcf8\uc0ac \uc778\uc6d0: 10, \uacf5\uc7a5 \uc778\uc6d0: 12", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 20", "\ubcf8\uc0ac \uc778\uc6d0: 4, \uacf5\uc7a5 \uc778\uc6d0: 14", "\ubcf8\uc0ac \uc778\uc6d0: 3, \uacf5\uc7a5 \uc778\uc6d0: 9", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 9"]);
+        console.log("Week Number:", 24);
 
-      var data = [
+        var data = [
         {
-          x: companies,
-          y: factoryCounts,
-          name: '공장 인원',
-          type: 'bar',
-          text: factoryCounts,
-          textposition: 'inside',
-          marker: {color: barColors},
-          hovertext: tooltipMiss,
-          hoverinfo: 'text+y+name',
-          customdata: companies
+            x: ["FNI", "TMS(E)", "BAT", "C&A", "P&S", "TMS(M)"],
+            y: [24, 12, 20, 14, 9, 9],
+            name: '공장 인원',
+            type: 'bar',
+            text: [24, 12, 20, 14, 9, 9],
+            textposition: 'inside',
+            marker: { color: ["#2ca02c", "#9467bd", "#1f77b4", "#ff7f0e", "#d62728", "#8c564b"] },
+            hovertext: ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uad8c\ubbfc\uc218, \uae40\uc6a9\uc218, \ubc15\uc5f0\ud30c, \ubc15\uc8fc\uc131, \ubc15\ucc9c\uc77c, \ubc15\ucd98\uad11, \uc11c\uba85\ud658, \uc11c\uc815\uc6d0, \uc190\uad6d\uad8c, \uc548\uc720\uc131, \uc624\ub3d9\ud601, \uc720\uc2b9\ubbfc, \uc724\uad11\uc131, \uc724\uc11d\uc6b0, \uc724\ucd98\uad6d, \uc774\uc2b9\uc9c4, \uc774\uc601\uc2dd, \uc774\uc601\uc790, \uc774\uc740\ud559, \uc774\uc77c\ud638, \uc804\uc6b0\ubbfc, \ud5c8\ubb38\uc6a9, \ud64d\uc6a9\ucc9c, \ud669\uc9c4\ucda9", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc724\uae08\ubd09, \ucd5c\uc774\uba85", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ubc15\uc885\ubc94, \uc724\uccad\uc6a9, \uc804\uc131\ud658, \uc815\ub300\ud55c, \uc870\ub3d9\ub798, \ud64d\uc0ac\ud604, \ud669\ud638", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\uc6b0\ub78c, \uae40\ud0dc\uace4, \ubc15\uc740\ud61c, \uc774\uc131\ud6c8, \uc774\uc219\uc790, \uc774\uc6b0\uc131, \uc774\ud0dc\ud76c, \ud55c\uc0c1\ud638, \ud64d\uc218\ud76c", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ub0a8\ubbfc\uc218, \uc624\uad8c\uc11d, \uc815\ubbfc\ud638, \uc870\ud64d\uc5f0", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc774\uc120\ub9cc"],
+            hoverinfo: 'text+y+name',
+            customdata: ["FNI", "TMS(E)", "BAT", "C&A", "P&S", "TMS(M)"]
         },
         {
-          x: companies,
-          y: hqCounts,
-          name: '본사 인원',
-          type: 'bar',
-          text: hqCounts,
-          textposition: 'inside',
-          marker: {color: hqBarColors},
-          hovertext: tooltipHq,
-          hoverinfo: 'text+y+name',
-          customdata: companies
+            x: ["FNI", "TMS(E)", "BAT", "C&A", "P&S", "TMS(M)"],
+            y: [0, 10, 0, 4, 3, 0],
+            name: '본사 인원',
+            type: 'bar',
+            text: [0, 10, 0, 4, 3, 0],
+            textposition: 'inside',
+            marker: { color: ["#2ca02c80", "#9467bd80", "#1f77b480", "#ff7f0e80", "#d6272880", "#8c564b80"] },
+            hovertext: ["\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 24", "\ubcf8\uc0ac \uc778\uc6d0: 10, \uacf5\uc7a5 \uc778\uc6d0: 12", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 20", "\ubcf8\uc0ac \uc778\uc6d0: 4, \uacf5\uc7a5 \uc778\uc6d0: 14", "\ubcf8\uc0ac \uc778\uc6d0: 3, \uacf5\uc7a5 \uc778\uc6d0: 9", "\ubcf8\uc0ac \uc778\uc6d0: 0, \uacf5\uc7a5 \uc778\uc6d0: 9"],
+            hoverinfo: 'text+y+name',
+            customdata: ["FNI", "TMS(E)", "BAT", "C&A", "P&S", "TMS(M)"]
         }
-      ];
-      var layout = {
+        ];
+        var layout = {
         title: '🏭협력사별 출입 인원 수',
         barmode: 'stack',
         hovermode: 'closest',
         showlegend: true
-      };
-      var config = {
+        }; 
+        var config = {
         displayModeBar: false,
         scrollZoom: false,
         staticPlot: false
-      };
-      Plotly.newPlot('bar-chart', data, layout, config);
+        };
+        try {
+        Plotly.newPlot('bar-chart', data, layout, config);
+        console.log("Plotly chart rendered successfully");
+        } catch (error) {
+        console.error("Plotly rendering error:", error);
+        }
 
-      var lastOpened = null;
-      document.getElementById('bar-chart').on('plotly_click', function(data) {
+        var lastOpened = null;
+        document.getElementById('bar-chart').on('plotly_click', function(data) {
         var company = data.points[0].customdata;
         var target = document.getElementById(company + "-table");
         if (lastOpened === company) {
-          target.style.display = "none";
-          lastOpened = null;
+            target.style.display = "none";
+            lastOpened = null;
         } else {
-          document.querySelectorAll(".company-table").forEach(div => div.style.display = "none");
-          target.style.display = "block";
-          target.scrollIntoView({ behavior: "smooth" });
-          lastOpened = company;
+            document.querySelectorAll(".company-table").forEach(div => div.style.display = "none");
+            target.style.display = "block";
+            target.scrollIntoView({ behavior: "smooth" });
+            lastOpened = company;
         }
-      });
+        });
 
-      function downloadCSV(company) {
+        function downloadCSV(company) {
         try {
-          var compTable = document.getElementById(company + "-table");
-          var rows = compTable.querySelectorAll("table tr");
-          var csvContent = "﻿";
-          csvContent += "이름,담당 업무,근무시간,출근 시간,퇴근 시간
+            var compTable = document.getElementById(company + "-table");
+            var rows = compTable.querySelectorAll("table tr");
+            var csvContent = "﻿";
+            csvContent += "이름,담당 업무,근무시간,출근 시간,퇴근 시간
 ";
-          for (var i = 1; i < rows.length; i++) {
+            for (var i = 1; i < rows.length; i++) {
             var cells = rows[i].querySelectorAll("td");
             var rowData = [
-              '"' + cells[0].innerText.replace(/"/g, '""') + '"',
-              '"' + cells[1].innerText.replace(/"/g, '""') + '"',
-              '"' + cells[2].innerText.replace(/"/g, '""') + '"',
-              '"' + cells[3].innerText.replace(/"/g, '""') + '"',
-              '"' + cells[4].innerText.replace(/"/g, '""') + '"'
+                '"' + cells[0].innerText.replace(/"/g, '""') + '"',
+                '"' + cells[1].innerText.replace(/"/g, '""') + '"',
+                '"' + cells[2].innerText.replace(/"/g, '""') + '"',
+                '"' + cells[3].innerText.replace(/"/g, '""') + '"',
+                '"' + cells[4].innerText.replace(/"/g, '""') + '"'
             ];
             csvContent += rowData.join(",") + "
 ";
-          }
+            }
 
-          var safeCompany = company.replace(/[^\w-]/g, '_');
-          fetch(`/weekly_data/${safeCompany}_week_${weekNumber}.json`)
+            var safeCompany = company.replace(/[^\w-]/g, '_');
+            fetch(`/weekly_data/${safeCompany}_week_${weekNumber}.json`)
             .then(response => {
-              if (!response.ok) throw new Error("JSON 파일 로드 실패");
-              return response.json();
+                if (!response.ok) throw new Error("JSON 파일 로드 실패");
+                return response.json();
             })
             .then(data => {
-              // 중복 제거
-              const uniqueData = [];
-              const seenKeys = new Set();
-              for (const item of data) {
+                const uniqueData = [];
+                const seenKeys = new Set();
+                for (const item of data) {
                 const key = `${item["이름"]}_${item["출근 시간"]}`;
                 if (!seenKeys.has(key)) {
-                  seenKeys.add(key);
-                  uniqueData.push(item);
+                    seenKeys.add(key);
+                    uniqueData.push(item);
                 }
-              }
+                }
 
-              csvContent += "
+                csvContent += "
 주간 데이터:
 ";
-              csvContent += "이름,담당 업무,출근 시간,퇴근 시간,근무시간,퇴근미체크
+                csvContent += "이름,담당 업무,출근 시간,퇴근 시간,근무시간,퇴근미체크
 ";
-              uniqueData.forEach(item => {
+                uniqueData.forEach(item => {
                 var rowData = [
-                  '"' + (item["이름"] || "").replace(/"/g, '""') + '"',
-                  '"' + (item["담당 업무"] || "").replace(/"/g, '""') + '"',
-                  '"' + (item["출근 시간"] || "").replace(/"/g, '""') + '"',
-                  '"' + (item["퇴근 시간"] === null ? "" : item["퇴근 시간"] || "").replace(/"/g, '""') + '"',
-                  '"' + (item["근무시간(H:M)"] || "").replace(/"/g, '""') + '"',
-                  '"' + (typeof item["퇴근미체크"] === "boolean" ? (item["퇴근미체크"] ? "예" : "아니오") : "알 수 없음") + '"'
+                    '"' + (item["이름"] || "").replace(/"/g, '""') + '"',
+                    '"' + (item["담당 업무"] || "").replace(/"/g, '""') + '"',
+                    '"' + (item["출근 시간"] || "").replace(/"/g, '""') + '"',
+                    '"' + (item["퇴근 시간"] === null ? "" : item["퇴근 시간"] || "").replace(/"/g, '""') + '"',
+                    '"' + (item["근무시간(H:M)"] || "").replace(/"/g, '""') + '"',
+                    '"' + (typeof item["퇴근미체크"] === "boolean" ? (item["퇴근미체크"] ? "예" : "아니오") : "알 수 없음") + '"'
                 ];
                 csvContent += rowData.join(",") + "
 ";
-              });
+                });
 
-              var today = new Date();
-              var dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
-              var fileName = `${company}_entry_list_${dateStr}.csv`;
-              var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
-              var url = window.URL.createObjectURL(blob);
-              var link = document.createElement('a');
-              link.setAttribute('href', url);
-              link.setAttribute('download', fileName);
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-              window.URL.revokeObjectURL(url);
+                var today = new Date();
+                var dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
+                var fileName = `${company}_entry_list_${dateStr}.csv`;
+                var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+                var url = window.URL.createObjectURL(blob);
+                var link = document.createElement('a');
+                link.setAttribute('href', url);
+                link.setAttribute('download', fileName);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
             })
             .catch(error => {
-              console.error("Error fetching weekly data:", error);
-              alert("주간 데이터를 가져오지 못했습니다. 당일 데이터만 다운로드됩니다.");
-              var today = new Date();
-              var dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
-              var fileName = `${company}_entry_list_${dateStr}.csv`;
-              var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
-              var url = window.URL.createObjectURL(blob);
-              var link = document.createElement('a');
-              link.setAttribute('href', url);
-              link.setAttribute('download', fileName);
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-              window.URL.revokeObjectURL(url);
+                console.error("Error fetching weekly data:", error);
+                alert("주간 데이터를 가져오지 못했습니다. 당일 데이터만 다운로드됩니다.");
+                var today = new Date();
+                var dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
+                var fileName = `${company}_entry_list_${dateStr}.csv`;
+                var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+                var url = window.URL.createObjectURL(blob);
+                var link = document.createElement('a');
+                link.setAttribute('href', url);
+                link.setAttribute('download', fileName);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
             });
         } catch (error) {
-          console.error("CSV download error:", error);
-          alert("CSV 다운로드 중 오류가 발생했습니다.");
+            console.error("CSV download error:", error);
+            alert("CSV 다운로드 중 오류가 발생했습니다.");
         }
-      }
+        }
     </script>
     </body>
     </html>

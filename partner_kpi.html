@@ -46,7 +46,7 @@
     </style>
     
         <script>
-            const defectDetails = {"BAT": [{"productInfo": "41200157 / GAIA-I DUAL", "defect": "FEMALE CONNECTOR Fitting Nut Leak / HeatExchanger 연결 PCW-R FEMALE CONNECTOR FC08-12R Fitting Nut 체결강", "action": "재체결"}, {"productInfo": "41200156 / GAIA-I DUAL", "defect": "TEE PIPE WELD ASSY Fitting Nut Leak / PCW-S TEE PIPE WELD ASSY 상단 우측 Fitting Nut Leak , 체결강도 이상없음 /", "action": "파트교체"}], "FNI": [{"productInfo": "41200076 / GAIA-I DUAL", "defect": "Circulation 라인 NUT부 Leak 발생", "action": "Nut 부 재조립"}, {"productInfo": "41200076 / GAIA-I DUAL", "defect": "Circulation Line Nut 부 Leak 발생", "action": "Nut 부 재조립"}, {"productInfo": "41200006 / GAIA-II", "defect": "Heat Cover 장착 누락", "action": "Cover 장착"}, {"productInfo": "41100550 / GAIA-II", "defect": "BCW Sticker 방향 오부착", "action": ""}, {"productInfo": "41200005 / GAIA-I", "defect": "3-Way Valve 눈관리 Sticker 미부착", "action": "재작업"}], "TMS(M)": [{"productInfo": "41100374 / GAIA-I DUAL", "defect": "Left 열교환기 PCW Line Out단 눈관리 Sticker 오류(현상: PCW-R(R), 정상: PCW-R(L))", "action": "재작업"}, {"productInfo": "41200046 / GAIA-I DUAL", "defect": "Left 열교환기 PCW-S Sticker 방향 오부착", "action": ""}, {"productInfo": "41100550 / GAIA-II", "defect": "열교환기 Bracket Bolt I-Marking 4Point 틀어짐", "action": "수정 작업"}], "P&S": [], "TMS(E)": [{"productInfo": "41200127 / GAIA-I", "defect": "- Interface bracket 고정불량(흔들림)", "action": "현장조치"}], "C&A": []};
+            const defectDetails = {"BAT": [{"productInfo": "41200157 / GAIA-I DUAL", "defect": "FEMALE CONNECTOR Fitting Nut Leak / HeatExchanger 연결 PCW-R FEMALE CONNECTOR FC08-12R Fitting Nut 체결강", "action": "재체결"}, {"productInfo": "41200156 / GAIA-I DUAL", "defect": "TEE PIPE WELD ASSY Fitting Nut Leak / PCW-S TEE PIPE WELD ASSY 상단 우측 Fitting Nut Leak , 체결강도 이상없음 /", "action": "파트교체"}], "FNI": [{"productInfo": "41200006 / GAIA-II", "defect": "Heat Cover 장착 누락", "action": "Cover 장착"}, {"productInfo": "41100550 / GAIA-II", "defect": "BCW Sticker 방향 오부착", "action": ""}, {"productInfo": "41200005 / GAIA-I", "defect": "3-Way Valve 눈관리 Sticker 미부착", "action": "재작업"}], "TMS(M)": [{"productInfo": "41200076 / GAIA-I DUAL", "defect": "Circulation 라인 NUT부 Leak 발생", "action": "Nut 부 재조립"}, {"productInfo": "41200076 / GAIA-I DUAL", "defect": "Circulation Line Nut 부 Leak 발생", "action": "Nut 부 재조립"}, {"productInfo": "41100374 / GAIA-I DUAL", "defect": "Left 열교환기 PCW Line Out단 눈관리 Sticker 오류(현상: PCW-R(R), 정상: PCW-R(L))", "action": "재작업"}, {"productInfo": "41200046 / GAIA-I DUAL", "defect": "Left 열교환기 PCW-S Sticker 방향 오부착", "action": ""}, {"productInfo": "41100550 / GAIA-II", "defect": "열교환기 Bracket Bolt I-Marking 4Point 틀어짐", "action": "수정 작업"}], "P&S": [], "TMS(E)": [{"productInfo": "41200127 / GAIA-I", "defect": "- Interface bracket 고정불량(흔들림)", "action": "현장조치"}], "C&A": []};
             console.log("DEBUG: defectDetails:", defectDetails);
 
             const partnerToIdMap = {
@@ -144,7 +144,7 @@
                     <div class="label">TMS(M)</div>
                     <div class="tooltip" id="tooltip-tmsm">
                         평가점수: 10.0 / A등급<br>
-                        불량건수: 3건<br>
+                        불량건수: 5건<br>
                         누락비율: 0.5%
                     </div>
                 </div>
@@ -154,7 +154,7 @@
                     <div class="label">FNI</div>
                     <div class="tooltip" id="tooltip-fni">
                         평가점수: 9.2 / A등급<br>
-                        불량건수: 5건<br>
+                        불량건수: 3건<br>
                         누락비율: 8.3%
                     </div>
                 </div>

@@ -17,45 +17,29 @@
     <body>
     <div id="bar-chart" style="width: 100%; height: 400px;"></div>
     
-        <div id="C&A-table" class="company-table" style="display:none;">
-            <h3>C&A 근무자 목록</h3>
-            <button onclick="downloadCSV('C&A')">CSV 다운로드</button>
+        <div id="TEST-table" class="company-table" style="display:none;">
+            <h3>TEST 근무자 목록</h3>
+            <button onclick="downloadCSV('TEST')">CSV 다운로드</button>
             <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>김태곤</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 7:55:37</td><td>2025. 6. 20 17:00:09</td></tr><tr><td>라경숙</td><td>본사CHI_2</td><td>0시간 0분</td><td>2025. 6. 20 8:03:20</td><td>2025. 6. 20 16:49:25</td></tr><tr><td>박은혜</td><td>본사</td><td>2025. 6. 20 8:00:22 (퇴근 미체크)</td><td>2025. 6. 20 8:00:22</td><td>미체크</td></tr><tr><td>박준성</td><td>본사CHI_2</td><td>0시간 0분</td><td>2025. 6. 20 8:07:16</td><td>2025. 6. 20 16:43:34</td></tr><tr><td>이숙자</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 7:59:38</td><td>2025. 6. 20 16:57:38</td></tr><tr><td>이영찬</td><td>본사CHI_2</td><td>0시간 0분</td><td>2025. 6. 20 8:01:46</td><td>2025. 6. 20 16:22:48</td></tr><tr><td>이우성</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 7:56:33</td><td>2025. 6. 20 16:58:45</td></tr><tr><td>이태희</td><td>본사CHI_1</td><td>0시간 0분</td><td>2025. 6. 20 7:58:03</td><td>2025. 6. 20 17:00:00</td></tr><tr><td>임영대</td><td>본사CHI_2</td><td>0시간 0분</td><td>2025. 6. 20 8:07:19</td><td>2025. 6. 20 16:22:25</td></tr><tr><td>임영목</td><td>본사CHI_2</td><td>0시간 0분</td><td>2025. 6. 20 7:53:41</td><td>2025. 6. 20 16:55:53</td></tr><tr><td>한상준</td><td>본사CHI_2</td><td>0시간 0분</td><td>2025. 6. 20 8:01:34</td><td>2025. 6. 20 16:22:19</td></tr><tr><td>한상호</td><td>본사CHI_1</td><td>0시간 0분</td><td>2025. 6. 20 7:58:19</td><td>2025. 6. 20 16:59:43</td></tr><tr><td>홍수희</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 7:58:34</td><td>2025. 6. 20 16:58:19</td></tr>
-            </table>
-        </div>
-        
-        <div id="P&S-table" class="company-table" style="display:none;">
-            <h3>P&S 근무자 목록</h3>
-            <button onclick="downloadCSV('P&S')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>김홍매</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 8:08:39</td><td>2025. 6. 20 16:49:42</td></tr><tr><td>남민수</td><td>현장</td><td>2025. 6. 20 8:09:46 (퇴근 미체크)</td><td>2025. 6. 20 8:09:46</td><td>미체크</td></tr><tr><td>박광진</td><td>현장</td><td>2025. 6. 20 8:10:03 (퇴근 미체크)</td><td>2025. 6. 20 8:10:03</td><td>미체크</td></tr><tr><td>이운</td><td>현장</td><td>2025. 6. 20 8:08:43 (퇴근 미체크)</td><td>2025. 6. 20 8:08:43</td><td>미체크</td></tr><tr><td>조홍연</td><td>본사</td><td>2025. 6. 20 8:25:23 (퇴근 미체크)</td><td>2025. 6. 20 8:25:23</td><td>미체크</td></tr><tr><td>최윤철</td><td>현장</td><td>2025. 6. 20 8:19:49 (퇴근 미체크)</td><td>2025. 6. 20 8:19:49</td><td>미체크</td></tr>
-            </table>
-        </div>
-        
-        <div id="TMS(E)-table" class="company-table" style="display:none;">
-            <h3>TMS(E) 근무자 목록</h3>
-            <button onclick="downloadCSV('TMS(E)')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>김삼구</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 7:52:46</td><td>2025. 6. 20 16:56:42</td></tr><tr><td>오세훈</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 7:54:07</td><td>2025. 6. 20 17:00:08</td></tr><tr><td>이효주</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 10:06:41</td><td>2025. 6. 20 17:00:30</td></tr><tr><td>전준룡</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 8:02:31</td><td>2025. 6. 20 16:58:11</td></tr><tr><td>최선희</td><td>본사</td><td>0시간 0분</td><td>2025. 6. 20 7:54:22</td><td>2025. 6. 20 16:57:40</td></tr>
+            <tr><td>김동규</td><td>현장</td><td>2025. 6. 23 0:42:32 (퇴근 미체크)</td><td>2025. 6. 23 0:42:32</td><td>미체크</td></tr>
             </table>
         </div>
         
     <script>
-      var companies = ["C&A", "P&S", "TMS(E)"];
-      var siteCounts = [0, 4, 0];
-      var hqCounts = [5, 2, 5];
-      var hqChi1Counts = [2, 0, 0];
-      var hqChi2Counts = [6, 0, 0];
-      var siteChiCounts = [0, 0, 0];
-      var barColors = ["#1f77b4", "#ff7f0e", "#2ca02c"];
-      var hqBarColors = ["#1f77b480", "#ff7f0e80", "#2ca02c80"];
-      var hqChi1BarColors = ["#1f77b460", "#ff7f0e60", "#2ca02c60"];
-      var hqChi2BarColors = ["#1f77b450", "#ff7f0e50", "#2ca02c50"];
-      var siteChiBarColors = ["#1f77b440", "#ff7f0e40", "#2ca02c40"];
-      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ubc15\uc740\ud61c", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ub0a8\ubbfc\uc218, \ubc15\uad11\uc9c4, \uc774\uc6b4, \uc870\ud64d\uc5f0, \ucd5c\uc724\ucca0", ""];
-      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 5, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 2, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 6, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 0", "\ubcf8\uc0ac \uc778\uc6d0: 2, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 4", "\ubcf8\uc0ac \uc778\uc6d0: 5, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 0"];
-      var weekNumber = 25
+      var companies = ["TEST"];
+      var siteCounts = [1];
+      var hqCounts = [0];
+      var hqChi1Counts = [0];
+      var hqChi2Counts = [0];
+      var siteChiCounts = [0];
+      var barColors = ["#1f77b4"];
+      var hqBarColors = ["#1f77b480"];
+      var hqChi1BarColors = ["#1f77b460"];
+      var hqChi2BarColors = ["#1f77b450"];
+      var siteChiBarColors = ["#1f77b440"];
+      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\ub3d9\uaddc"];
+      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 1"];
+      var weekNumber = 26
 
       var data = [
         {

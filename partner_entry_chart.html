@@ -17,77 +17,29 @@
     <body>
     <div id="bar-chart" style="width: 100%; height: 400px;"></div>
     
-        <div id="BAT-table" class="company-table" style="display:none;">
-            <h3>BAT 근무자 목록</h3>
-            <button onclick="downloadCSV('BAT')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>간연웅</td><td>현장</td><td>2025. 6. 23 7:44:20 (퇴근 미체크)</td><td>2025. 6. 23 7:44:20</td><td>미체크</td></tr><tr><td>김군</td><td>현장</td><td>2025. 6. 23 7:41:34 (퇴근 미체크)</td><td>2025. 6. 23 7:41:34</td><td>미체크</td></tr><tr><td>김원동</td><td>현장</td><td>2025. 6. 23 7:40:24 (퇴근 미체크)</td><td>2025. 6. 23 7:40:24</td><td>미체크</td></tr><tr><td>박호</td><td>현장</td><td>2025. 6. 23 7:34:53 (퇴근 미체크)</td><td>2025. 6. 23 7:34:53</td><td>미체크</td></tr><tr><td>배홍범</td><td>현장</td><td>2025. 6. 23 8:04:49 (퇴근 미체크)</td><td>2025. 6. 23 8:04:49</td><td>미체크</td></tr><tr><td>윤청용</td><td>현장</td><td>2025. 6. 23 7:40:36 (퇴근 미체크)</td><td>2025. 6. 23 7:40:36</td><td>미체크</td></tr><tr><td>전성환</td><td>현장</td><td>2025. 6. 23 7:45:20 (퇴근 미체크)</td><td>2025. 6. 23 7:45:20</td><td>미체크</td></tr><tr><td>정대한</td><td>현장</td><td>2025. 6. 23 7:33:37 (퇴근 미체크)</td><td>2025. 6. 23 7:33:37</td><td>미체크</td></tr><tr><td>정인규</td><td>현장</td><td>2025. 6. 23 7:30:16 (퇴근 미체크)</td><td>2025. 6. 23 7:30:16</td><td>미체크</td></tr><tr><td>조동래</td><td>현장</td><td>2025. 6. 23 7:54:06 (퇴근 미체크)</td><td>2025. 6. 23 7:54:06</td><td>미체크</td></tr><tr><td>채은철</td><td>현장</td><td>2025. 6. 23 7:45:30 (퇴근 미체크)</td><td>2025. 6. 23 7:45:30</td><td>미체크</td></tr><tr><td>최진우</td><td>현장</td><td>2025. 6. 23 7:51:14 (퇴근 미체크)</td><td>2025. 6. 23 7:51:14</td><td>미체크</td></tr><tr><td>허용길</td><td>현장</td><td>2025. 6. 23 7:47:50 (퇴근 미체크)</td><td>2025. 6. 23 7:47:50</td><td>미체크</td></tr><tr><td>허창학</td><td>현장</td><td>2025. 6. 23 7:26:21 (퇴근 미체크)</td><td>2025. 6. 23 7:26:21</td><td>미체크</td></tr><tr><td>홍사현</td><td>현장</td><td>2025. 6. 23 8:00:00 (퇴근 미체크)</td><td>2025. 6. 23 8:00:00</td><td>미체크</td></tr><tr><td>황호</td><td>현장</td><td>2025. 6. 23 7:42:07 (퇴근 미체크)</td><td>2025. 6. 23 7:42:07</td><td>미체크</td></tr>
-            </table>
-        </div>
-        
-        <div id="C&A-table" class="company-table" style="display:none;">
-            <h3>C&A 근무자 목록</h3>
-            <button onclick="downloadCSV('C&A')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>김우람</td><td>본사</td><td>2025. 6. 23 7:27:02 (퇴근 미체크)</td><td>2025. 6. 23 7:27:02</td><td>미체크</td></tr><tr><td>김인욱</td><td>현장</td><td>2025. 6. 23 7:59:00 (퇴근 미체크)</td><td>2025. 6. 23 7:59:00</td><td>미체크</td></tr><tr><td>김태곤</td><td>본사</td><td>2025. 6. 23 7:59:36 (퇴근 미체크)</td><td>2025. 6. 23 7:59:36</td><td>미체크</td></tr><tr><td>라경숙</td><td>본사CHI_2</td><td>2025. 6. 23 7:48:54 (퇴근 미체크)</td><td>2025. 6. 23 7:48:54</td><td>미체크</td></tr><tr><td>박새벽</td><td>현장</td><td>2025. 6. 23 7:54:48 (퇴근 미체크)</td><td>2025. 6. 23 7:54:48</td><td>미체크</td></tr><tr><td>박은혜</td><td>본사</td><td>2025. 6. 23 7:51:59 (퇴근 미체크)</td><td>2025. 6. 23 7:51:59</td><td>미체크</td></tr><tr><td>백상걸</td><td>현장</td><td>2025. 6. 23 7:59:37 (퇴근 미체크)</td><td>2025. 6. 23 7:59:37</td><td>미체크</td></tr><tr><td>성길용</td><td>현장</td><td>2025. 6. 23 7:59:31 (퇴근 미체크)</td><td>2025. 6. 23 7:59:31</td><td>미체크</td></tr><tr><td>윤문빈</td><td>현장</td><td>2025. 6. 23 7:59:56 (퇴근 미체크)</td><td>2025. 6. 23 7:59:56</td><td>미체크</td></tr><tr><td>이성훈</td><td>본사</td><td>2025. 6. 23 7:29:58 (퇴근 미체크)</td><td>2025. 6. 23 7:29:58</td><td>미체크</td></tr><tr><td>이숙자</td><td>본사</td><td>2025. 6. 23 7:35:01 (퇴근 미체크)</td><td>2025. 6. 23 7:35:01</td><td>미체크</td></tr><tr><td>이영찬</td><td>본사CHI_2</td><td>2025. 6. 23 8:01:30 (퇴근 미체크)</td><td>2025. 6. 23 8:01:30</td><td>미체크</td></tr><tr><td>이우성</td><td>본사</td><td>2025. 6. 23 7:57:53 (퇴근 미체크)</td><td>2025. 6. 23 7:57:53</td><td>미체크</td></tr><tr><td>이태희</td><td>본사CHI_1</td><td>2025. 6. 23 7:57:37 (퇴근 미체크)</td><td>2025. 6. 23 7:57:37</td><td>미체크</td></tr><tr><td>임영목</td><td>본사CHI_2</td><td>2025. 6. 23 8:02:29 (퇴근 미체크)</td><td>2025. 6. 23 8:02:29</td><td>미체크</td></tr><tr><td>정지성</td><td>현장</td><td>2025. 6. 23 7:54:04 (퇴근 미체크)</td><td>2025. 6. 23 7:54:04</td><td>미체크</td></tr><tr><td>조성호</td><td>현장</td><td>2025. 6. 23 7:41:00 (퇴근 미체크)</td><td>2025. 6. 23 7:41:00</td><td>미체크</td></tr><tr><td>한상호</td><td>본사CHI_1</td><td>2025. 6. 23 7:56:07 (퇴근 미체크)</td><td>2025. 6. 23 7:56:07</td><td>미체크</td></tr><tr><td>홍수희</td><td>본사</td><td>2025. 6. 23 7:58:49 (퇴근 미체크)</td><td>2025. 6. 23 7:58:49</td><td>미체크</td></tr>
-            </table>
-        </div>
-        
-        <div id="FNI-table" class="company-table" style="display:none;">
-            <h3>FNI 근무자 목록</h3>
-            <button onclick="downloadCSV('FNI')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>권민수</td><td>현장</td><td>2025. 6. 23 7:45:04 (퇴근 미체크)</td><td>2025. 6. 23 7:45:04</td><td>미체크</td></tr><tr><td>김용수</td><td>현장</td><td>2025. 6. 23 7:55:24 (퇴근 미체크)</td><td>2025. 6. 23 7:55:24</td><td>미체크</td></tr><tr><td>박연파</td><td>현장</td><td>2025. 6. 23 6:36:41 (퇴근 미체크)</td><td>2025. 6. 23 6:36:41</td><td>미체크</td></tr><tr><td>박주성</td><td>현장</td><td>2025. 6. 23 7:13:34 (퇴근 미체크)</td><td>2025. 6. 23 7:13:34</td><td>미체크</td></tr><tr><td>박천일</td><td>현장</td><td>2025. 6. 23 7:59:26 (퇴근 미체크)</td><td>2025. 6. 23 7:59:26</td><td>미체크</td></tr><tr><td>박춘광</td><td>현장</td><td>2025. 6. 23 7:45:14 (퇴근 미체크)</td><td>2025. 6. 23 7:45:14</td><td>미체크</td></tr><tr><td>서명환</td><td>현장</td><td>0시간 0분</td><td>2025. 6. 23 6:58:55</td><td>2025. 6. 23 06:59:05</td></tr><tr><td>서정원</td><td>현장</td><td>2025. 6. 23 7:54:23 (퇴근 미체크)</td><td>2025. 6. 23 7:54:23</td><td>미체크</td></tr><tr><td>손국권</td><td>현장</td><td>2025. 6. 23 7:51:41 (퇴근 미체크)</td><td>2025. 6. 23 7:51:41</td><td>미체크</td></tr><tr><td>안유성</td><td>현장</td><td>2025. 6. 23 7:39:34 (퇴근 미체크)</td><td>2025. 6. 23 7:39:34</td><td>미체크</td></tr><tr><td>유승민</td><td>현장</td><td>2025. 6. 23 7:53:35 (퇴근 미체크)</td><td>2025. 6. 23 7:53:35</td><td>미체크</td></tr><tr><td>윤광성</td><td>현장</td><td>2025. 6. 23 7:23:58 (퇴근 미체크)</td><td>2025. 6. 23 7:23:58</td><td>미체크</td></tr><tr><td>윤석우</td><td>현장</td><td>2025. 6. 23 7:00:39 (퇴근 미체크)</td><td>2025. 6. 23 7:00:39</td><td>미체크</td></tr><tr><td>윤춘국</td><td>현장</td><td>2025. 6. 23 8:00:12 (퇴근 미체크)</td><td>2025. 6. 23 8:00:12</td><td>미체크</td></tr><tr><td>이승진</td><td>현장</td><td>2025. 6. 23 7:43:25 (퇴근 미체크)</td><td>2025. 6. 23 7:43:25</td><td>미체크</td></tr><tr><td>이영자</td><td>현장</td><td>2025. 6. 23 7:39:34 (퇴근 미체크)</td><td>2025. 6. 23 7:39:34</td><td>미체크</td></tr><tr><td>이은학</td><td>현장</td><td>2025. 6. 23 7:45:46 (퇴근 미체크)</td><td>2025. 6. 23 7:45:46</td><td>미체크</td></tr><tr><td>전우민</td><td>현장</td><td>2025. 6. 23 6:21:34 (퇴근 미체크)</td><td>2025. 6. 23 6:21:34</td><td>미체크</td></tr><tr><td>허문용</td><td>현장</td><td>2025. 6. 23 7:51:24 (퇴근 미체크)</td><td>2025. 6. 23 7:51:24</td><td>미체크</td></tr><tr><td>홍용천</td><td>현장</td><td>2025. 6. 23 7:51:24 (퇴근 미체크)</td><td>2025. 6. 23 7:51:24</td><td>미체크</td></tr><tr><td>황진충</td><td>현장</td><td>2025. 6. 23 7:24:25 (퇴근 미체크)</td><td>2025. 6. 23 7:24:25</td><td>미체크</td></tr>
-            </table>
-        </div>
-        
-        <div id="P&S-table" class="company-table" style="display:none;">
-            <h3>P&S 근무자 목록</h3>
-            <button onclick="downloadCSV('P&S')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>강기준</td><td>현장</td><td>2025. 6. 23 8:00:45 (퇴근 미체크)</td><td>2025. 6. 23 8:00:45</td><td>미체크</td></tr><tr><td>김홍매</td><td>본사</td><td>2025. 6. 23 8:00:20 (퇴근 미체크)</td><td>2025. 6. 23 8:00:20</td><td>미체크</td></tr><tr><td>남민수</td><td>현장</td><td>2025. 6. 23 8:05:54 (퇴근 미체크)</td><td>2025. 6. 23 8:05:54</td><td>미체크</td></tr><tr><td>박광진</td><td>현장</td><td>2025. 6. 23 8:00:44 (퇴근 미체크)</td><td>2025. 6. 23 8:00:44</td><td>미체크</td></tr><tr><td>오권석</td><td>현장</td><td>2025. 6. 23 8:01:37 (퇴근 미체크)</td><td>2025. 6. 23 8:01:37</td><td>미체크</td></tr><tr><td>이운</td><td>현장</td><td>2025. 6. 23 8:00:42 (퇴근 미체크)</td><td>2025. 6. 23 8:00:42</td><td>미체크</td></tr><tr><td>최윤철</td><td>현장</td><td>2025. 6. 23 7:57:40 (퇴근 미체크)</td><td>2025. 6. 23 7:57:40</td><td>미체크</td></tr>
-            </table>
-        </div>
-        
         <div id="TEST-table" class="company-table" style="display:none;">
             <h3>TEST 근무자 목록</h3>
             <button onclick="downloadCSV('TEST')">CSV 다운로드</button>
             <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>김동규</td><td>현장</td><td>2025. 6. 23 0:42:32 (퇴근 미체크)</td><td>2025. 6. 23 0:42:32</td><td>미체크</td></tr>
-            </table>
-        </div>
-        
-        <div id="TMS(E)-table" class="company-table" style="display:none;">
-            <h3>TMS(E) 근무자 목록</h3>
-            <button onclick="downloadCSV('TMS(E)')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>공종필</td><td>현장</td><td>2025. 6. 23 7:30:08 (퇴근 미체크)</td><td>2025. 6. 23 7:30:08</td><td>미체크</td></tr><tr><td>김삼구</td><td>본사</td><td>2025. 6. 23 7:52:39 (퇴근 미체크)</td><td>2025. 6. 23 7:52:39</td><td>미체크</td></tr><tr><td>김재호</td><td>현장</td><td>2025. 6. 23 7:41:41 (퇴근 미체크)</td><td>2025. 6. 23 7:41:41</td><td>미체크</td></tr><tr><td>김주용</td><td>현장</td><td>2025. 6. 23 7:31:20 (퇴근 미체크)</td><td>2025. 6. 23 7:31:20</td><td>미체크</td></tr><tr><td>김창조</td><td>현장</td><td>2025. 6. 23 7:00:34 (퇴근 미체크)</td><td>2025. 6. 23 7:00:34</td><td>미체크</td></tr><tr><td>김형석</td><td>본사</td><td>2025. 6. 23 7:53:13 (퇴근 미체크)</td><td>2025. 6. 23 7:53:13</td><td>미체크</td></tr><tr><td>노윤제</td><td>현장</td><td>2025. 6. 23 7:55:59 (퇴근 미체크)</td><td>2025. 6. 23 7:55:59</td><td>미체크</td></tr><tr><td>오세훈</td><td>본사</td><td>2025. 6. 23 7:55:56 (퇴근 미체크)</td><td>2025. 6. 23 7:55:56</td><td>미체크</td></tr><tr><td>오정석</td><td>본사</td><td>2025. 6. 23 7:35:44 (퇴근 미체크)</td><td>2025. 6. 23 7:35:44</td><td>미체크</td></tr><tr><td>유민상</td><td>본사</td><td>2025. 6. 23 7:44:28 (퇴근 미체크)</td><td>2025. 6. 23 7:44:28</td><td>미체크</td></tr><tr><td>윤성구</td><td>본사</td><td>2025. 6. 23 7:51:15 (퇴근 미체크)</td><td>2025. 6. 23 7:51:15</td><td>미체크</td></tr><tr><td>이동구</td><td>본사</td><td>2025. 6. 23 7:31:05 (퇴근 미체크)</td><td>2025. 6. 23 7:31:05</td><td>미체크</td></tr><tr><td>이효주</td><td>본사</td><td>2025. 6. 23 7:56:05 (퇴근 미체크)</td><td>2025. 6. 23 7:56:05</td><td>미체크</td></tr><tr><td>전준룡</td><td>본사</td><td>2025. 6. 23 7:30:11 (퇴근 미체크)</td><td>2025. 6. 23 7:30:11</td><td>미체크</td></tr><tr><td>최광학</td><td>현장</td><td>2025. 6. 23 7:30:22 (퇴근 미체크)</td><td>2025. 6. 23 7:30:22</td><td>미체크</td></tr><tr><td>최선희</td><td>본사</td><td>2025. 6. 23 7:50:36 (퇴근 미체크)</td><td>2025. 6. 23 7:50:36</td><td>미체크</td></tr><tr><td>최이명</td><td>현장CHI</td><td>2025. 6. 23 7:46:35 (퇴근 미체크)</td><td>2025. 6. 23 7:46:35</td><td>미체크</td></tr><tr><td>황금산</td><td>현장CHI</td><td>2025. 6. 23 8:11:51 (퇴근 미체크)</td><td>2025. 6. 23 8:11:51</td><td>미체크</td></tr>
-            </table>
-        </div>
-        
-        <div id="TMS(M)-table" class="company-table" style="display:none;">
-            <h3>TMS(M) 근무자 목록</h3>
-            <button onclick="downloadCSV('TMS(M)')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>김경민</td><td>현장</td><td>2025. 6. 23 7:48:55 (퇴근 미체크)</td><td>2025. 6. 23 7:48:55</td><td>미체크</td></tr><tr><td>김선교</td><td>현장</td><td>2025. 6. 23 7:32:08 (퇴근 미체크)</td><td>2025. 6. 23 7:32:08</td><td>미체크</td></tr><tr><td>이대균</td><td>현장</td><td>2025. 6. 23 7:58:12 (퇴근 미체크)</td><td>2025. 6. 23 7:58:12</td><td>미체크</td></tr><tr><td>이동민</td><td>현장</td><td>2025. 6. 23 7:24:46 (퇴근 미체크)</td><td>2025. 6. 23 7:24:46</td><td>미체크</td></tr><tr><td>이선만</td><td>현장</td><td>2025. 6. 23 7:57:02 (퇴근 미체크)</td><td>2025. 6. 23 7:57:02</td><td>미체크</td></tr><tr><td>이성균</td><td>현장</td><td>2025. 6. 23 7:59:51 (퇴근 미체크)</td><td>2025. 6. 23 7:59:51</td><td>미체크</td></tr><tr><td>이용</td><td>현장</td><td>2025. 6. 23 7:40:30 (퇴근 미체크)</td><td>2025. 6. 23 7:40:30</td><td>미체크</td></tr><tr><td>지화</td><td>현장</td><td>2025. 6. 23 7:40:10 (퇴근 미체크)</td><td>2025. 6. 23 7:40:10</td><td>미체크</td></tr><tr><td>최동호</td><td>현장</td><td>2025. 6. 23 6:43:24 (퇴근 미체크)</td><td>2025. 6. 23 6:43:24</td><td>미체크</td></tr>
+            <tr><td>김동규</td><td>현장</td><td>2025. 6. 22 0:13:29 (퇴근 미체크)</td><td>2025. 6. 22 0:13:29</td><td>미체크</td></tr>
             </table>
         </div>
         
     <script>
-      var companies = ["FNI", "C&A", "TMS(E)", "BAT", "TMS(M)", "P&S", "TEST"];
-      var siteCounts = [21, 7, 6, 16, 9, 6, 1];
-      var hqCounts = [0, 7, 10, 0, 0, 1, 0];
-      var hqChi1Counts = [0, 2, 0, 0, 0, 0, 0];
-      var hqChi2Counts = [0, 3, 0, 0, 0, 0, 0];
-      var siteChiCounts = [0, 0, 2, 0, 0, 0, 0];
-      var barColors = ["#2ca02c", "#ff7f0e", "#8c564b", "#1f77b4", "#e377c2", "#d62728", "#9467bd"];
-      var hqBarColors = ["#2ca02c80", "#ff7f0e80", "#8c564b80", "#1f77b480", "#e377c280", "#d6272880", "#9467bd80"];
-      var hqChi1BarColors = ["#2ca02c60", "#ff7f0e60", "#8c564b60", "#1f77b460", "#e377c260", "#d6272860", "#9467bd60"];
-      var hqChi2BarColors = ["#2ca02c50", "#ff7f0e50", "#8c564b50", "#1f77b450", "#e377c250", "#d6272850", "#9467bd50"];
-      var siteChiBarColors = ["#2ca02c40", "#ff7f0e40", "#8c564b40", "#1f77b440", "#e377c240", "#d6272840", "#9467bd40"];
-      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uad8c\ubbfc\uc218, \uae40\uc6a9\uc218, \ubc15\uc5f0\ud30c, \ubc15\uc8fc\uc131, \ubc15\ucc9c\uc77c, \ubc15\ucd98\uad11, \uc11c\uc815\uc6d0, \uc190\uad6d\uad8c, \uc548\uc720\uc131, \uc720\uc2b9\ubbfc, \uc724\uad11\uc131, \uc724\uc11d\uc6b0, \uc724\ucd98\uad6d, \uc774\uc2b9\uc9c4, \uc774\uc601\uc790, \uc774\uc740\ud559, \uc804\uc6b0\ubbfc, \ud5c8\ubb38\uc6a9, \ud64d\uc6a9\ucc9c, \ud669\uc9c4\ucda9", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\uc6b0\ub78c, \uae40\uc778\uc6b1, \uae40\ud0dc\uace4, \ub77c\uacbd\uc219, \ubc15\uc0c8\ubcbd, \ubc15\uc740\ud61c, \ubc31\uc0c1\uac78, \uc131\uae38\uc6a9, \uc724\ubb38\ube48, \uc774\uc131\ud6c8, \uc774\uc219\uc790, \uc774\uc601\ucc2c, \uc774\uc6b0\uc131, \uc774\ud0dc\ud76c, \uc784\uc601\ubaa9, \uc815\uc9c0\uc131, \uc870\uc131\ud638, \ud55c\uc0c1\ud638, \ud64d\uc218\ud76c", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uacf5\uc885\ud544, \uae40\uc0bc\uad6c, \uae40\uc7ac\ud638, \uae40\uc8fc\uc6a9, \uae40\ucc3d\uc870, \uae40\ud615\uc11d, \ub178\uc724\uc81c, \uc624\uc138\ud6c8, \uc624\uc815\uc11d, \uc720\ubbfc\uc0c1, \uc724\uc131\uad6c, \uc774\ub3d9\uad6c, \uc774\ud6a8\uc8fc, \uc804\uc900\ub8e1, \ucd5c\uad11\ud559, \ucd5c\uc120\ud76c, \ucd5c\uc774\uba85, \ud669\uae08\uc0b0", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uac04\uc5f0\uc6c5, \uae40\uad70, \uae40\uc6d0\ub3d9, \ubc15\ud638, \ubc30\ud64d\ubc94, \uc724\uccad\uc6a9, \uc804\uc131\ud658, \uc815\ub300\ud55c, \uc815\uc778\uaddc, \uc870\ub3d9\ub798, \ucc44\uc740\ucca0, \ucd5c\uc9c4\uc6b0, \ud5c8\uc6a9\uae38, \ud5c8\ucc3d\ud559, \ud64d\uc0ac\ud604, \ud669\ud638", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\uacbd\ubbfc, \uae40\uc120\uad50, \uc774\ub300\uade0, \uc774\ub3d9\ubbfc, \uc774\uc120\ub9cc, \uc774\uc131\uade0, \uc774\uc6a9, \uc9c0\ud654, \ucd5c\ub3d9\ud638", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uac15\uae30\uc900, \uae40\ud64d\ub9e4, \ub0a8\ubbfc\uc218, \ubc15\uad11\uc9c4, \uc624\uad8c\uc11d, \uc774\uc6b4, \ucd5c\uc724\ucca0", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\ub3d9\uaddc"];
-      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 21", "\ubcf8\uc0ac \uc778\uc6d0: 7, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 2, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 3, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 7", "\ubcf8\uc0ac \uc778\uc6d0: 10, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 2, \ud604\uc7a5 \uc778\uc6d0: 6", "\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 16", "\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 9", "\ubcf8\uc0ac \uc778\uc6d0: 1, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 6", "\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 1"];
-      var weekNumber = 26
+      var companies = ["TEST"];
+      var siteCounts = [1];
+      var hqCounts = [0];
+      var hqChi1Counts = [0];
+      var hqChi2Counts = [0];
+      var siteChiCounts = [0];
+      var barColors = ["#1f77b4"];
+      var hqBarColors = ["#1f77b480"];
+      var hqChi1BarColors = ["#1f77b460"];
+      var hqChi2BarColors = ["#1f77b450"];
+      var siteChiBarColors = ["#1f77b440"];
+      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\ub3d9\uaddc"];
+      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 1"];
+      var weekNumber = 25
 
       var data = [
         {

@@ -2,233 +2,386 @@
     <!DOCTYPE html>
     <html lang="ko">
     <head>
-      <meta charset="UTF-8">
-      <title>협력사 출입 대시보드</title>
-      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-      <style>
-        .company-table { display: none; margin-top: 30px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-        th { background-color: #f0f0f0; }
-        button { margin: 10px; padding: 8px 16px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        button:hover { background-color: #45a049; }
-      </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>협력사 출입 현황 (일자별 관리)</title>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <style>
+            body { font-family: 'Malgun Gothic', sans-serif; margin: 20px; background-color: #f5f5f5; }
+            .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+            h1 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
+            .summary { background: #ecf0f1; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+            .chart-container { margin: 20px 0; }
+            .company-section { margin-bottom: 30px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+            .company-header { background: #3498db; color: white; padding: 15px; cursor: pointer; }
+            .company-content { display: none; padding: 20px; }
+            .company-content.active { display: block; }
+            table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+            th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+            th { background-color: #f8f9fa; font-weight: bold; }
+            .download-btn { background: #27ae60; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+            .download-btn:hover { background: #229954; }
+        </style>
     </head>
     <body>
-    <div id="bar-chart" style="width: 100%; height: 400px;"></div>
+        <div class="container">
+            <h1>🏢 협력사 출입 현황 (일자별 관리)</h1>
+            <div class="summary">
+                <strong>📊 요약:</strong> 총 2개 회사, 21명 출입
+                <br><strong>📅 생성일시:</strong> 2025년 06월 25일 01시 00분
+                <br><strong>🔄 관리방식:</strong> 일자별 독립 관리 (데이터 안전성 향상)
+            </div>
+            
+            <div class="chart-container">
+                <div id="bar-chart" style="width: 100%; height: 400px;"></div>
+            </div>
     
-        <div id="BAT-table" class="company-table" style="display:none;">
-            <h3>BAT 근무자 목록</h3>
-            <button onclick="downloadCSV('BAT')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>간연웅</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>김군</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>김원동</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>김춘동</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>박종범</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>박호</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>배홍범</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>우미정</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>우미현</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>윤청용</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>전성환</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>정대한</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>정인규</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>조동래</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>채은철</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>최진우</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>허용길</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>허창학</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>홍사현</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr><tr><td>황호</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr>
-            </table>
-        </div>
+            <div class="company-section">
+                <div class="company-header" onclick="toggleCompany('company_0')">
+                    <h3>🏭 BAT (총 20명: 본사 0명, 현장 20명)</h3>
+                </div>
+                <div class="company-content" id="company_0">
+                    <button class="download-btn" onclick="downloadDailyCSV('BAT')">📥 일자별 CSV 다운로드</button>
+                    <table id="table_BAT">
+                        <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>담당 업무</th>
+                                <th>출근 시간</th>
+                                <th>퇴근 시간</th>
+                                <th>근무시간</th>
+                                <th>퇴근미체크</th>
+                            </tr>
+                        </thead>
+                        <tbody>
         
-        <div id="TEST-table" class="company-table" style="display:none;">
-            <h3>TEST 근무자 목록</h3>
-            <button onclick="downloadCSV('TEST')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>김동규</td><td>현장</td><td>2025. 6. 25 0:27:40 (퇴근 미체크)</td><td>2025. 6. 25 0:27:40</td><td>미체크</td></tr>
-            </table>
-        </div>
+                            <tr>
+                                <td>간연웅</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>김군</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>김원동</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>김춘동</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>박종범</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>박호</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>배홍범</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>우미정</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>우미현</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>윤청용</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>전성환</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>정대한</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>정인규</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>조동래</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>채은철</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>최진우</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>허용길</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>허창학</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>홍사현</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                            <tr>
+                                <td>황호</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         
-    <script>
-      var companies = ["BAT", "TEST"];
-      var siteCounts = [20, 1];
-      var hqCounts = [0, 0];
-      var hqChi1Counts = [0, 0];
-      var hqChi2Counts = [0, 0];
-      var siteChiCounts = [0, 0];
-      var barColors = ["#1f77b4", "#ff7f0e"];
-      var hqBarColors = ["#1f77b480", "#ff7f0e80"];
-      var hqChi1BarColors = ["#1f77b460", "#ff7f0e60"];
-      var hqChi2BarColors = ["#1f77b450", "#ff7f0e50"];
-      var siteChiBarColors = ["#1f77b440", "#ff7f0e40"];
-      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uac04\uc5f0\uc6c5, \uae40\uad70, \uae40\uc6d0\ub3d9, \uae40\ucd98\ub3d9, \ubc15\uc885\ubc94, \ubc15\ud638, \ubc30\ud64d\ubc94, \uc6b0\ubbf8\uc815, \uc6b0\ubbf8\ud604, \uc724\uccad\uc6a9, \uc804\uc131\ud658, \uc815\ub300\ud55c, \uc815\uc778\uaddc, \uc870\ub3d9\ub798, \ucc44\uc740\ucca0, \ucd5c\uc9c4\uc6b0, \ud5c8\uc6a9\uae38, \ud5c8\ucc3d\ud559, \ud64d\uc0ac\ud604, \ud669\ud638", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\ub3d9\uaddc"];
-      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 20", "\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 1"];
-      var weekNumber = 26
+            <div class="company-section">
+                <div class="company-header" onclick="toggleCompany('company_1')">
+                    <h3>🏭 TEST (총 1명: 본사 0명, 현장 1명)</h3>
+                </div>
+                <div class="company-content" id="company_1">
+                    <button class="download-btn" onclick="downloadDailyCSV('TEST')">📥 일자별 CSV 다운로드</button>
+                    <table id="table_TEST">
+                        <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>담당 업무</th>
+                                <th>출근 시간</th>
+                                <th>퇴근 시간</th>
+                                <th>근무시간</th>
+                                <th>퇴근미체크</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+        
+                            <tr>
+                                <td>김동규</td>
+                                <td>현장</td>
+                                <td>2025. 6. 25 0:27:40</td>
+                                <td></td>
+                                <td>0시간 0분</td>
+                                <td>예</td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </div>
 
-      var data = [
-        {
-          x: companies,
-          y: siteCounts,
-          name: '현장 인원',
-          type: 'bar',
-          text: siteCounts,
-          textposition: 'inside',
-          marker: {color: barColors},
-          hovertext: tooltipMiss,
-          hoverinfo: 'text+y+name',
-          customdata: companies
-        },
-        {
-          x: companies,
-          y: hqCounts,
-          name: '본사 인원',
-          type: 'bar',
-          text: hqCounts,
-          textposition: 'inside',
-          marker: {color: hqBarColors},
-          hovertext: tooltipHq,
-          hoverinfo: 'text+y+name',
-          customdata: companies
-        },
-        {
-          x: companies,
-          y: hqChi1Counts,
-          name: '본사CHI_1 인원',
-          type: 'bar',
-          text: hqChi1Counts,
-          textposition: 'inside',
-          marker: {color: hqChi1BarColors},
-          hovertext: tooltipHq,
-          hoverinfo: 'text+y+name',
-          customdata: companies
-        },
-        {
-          x: companies,
-          y: hqChi2Counts,
-          name: '본사CHI_2 인원',
-          type: 'bar',
-          text: hqChi2Counts,
-          textposition: 'inside',
-          marker: {color: hqChi2BarColors},
-          hovertext: tooltipHq,
-          hoverinfo: 'text+y+name',
-          customdata: companies
-        },
-        {
-          x: companies,
-          y: siteChiCounts,
-          name: '현장CHI 인원',
-          type: 'bar',
-          text: siteChiCounts,
-          textposition: 'inside',
-          marker: {color: siteChiBarColors},
-          hovertext: tooltipHq,
-          hoverinfo: 'text+y+name',
-          customdata: companies
-        }
-      ];
-      var layout = {
-        title: '🏭협력사별 출입 인원 수',
-        barmode: 'stack',
-        hovermode: 'closest',
-        showlegend: true
-      };
-      var config = {
-        displayModeBar: false,
-        scrollZoom: false,
-        staticPlot: false
-      };
-      Plotly.newPlot('bar-chart', data, layout, config);
+        <script>
+            // 막대그래프 데이터
+            var companies = ["BAT", "TEST"];
+            var totalCounts = [20, 1];
+            var hqCounts = [0, 0];
+            var siteCounts = [20, 1];
+            var barColors = ["#1f77b4", "#ff7f0e"];
+            var hqBarColors = ["#1f77b480", "#ff7f0e80"];
+            var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uac04\uc5f0\uc6c5, \uae40\uad70, \uae40\uc6d0\ub3d9, \uae40\ucd98\ub3d9, \ubc15\uc885\ubc94, \ubc15\ud638, \ubc30\ud64d\ubc94, \uc6b0\ubbf8\uc815, \uc6b0\ubbf8\ud604, \uc724\uccad\uc6a9, \uc804\uc131\ud658, \uc815\ub300\ud55c, \uc815\uc778\uaddc, \uc870\ub3d9\ub798, \ucc44\uc740\ucca0, \ucd5c\uc9c4\uc6b0, \ud5c8\uc6a9\uae38, \ud5c8\ucc3d\ud559, \ud64d\uc0ac\ud604, \ud669\ud638", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\ub3d9\uaddc"];
+            var tooltipHq = ["\ubcf8\uc0ac: 0\uba85, \ud604\uc7a5: 20\uba85", "\ubcf8\uc0ac: 0\uba85, \ud604\uc7a5: 1\uba85"];
 
-      var lastOpened = null;
-      document.getElementById('bar-chart').on('plotly_click', function(data) {
-        var company = data.points[0].customdata;
-        var target = document.getElementById(company + "-table");
-        if (lastOpened === company) {
-          target.style.display = "none";
-          lastOpened = null;
-        } else {
-          document.querySelectorAll(".company-table").forEach(div => div.style.display = "none");
-          target.style.display = "block";
-          target.scrollIntoView({ behavior: "smooth" });
-          lastOpened = company;
-        }
-      });
+            // 막대그래프 생성
+            var trace1 = {
+                x: companies,
+                y: totalCounts,
+                type: 'bar',
+                name: '총 인원',
+                marker: { color: barColors },
+                text: totalCounts.map((val, idx) => 
+                    val + '명<br>' + (tooltipMiss[idx] || '') + '<br>' + (tooltipHq[idx] || '')),
+                textposition: 'auto',
+                hovertemplate: '%{x}<br>총 인원: %{y}명<br>%{text}<extra></extra>'
+            };
 
-      // 한글 자음순 정렬을 위한 함수
-      function koreanSortKey(name) {
-        return name.replace(/[가-힣]/g, function(char) {
-          var code = char.charCodeAt(0) - 0xAC00;
-          var jong = code % 28;
-          var jung = (code - jong) / 28 % 21;
-          var cho = (code - jong - jung * 28) / 28 / 21;
-          return String.fromCharCode(cho + 0x1100) + String.fromCharCode(jung + 0x1161) + (jong ? String.fromCharCode(jong + 0x11A7) : '');
-        });
-      }
+            var trace2 = {
+                x: companies,
+                y: hqCounts,
+                type: 'bar',
+                name: '본사 인원',
+                marker: { color: hqBarColors },
+                text: hqCounts.map(val => val + '명'),
+                textposition: 'auto',
+                hovertemplate: '%{x}<br>본사 인원: %{y}명<extra></extra>'
+            };
 
-      function downloadCSV(company) {
-        try {
-          var compTable = document.getElementById(company + "-table");
-          var rows = compTable.querySelectorAll("table tr");
-          var csvContent = "﻿";
-          csvContent += "이름,담당 업무,근무시간,출근 시간,퇴근 시간\n"; // 헤더에 출퇴근 시간 추가
-          for (var i = 1; i < rows.length; i++) {
-            var cells = rows[i].querySelectorAll("td");
-            var rowData = [
-              '"' + cells[0].innerText.replace(/"/g, '""') + '"',
-              '"' + cells[1].innerText.replace(/"/g, '""') + '"',
-              '"' + cells[2].innerText.replace(/"/g, '""') + '"',
-              '"' + cells[3].innerText.replace(/"/g, '""') + '"', // 출근 시간
-              '"' + cells[4].innerText.replace(/"/g, '""') + '"'   // 퇴근 시간
-            ];
-            csvContent += rowData.join(",") + "\n";
-          }
+            var data = [trace1, trace2];
+            var layout = {
+                title: '회사별 출입 현황 (일자별)',
+                xaxis: { title: '회사명' },
+                yaxis: { title: '인원 수' },
+                barmode: 'group',
+                font: { family: 'Malgun Gothic, sans-serif' },
+                margin: { l: 50, r: 50, t: 50, b: 100 }
+            };
 
-          var weekData = [];
-          fetch(`/weekly_data/${company}_week_${weekNumber}.json`)
-            .then(response => response.json())
-            .then(data => {
-              weekData = data;
-              // 주간 데이터를 한글 자음순으로 정렬
-              weekData.sort(function(a, b) {
-                var nameA = koreanSortKey(a["이름"] || "");
-                var nameB = koreanSortKey(b["이름"] || "");
-                return nameA.localeCompare(nameB, 'ko-KR');
-              });
-              
-              csvContent += "\n주간 데이터:\n";
-              csvContent += "이름,담당 업무,출근 시간,퇴근 시간,근무시간,퇴근미체크\n";
-              weekData.forEach(item => {
-                var rowData = [
-                  '"' + (item["이름"] || "").replace(/"/g, '""') + '"',
-                  '"' + (item["담당 업무"] || "").replace(/"/g, '""') + '"',
-                  '"' + (item["출근 시간"] || "").replace(/"/g, '""') + '"',
-                  '"' + (item["퇴근 시간"] || "").replace(/"/g, '""') + '"',
-                  '"' + (item["근무시간(H:M)"] || "").replace(/"/g, '""') + '"',
-                  '"' + (item["퇴근미체크"] ? "예" : "아니오") + '"'
-                ];
-                csvContent += rowData.join(",") + "\n";
-              });
+            Plotly.newPlot('bar-chart', data, layout);
 
-              var today = new Date();
-              var dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
-              var fileName = `${company}_entry_list_${dateStr}.csv`;
-              var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
-              var url = window.URL.createObjectURL(blob);
-              var link = document.createElement('a');
-              link.setAttribute('href', url);
-              link.setAttribute('download', fileName);
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-              window.URL.revokeObjectURL(url);
-            })
-            .catch(error => {
-              console.error("Error fetching weekly data:", error);
-              alert("주간 데이터를 가져오지 못했습니다. 당일 데이터만 다운로드됩니다.");
-              var today = new Date();
-              var dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
-              var fileName = `${company}_entry_list_${dateStr}.csv`;
-              var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
-              var url = window.URL.createObjectURL(blob);
-              var link = document.createElement('a');
-              link.setAttribute('href', url);
-              link.setAttribute('download', fileName);
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-              window.URL.revokeObjectURL(url);
-            });
-        } catch (error) {
-          console.error("CSV download error:", error);
-          alert("CSV 다운로드 중 오류가 발생했습니다.");
-        }
-      }
-    </script>
+            function toggleCompany(companyId) {
+                var content = document.getElementById(companyId);
+                content.classList.toggle('active');
+            }
+
+            function downloadDailyCSV(company) {
+                try {
+                    var today = new Date();
+                    var dateStr = today.getFullYear() + '_' + 
+                                 String(today.getMonth() + 1).padStart(2, '0') + '_' + 
+                                 String(today.getDate()).padStart(2, '0');
+                    
+                    // 일자별 JSON 파일에서 데이터 가져오기
+                    fetch(`/daily_data/${company}_${dateStr}.json`)
+                        .then(response => response.json())
+                        .then(dailyData => {
+                            // CSV 헤더
+                            var csvContent = "\ufeff";
+                            csvContent += "이름,담당 업무,출근 시간,퇴근 시간,근무시간,퇴근미체크\n";
+                            
+                            // 일자별 데이터 정렬
+                            dailyData.sort(function(a, b) {
+                                return (a["이름"] || "").localeCompare(b["이름"] || "", 'ko-KR');
+                            });
+                            
+                            // CSV 데이터 생성
+                            dailyData.forEach(item => {
+                                var rowData = [
+                                    '"' + (item["이름"] || "").replace(/"/g, '""') + '"',
+                                    '"' + (item["담당 업무"] || "").replace(/"/g, '""') + '"',
+                                    '"' + (item["출근 시간"] || "").replace(/"/g, '""') + '"',
+                                    '"' + (item["퇴근 시간"] || "").replace(/"/g, '""') + '"',
+                                    '"' + (item["근무시간(H:M)"] || "").replace(/"/g, '""') + '"',
+                                    '"' + (item["퇴근미체크"] ? "예" : "아니오") + '"'
+                                ];
+                                csvContent += rowData.join(",") + "\n";
+                            });
+
+                            // 파일 다운로드
+                            var fileName = `${company}_entry_list_${dateStr}.csv`;
+                            var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+                            var url = window.URL.createObjectURL(blob);
+                            var link = document.createElement('a');
+                            link.setAttribute('href', url);
+                            link.setAttribute('download', fileName);
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            window.URL.revokeObjectURL(url);
+                        })
+                        .catch(error => {
+                            console.error("Error fetching daily data:", error);
+                            alert("일자별 데이터를 가져오지 못했습니다: " + error);
+                        });
+                } catch (error) {
+                    console.error("CSV download error:", error);
+                    alert("CSV 다운로드 중 오류가 발생했습니다.");
+                }
+            }
+        </script>
     </body>
     </html>
     

@@ -41,19 +41,11 @@
             </table>
         </div>
         
-        <div id="NONE-table" class="company-table" style="display:none;">
-            <h3>NONE 근무자 목록</h3>
-            <button onclick="downloadCSV('NONE')">CSV 다운로드</button>
-            <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>김춘도</td><td>현장</td><td>2025. 6. 24 17:02:26 (퇴근 미체크)</td><td>2025. 6. 24 17:02:26</td><td>미체크</td></tr>
-            </table>
-        </div>
-        
         <div id="P&S-table" class="company-table" style="display:none;">
             <h3>P&S 근무자 목록</h3>
             <button onclick="downloadCSV('P&S')">CSV 다운로드</button>
             <table border="1" style="width:500px;"><tr><th>이름</th><th>담당 업무</th><th>근무시간</th><th>출근 시간</th><th>퇴근 시간</th></tr>
-            <tr><td>강기준</td><td>현장</td><td>2025. 6. 24 8:00:34 (퇴근 미체크)</td><td>2025. 6. 24 8:00:34</td><td>미체크</td></tr><tr><td>김홍매</td><td>본사</td><td>9시간 9분</td><td>2025. 6. 24 8:02:29</td><td>2025. 6. 24 19:51:09</td></tr><tr><td>남민수</td><td>현장</td><td>2025. 6. 24 8:04:44 (퇴근 미체크)</td><td>2025. 6. 24 8:04:44</td><td>미체크</td></tr><tr><td>박광진</td><td>현장</td><td>9시간 23분</td><td>2025. 6. 24 8:07:21</td><td>2025. 6. 24 20:10:41</td></tr><tr><td>오권석</td><td>현장</td><td>9시간 18분</td><td>2025. 6. 24 8:00:01</td><td>2025. 6. 24 19:57:39</td></tr><tr><td>오해동</td><td>현장</td><td>2025. 6. 24 8:08:25 (퇴근 미체크)</td><td>2025. 6. 24 8:08:25</td><td>미체크</td></tr><tr><td>이운</td><td>현장</td><td>2025. 6. 24 9:27:19 (퇴근 미체크)</td><td>2025. 6. 24 9:27:19</td><td>미체크</td></tr><tr><td>정민호</td><td>현장</td><td>2025. 6. 24 8:01:31 (퇴근 미체크)</td><td>2025. 6. 24 8:01:31</td><td>미체크</td></tr><tr><td>조홍연</td><td>본사</td><td>2025. 6. 24 8:32:09 (퇴근 미체크)</td><td>2025. 6. 24 8:32:09</td><td>미체크</td></tr><tr><td>주용범</td><td>현장</td><td>8시간 43분</td><td>2025. 6. 24 8:27:54</td><td>2025. 6. 24 19:51:20</td></tr><tr><td>최윤철</td><td>현장</td><td>2025. 6. 24 8:54:37 (퇴근 미체크)</td><td>2025. 6. 24 8:54:37</td><td>미체크</td></tr>
+            <tr><td>강기준</td><td>현장</td><td>2025. 6. 24 8:00:34 (퇴근 미체크)</td><td>2025. 6. 24 8:00:34</td><td>미체크</td></tr><tr><td>김홍매</td><td>본사</td><td>9시간 9분</td><td>2025. 6. 24 8:02:29</td><td>2025. 6. 24 19:51:09</td></tr><tr><td>남민수</td><td>현장</td><td>2025. 6. 24 8:04:44 (퇴근 미체크)</td><td>2025. 6. 24 8:04:44</td><td>미체크</td></tr><tr><td>박광진</td><td>현장</td><td>9시간 23분</td><td>2025. 6. 24 8:07:21</td><td>2025. 6. 24 20:10:41</td></tr><tr><td>오권석</td><td>현장</td><td>9시간 18분</td><td>2025. 6. 24 8:00:01</td><td>2025. 6. 24 19:57:39</td></tr><tr><td>오해동</td><td>현장</td><td>2025. 6. 24 8:08:25 (퇴근 미체크)</td><td>2025. 6. 24 8:08:25</td><td>미체크</td></tr><tr><td>이운</td><td>현장</td><td>2025. 6. 24 9:27:19 (퇴근 미체크)</td><td>2025. 6. 24 9:27:19</td><td>미체크</td></tr><tr><td>정민호</td><td>현장</td><td>2025. 6. 24 8:01:31 (퇴근 미체크)</td><td>2025. 6. 24 8:01:31</td><td>미체크</td></tr><tr><td>조홍연</td><td>본사</td><td>2025. 6. 24 8:32:09 (퇴근 미체크)</td><td>2025. 6. 24 8:32:09</td><td>미체크</td></tr><tr><td>주용범</td><td>현장</td><td>8시간 43분</td><td>2025. 6. 24 8:27:54</td><td>2025. 6. 24 19:51:20</td></tr><tr><td>최윤철</td><td>현장</td><td>9시간 45분</td><td>2025. 6. 24 8:54:37</td><td>2025. 6. 24 21:19:54</td></tr>
             </table>
         </div>
         
@@ -74,19 +66,19 @@
         </div>
         
     <script>
-      var companies = ["FNI", "TMS(E)", "C&A", "BAT", "P&S", "TMS(M)", "NONE"];
-      var siteCounts = [23, 10, 7, 11, 9, 8, 1];
-      var hqCounts = [0, 9, 7, 0, 2, 0, 0];
-      var hqChi1Counts = [0, 0, 1, 0, 0, 0, 0];
-      var hqChi2Counts = [0, 0, 6, 0, 0, 0, 0];
-      var siteChiCounts = [0, 3, 0, 0, 0, 0, 0];
-      var barColors = ["#2ca02c", "#8c564b", "#ff7f0e", "#1f77b4", "#9467bd", "#e377c2", "#d62728"];
-      var hqBarColors = ["#2ca02c80", "#8c564b80", "#ff7f0e80", "#1f77b480", "#9467bd80", "#e377c280", "#d6272880"];
-      var hqChi1BarColors = ["#2ca02c60", "#8c564b60", "#ff7f0e60", "#1f77b460", "#9467bd60", "#e377c260", "#d6272860"];
-      var hqChi2BarColors = ["#2ca02c50", "#8c564b50", "#ff7f0e50", "#1f77b450", "#9467bd50", "#e377c250", "#d6272850"];
-      var siteChiBarColors = ["#2ca02c40", "#8c564b40", "#ff7f0e40", "#1f77b440", "#9467bd40", "#e377c240", "#d6272840"];
-      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc724\uc11d\uc6b0", "", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ubc15\uc0c8\ubcbd, \uc724\ubb38\ube48", "", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uac15\uae30\uc900, \ub0a8\ubbfc\uc218, \uc624\ud574\ub3d9, \uc774\uc6b4, \uc815\ubbfc\ud638, \uc870\ud64d\uc5f0, \ucd5c\uc724\ucca0", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc774\uc120\ub9cc", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uae40\ucd98\ub3c4"];
-      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 23", "\ubcf8\uc0ac \uc778\uc6d0: 9, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 3, \ud604\uc7a5 \uc778\uc6d0: 10", "\ubcf8\uc0ac \uc778\uc6d0: 7, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 1, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 6, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 7", "\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 11", "\ubcf8\uc0ac \uc778\uc6d0: 2, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 9", "\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 8", "\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 1"];
+      var companies = ["FNI", "TMS(E)", "C&A", "BAT", "P&S", "TMS(M)"];
+      var siteCounts = [23, 10, 7, 11, 9, 8];
+      var hqCounts = [0, 9, 7, 0, 2, 0];
+      var hqChi1Counts = [0, 0, 1, 0, 0, 0];
+      var hqChi2Counts = [0, 0, 6, 0, 0, 0];
+      var siteChiCounts = [0, 3, 0, 0, 0, 0];
+      var barColors = ["#2ca02c", "#9467bd", "#ff7f0e", "#1f77b4", "#d62728", "#8c564b"];
+      var hqBarColors = ["#2ca02c80", "#9467bd80", "#ff7f0e80", "#1f77b480", "#d6272880", "#8c564b80"];
+      var hqChi1BarColors = ["#2ca02c60", "#9467bd60", "#ff7f0e60", "#1f77b460", "#d6272860", "#8c564b60"];
+      var hqChi2BarColors = ["#2ca02c50", "#9467bd50", "#ff7f0e50", "#1f77b450", "#d6272850", "#8c564b50"];
+      var siteChiBarColors = ["#2ca02c40", "#9467bd40", "#ff7f0e40", "#1f77b440", "#d6272840", "#8c564b40"];
+      var tooltipMiss = ["\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc724\uc11d\uc6b0", "", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \ubc15\uc0c8\ubcbd, \uc724\ubb38\ube48", "", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uac15\uae30\uc900, \ub0a8\ubbfc\uc218, \uc624\ud574\ub3d9, \uc774\uc6b4, \uc815\ubbfc\ud638, \uc870\ud64d\uc5f0", "\ud1f4\uadfc \ubbf8\uccb4\ud06c: \uc774\uc120\ub9cc"];
+      var tooltipHq = ["\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 23", "\ubcf8\uc0ac \uc778\uc6d0: 9, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 3, \ud604\uc7a5 \uc778\uc6d0: 10", "\ubcf8\uc0ac \uc778\uc6d0: 7, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 1, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 6, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 7", "\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 11", "\ubcf8\uc0ac \uc778\uc6d0: 2, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 9", "\ubcf8\uc0ac \uc778\uc6d0: 0, \ubcf8\uc0acCHI_1 \uc778\uc6d0: 0, \ubcf8\uc0acCHI_2 \uc778\uc6d0: 0, \ud604\uc7a5CHI \uc778\uc6d0: 0, \ud604\uc7a5 \uc778\uc6d0: 8"];
       var weekNumber = 26
 
       var data = [

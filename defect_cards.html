@@ -2,127 +2,564 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <style>
-    body { margin: 0; font-family: 'NanumGothic', sans-serif; background: #f8f9fa; }
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      width: 100%;
-      box-sizing: border-box;
-      max-height: 500px;
-      overflow-y: auto;
-      padding: 20px;
-      scrollbar-width: thin;
-      scrollbar-color: #007bff #e9ecef;
-    }
-    .card-container::-webkit-scrollbar {
-      width: 8px;
-    }
-    .card-container::-webkit-scrollbar-track {
-      background: #e9ecef;
-      border-radius: 4px;
-    }
-    .card-container::-webkit-scrollbar-thumb {
-      background: #007bff;
-      border-radius: 4px;
-    }
-    .summary-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 16px;
-      box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-      min-height: 180px;
-    }
-    .summary-content { flex-grow: 1; }
-    .summary-card h3 { margin: 0 0 10px; font-size: 16px; }
-    .summary-card p { margin: 2px 0; font-size: 14px; }
-    .summary-card a {
-      display: inline-block;
-      margin-top: 8px;
-      background: #007bff;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 12px;
-      transition: background 0.3s;
-      align-self: flex-start;
-    }
-    .summary-card a:hover { background: #0056b3; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏭 PDA 불량 분석 대시보드</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #2d3748;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            text-align: center;
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+                 .card-container {
+             display: grid;
+             grid-template-columns: repeat(2, 1fr);
+             gap: 20px;
+             max-height: 600px;
+             overflow-y: auto;
+             padding: 10px;
+         }
+        
+        .card-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .card-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+        
+        .card-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+        }
+        
+        .defect-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .defect-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        .defect-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .defect-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        
+        .defect-info {
+            margin-bottom: 15px;
+        }
+        
+        .defect-info p {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #4a5568;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .defect-count {
+            font-weight: 700;
+            color: #e53e3e;
+            font-size: 1.1rem;
+        }
+        
+        .defect-categories {
+            color: #4299e1;
+            font-weight: 500;
+        }
+        
+        .detail-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .detail-btn:hover {
+            background: linear-gradient(135deg, #5a67d8, #6b46c1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 500px;
+            margin: 20px 0;
+        }
+        
+        .detail-box {
+            display: none;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 15px;
+            border-left: 4px solid #4299e1;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .detail-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .detail-box::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 3px;
+        }
+        
+        .detail-row {
+            margin: 8px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .product-title {
+            margin: 15px 0 8px 0;
+            font-weight: 600;
+            font-size: 15px;
+            color: #2d3748;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid #4299e1;
+        }
+        
+        .pagination {
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .pagination button {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+        
+        .pagination button:hover {
+            background: #3182ce;
+        }
+        
+                 @media (max-width: 768px) {
+             .container {
+                 padding: 20px 15px;
+             }
+             
+             .card-container {
+                 grid-template-columns: 1fr;
+                 max-height: 400px;
+             }
+             
+             .section {
+                 padding: 20px;
+             }
+             
+             .header h1 {
+                 font-size: 2rem;
+             }
+         }
+         
+         @media (max-width: 1024px) and (min-width: 769px) {
+             .card-container {
+                 grid-template-columns: repeat(2, 1fr);
+                 gap: 15px;
+             }
+         }
+        </style>
 </head>
 <body>
-<div class="card-container">
-<div class="summary-card">
-  <div class="summary-content">
-    <h3>DRAGON AB DUAL</h3>
-    <p>총 불량: <strong>1건</strong></p>
-    <p>주요 중분류: 부품불량</p>
-  </div>
-  <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="DRAGON AB DUAL 불량 상세 보기">→ 상세 보기</a>
-</div>
-<div class="summary-card">
-  <div class="summary-content">
-    <h3>GAIA-I</h3>
-    <p>총 불량: <strong>8건</strong></p>
-    <p>주요 중분류: 작업불량, 기구작업불량, 설계불량</p>
-  </div>
-  <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-I 불량 상세 보기">→ 상세 보기</a>
-</div>
-<div class="summary-card">
-  <div class="summary-content">
-    <h3>GAIA-I DUAL</h3>
-    <p>총 불량: <strong>21건</strong></p>
-    <p>주요 중분류: 기구작업불량, 설계불량, 작업불량</p>
-  </div>
-  <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-I DUAL 불량 상세 보기">→ 상세 보기</a>
-</div>
-<div class="summary-card">
-  <div class="summary-content">
-    <h3>GAIA-II</h3>
-    <p>총 불량: <strong>4건</strong></p>
-    <p>주요 중분류: 작업불량</p>
-  </div>
-  <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-II 불량 상세 보기">→ 상세 보기</a>
-</div>
-<div class="summary-card">
-  <div class="summary-content">
-    <h3>GAIA-II DUAL</h3>
-    <p>총 불량: <strong>2건</strong></p>
-    <p>주요 중분류: 설계불량</p>
-  </div>
-  <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-II DUAL 불량 상세 보기">→ 상세 보기</a>
-</div>
-<div class="summary-card">
-  <div class="summary-content">
-    <h3>GAIA-P DUAL</h3>
-    <p>총 불량: <strong>3건</strong></p>
-    <p>주요 중분류: 작업불량, 전장작업불량</p>
-  </div>
-  <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="GAIA-P DUAL 불량 상세 보기">→ 상세 보기</a>
-</div>
-<div class="summary-card">
-  <div class="summary-content">
-    <h3>SWS-I</h3>
-    <p>총 불량: <strong>6건</strong></p>
-    <p>주요 중분류: 설계불량, 기구작업불량, 부품불량</p>
-  </div>
-  <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="SWS-I 불량 상세 보기">→ 상세 보기</a>
-</div>
-<div class="summary-card">
-  <div class="summary-content">
-    <h3>WET 1000</h3>
-    <p>총 불량: <strong>6건</strong></p>
-    <p>주요 중분류: 부품불량, 설계불량, 작업불량</p>
-  </div>
-  <a href="https://rainbow-haupia-cd8290.netlify.app/" aria-label="WET 1000 불량 상세 보기">→ 상세 보기</a>
-</div>
-</div>
+    <div class="header">
+        <h1>🏭 PDA 불량 분석 대시보드</h1>
+        <p>실시간 제품 불량 현황 및 상세 분석</p>
+    </div>
+    
+    <div class="container">
+        <!-- 카드 뷰 섹션 -->
+        <div class="section">
+            <h2>📋 제품별 불량 현황</h2>
+            <div class="card-container">
+                
+            <div class="defect-card">
+                <h3>🏭 DRAGON AB DUAL</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">1건</span></p>
+                    <p>주요 분류: <span class="defect-categories">부품불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 GAIA-I</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">8건</span></p>
+                    <p>주요 분류: <span class="defect-categories">작업불량, 기구작업불량, 설계불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 GAIA-I DUAL</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">21건</span></p>
+                    <p>주요 분류: <span class="defect-categories">기구작업불량, 설계불량, 작업불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 GAIA-II</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">4건</span></p>
+                    <p>주요 분류: <span class="defect-categories">작업불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 GAIA-II DUAL</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">2건</span></p>
+                    <p>주요 분류: <span class="defect-categories">설계불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 GAIA-P DUAL</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">3건</span></p>
+                    <p>주요 분류: <span class="defect-categories">작업불량, 전장작업불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 None</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">1건</span></p>
+                    <p>주요 분류: <span class="defect-categories"></span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 SWS-I</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">6건</span></p>
+                    <p>주요 분류: <span class="defect-categories">설계불량, 기구작업불량, 부품불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 WET 1000</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">6건</span></p>
+                    <p>주요 분류: <span class="defect-categories">부품불량, 설계불량, 작업불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            </div>
+        </div>
+        
+        <!-- 차트 섹션 -->
+        <div class="section" id="chartSection">
+            <h2>📊 대분류/중분류별 상세 분석 <small style="color: #718096;">(클릭하여 상세 정보 확인)</small></h2>
+            <div class="chart-container">
+                <canvas id="barChart"></canvas>
+            </div>
+            <div id="detailsArea"></div>
+        </div>
+    </div>
+
+    <!-- 데이터 스크립트 -->
+    <script id="bar-data" type="application/json">[{"bar_key": "기구작업불량 / Leak", "count": 13, "losstime": 176.0}, {"bar_key": "기구작업불량 / 오조립", "count": 2, "losstime": 20.0}, {"bar_key": "부품불량 / Leak", "count": 4, "losstime": 40.0}, {"bar_key": "부품불량 / 사양불일치", "count": 1, "losstime": 60.0}, {"bar_key": "부품불량 / 외관불량", "count": 1, "losstime": 35.0}, {"bar_key": "부품불량 / 조립불량", "count": 1, "losstime": 40.0}, {"bar_key": "설계불량 / 설계불량", "count": 1, "losstime": 10.0}, {"bar_key": "설계불량 / 설계오류", "count": 12, "losstime": 315.0}, {"bar_key": "작업불량 / 기구작업", "count": 12, "losstime": 190.0}, {"bar_key": "작업불량 / 마무리작업", "count": 2, "losstime": 29.0}, {"bar_key": "작업불량 / 전장작업", "count": 1, "losstime": 5.0}, {"bar_key": "전장작업불량 / 오배선", "count": 1, "losstime": 10.0}]</script>
+    <script id="details-data" type="application/json">{"기구작업불량 / Leak": {"GAIA-I": [["Wet 순환 라인 너트부 리크", "Nut 부 재체결", 10.0]], "GAIA-I DUAL": [["Circulation 라인 NUT부 Leak 발생", "Nut 부 재조립", 10.0], ["FEMALE CONNECTOR Fitting Nut Leak / HeatExchanger 연결 PCW-R FEMALE CONNECTOR FC08-12R Fitting Nut 체결강", "재체결", 10.0], ["Circulation Line Nut 부 Leak 발생", "Nut 부 재조립", 20.0], ["TEE PIPE WELD ASSY Fitting Nut Leak / PCW-S TEE PIPE WELD ASSY 상단 우측 Fitting Nut Leak , 체결강도 이상없음 /", "파트교체", 30.0], ["Left Circulation Quench Line Teflon부 Leak", "재작업", 25.0], ["Left Circulation Wet Line Teflon 부 Leak 발생", "Teflon 재작업", 10.0], ["Left Circulation line nut Leak", "재작업", 10.0], ["MALE BANJO 우레탄튜브 삽입부 Leak / MALE BANJO GPH8-41 우레탄튜브 삽입부 내부 이물질로 인한 Leak", "재작업", 10.0], ["MALE BANJO 나사산 체결부 Feflon 부 Leak /", "Teflon 작업", 6.0], ["SCREW SCRAPPER N2 Purge 라인 BANJO PFA Tube 삽입부 Leak / SCREW SCRAPPER N2 Purge BANJO PFA Tube 삽입부 Leak", "재체결", 5.0]], "SWS-I": [["MALE ELBOW Teflon 부족 Leak/ 전면부 Swril Guide 조립 MALE ELBOW 40-6-4-K-PG Teflon 부족 Leak", "재작업", 15.0], ["MALE ELBOW Teflon 부족 Leak/ 전면부 Swril Guide 조립 MALE ELBOW 40-6-4-K-PG Teflon 부족 Leak", "재작업", 15.0]]}, "기구작업불량 / 오조립": {"GAIA-I": [["Heating Jacket Ch. 1, 2, 3 Connetcor 미체결", "Connector 체결", 10.0], ["PM Cylinder Tubing 꺾임", "Tubing 재작업", 10.0]]}, "부품불량 / Leak": {"WET 1000": [["N2 REDUCING DOUBLE Y UNION 06 PFA튜브 삽입부 Leak / REDUCING DOUBLE Y UNION PXG 08-06 06 (4) N.V110B PFA", "재체결", 10.0], ["N2 REDUCING DOUBLE Y UNION 06 PFA튜브 삽입부 Leak / REDUCING DOUBLE Y UNION PXG 08-06 06 (4) N.V110B PFA", "재체결", 10.0], ["N2 REDUCING DOUBLE Y UNION 06 PFA튜브 삽입부 Leak / REDUCING DOUBLE Y UNION PXG 08-06 06 (4) N.V110B PFA", "재체결", 10.0], ["N2 REDUCING DOUBLE Y UNION 06 PFA튜브 삽입부 Leak / REDUCING DOUBLE Y UNION PXG 08-06 06 (4) N.V110B PFA", "재체결", 10.0]]}, "부품불량 / 사양불일치": {"GAIA-I DUAL": [["Flange 용접 적용 위치 상이", "현장 조치", 60.0]]}, "부품불량 / 외관불량": {"SWS-I": [["Inlet Plate 각인 누락", "수정 후 입고", 35.0]]}, "부품불량 / 조립불량": {"DRAGON AB DUAL": [["Mount 고정 Hole 가공 누락", "현장 조치 (Hole 가공)", 40.0]]}, "설계불량 / 설계불량": {"GAIA-I DUAL": [["도면 內 LNG MFC Spec 불량(BOM,실물 1.5~6Bar 도면 0.3~2.5Bar)정상 1.5~6Bar 사용", "도면 수정", 10.0]]}, "설계불량 / 설계오류": {"GAIA-I": [["CDA 공급단 PFA Tube 규격 표기 오류(정상: 6mm / 오류: 1/4\")", "도면 수정", 12.0]], "GAIA-I DUAL": [["도면 內 N2 공압 Line Union Y 연결 표기 오류", "도면 수정", 41.0], ["Left Screw Scraper 미장착이나 도면 內 연결 Tube 및 다연조솔 표기", "도면 수정", 47.0], ["HPS부 PE Purge Ball Valve 미 포함이나 P&ID 內 표기", "P&ID 수정", 4.0], ["Waste Gas Line N2 구동이나 CDA 표기", "도면 수정", 8.0], ["Waste Gas Line N2 구동이나 CDA 표기", "도면 수정", 8.0], ["HPS부 PE Purge Ball Valve 미 포함이나 P&ID 內 표기", "P&ID 수정", 4.0]], "GAIA-II DUAL": [["P&ID 內 Right Exhaust Ball Valve 표기 누락", "도면 수정", 77.0], ["P&ID 內 N2 Line Speed Controller 수량 오류", "도면 수정", 77.0]], "SWS-I": [["Nozzle Flange와 Male Connector 규격 상이하여 체결 불가", "BOM 및 도면 수정(Fitting Size 변경)", 9.0], ["이류체 HV-500 Tag 중복 표기", "도면 수정", 11.0]], "WET 1000": [["Union Tee BOM 수량 오류(정상: 2EA / 오류: 3EA)", "BOM 수정", 17.0]]}, "작업불량 / 기구작업": {"GAIA-I": [["3-Way Valve 눈관리 Sticker 미부착", "재작업", 25.0], ["Jacket Controller Ch7 Cable 미체결", "", 0.0]], "GAIA-I DUAL": [["Left 열교환기 PCW Line Out단 눈관리 Sticker 오류(현상: PCW-R(R), 정상: PCW-R(L))", "재작업", 25.0], ["Left 열교환기 PCW-S Sticker 방향 오부착", "", 10.0], ["Right Port Top 유동", "", 10.0]], "GAIA-II": [["Heat Cover 장착 누락", "Cover 장착", 10.0], ["BCW Sticker 방향 오부착", "", 10.0], ["열교환기 Bracket Bolt I-Marking 4Point 틀어짐", "수정 작업", 25.0]], "GAIA-P DUAL": [["Left Scraper#1, 3 Sticker 오부착(YV8410, YV8420)", "Sticker 재부착", 10.0], ["비저항 Sensor 부 P&ID Sticker 누락", "재작업", 15.0]], "SWS-I": [["Exhaust Claw Clamp I-marking 누락 11 Point", "재작업", 25.0]], "WET 1000": [["Exhaust부 Clamp I-Marking 11Point 작업 누락", "작업 추가", 25.0]]}, "작업불량 / 마무리작업": {"GAIA-I": [["가압 성적서 Combo Box 부분 Pass 처리 누락", "수정 완료", 19.0]], "GAIA-II": [["LNG 가압 확인 Sticker 작성 누락", "Sticker 작성 완료", 10.0]]}, "작업불량 / 전장작업": {"GAIA-I": [["- Interface bracket 고정불량(흔들림)", "현장조치", 5.0]]}, "전장작업불량 / 오배선": {"GAIA-P DUAL": [["Left Scraper#1,3 YV8410↔YV8420 오배선", "배선 재작업", 10.0]]}}</script>
+
+    <script>
+        // 스크롤 함수
+        function scrollToChart() {
+            document.getElementById('chartSection').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Chart.js 로드 확인
+            if (typeof Chart === 'undefined') {
+                document.getElementById('detailsArea').innerHTML = 
+                    '<div class="detail-box" style="display: block;">❌ Chart.js 로드 실패</div>';
+                return;
+            }
+
+            // JSON 데이터 읽기
+            const barData = JSON.parse(document.getElementById('bar-data').textContent);
+            const detailsDict = JSON.parse(document.getElementById('details-data').textContent);
+
+            const labels = barData.map(r => r['bar_key']);
+            const counts = barData.map(r => r['count']);
+
+            // Canvas 확인
+            const ctx = document.getElementById('barChart').getContext('2d');
+            if (!ctx) {
+                document.getElementById('detailsArea').innerHTML = 
+                    '<div class="detail-box" style="display: block;">❌ 차트 렌더링 실패</div>';
+                return;
+            }
+
+            // 차트 초기화
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '불량 건수',
+                        data: counts,
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        borderSkipped: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    onClick: (evt, el) => {
+                        if (el.length > 0) {
+                            const idx = el[0].index;
+                            const key = labels[idx];
+                            showDetail(key, labels[idx]);
+                        }
+                    },
+                    plugins: {
+                        legend: { 
+                            display: false 
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: 'white',
+                            bodyColor: 'white',
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: function(context) {
+                                    const idx = context.dataIndex;
+                                    const count = context.raw;
+                                    const losstime = barData[idx].losstime;
+                                    let tooltip = `불량 건수: ${count}건`;
+                                    if (losstime > 0) {
+                                        tooltip += `\nLoss Time: ${losstime}분`;
+                                    }
+                                    return tooltip;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { 
+                            ticks: { 
+                                autoSkip: false, 
+                                maxRotation: 45, 
+                                minRotation: 0,
+                                font: { 
+                                    size: 11,
+                                    family: 'Pretendard'
+                                },
+                                color: '#4a5568'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    size: 11,
+                                    family: 'Pretendard'
+                                },
+                                color: '#4a5568'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            function showDetail(key, label, page = 1, perPage = 10) {
+                const area = document.getElementById('detailsArea');
+                if (!(key in detailsDict)) {
+                    area.innerHTML = `<div class="detail-box" style="display: block;">❌ 데이터가 없습니다: ${label}</div>`;
+                    return;
+                }
+
+                const prodMap = detailsDict[key];
+                let prodKeys = Object.keys(prodMap);
+                const start = (page - 1) * perPage;
+                const end = start + perPage;
+                
+                let html = `<div class="detail-box"><strong>📋 상세 정보: ${label}</strong><br><br>`;
+                
+                prodKeys.slice(start, end).forEach(prod => {
+                    html += `<div class="product-title">🔹 ${prod}</div>`;
+                    const plist = prodMap[prod];
+                    if (plist.length === 0) {
+                        html += '<div class="detail-row">데이터 없음</div>';
+                    } else {
+                        plist.forEach(row => {
+                            let detail = `▪️ ${row[0]} / <span style="color:#666;">${row[1]}</span>`;
+                            if (row[2] > 0) {
+                                detail += ` / <span style="color:#e53e3e; font-weight: 600;">${row[2]}분</span>`;
+                            }
+                            html += `<div class="detail-row">${detail}</div>`;
+                        });
+                    }
+                });
+
+                if (prodKeys.length > perPage) {
+                    html += `<div class="pagination">`;
+                    if (page > 1) {
+                        html += `<button onclick="showDetail('${key}', '${label}', ${page - 1})">← 이전</button>`;
+                    }
+                    html += `<span style="margin: 0 10px; color: #666;">페이지 ${page} / ${Math.ceil(prodKeys.length / perPage)}</span>`;
+                    if (end < prodKeys.length) {
+                        html += `<button onclick="showDetail('${key}', '${label}', ${page + 1})">다음 →</button>`;
+                    }
+                    html += `</div>`;
+                }
+                
+                html += '</div>';
+                area.innerHTML = html;
+                document.querySelector('.detail-box').style.display = "block";
+                
+                // 상세 정보로 스크롤
+                document.querySelector('.detail-box').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+
+            // 전역 함수로 등록
+            window.showDetail = showDetail;
+        });
+    </script>
 </body>
 </html>
+        

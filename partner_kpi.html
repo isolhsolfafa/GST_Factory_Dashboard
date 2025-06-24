@@ -3,7 +3,8 @@
     <html lang="ko">
     <head>
         <meta charset="UTF-8">
-        <title>협력사 KPI 대시보드</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>협력사 평가 대시보드 - 2025-06</title>
         
     <style>
         .chart-section { margin: 10px; }
@@ -13,36 +14,55 @@
             background: #f8f9fa; border-radius: 8px; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
             position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-            cursor: pointer;
+            cursor: pointer; transition: transform 0.2s;
         }
+        .kpi-card:hover { transform: translateY(-2px); }
         .emoji { font-size: 2em; }
-        .label { font-size: 1.2em; font-weight: bold; }
+        .label { font-size: 1.2em; font-weight: bold; margin-top: 5px; }
         .tooltip { 
             visibility: hidden; width: 200px; background-color: #555; color: #fff; 
-            text-align: center; border-radius: 6px; padding: 5px; 
+            text-align: center; border-radius: 6px; padding: 8px; 
             position: absolute; z-index: 1; top: 100%; left: 50%; 
             transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; 
+            font-size: 12px; white-space: nowrap;
         }
         .kpi-card:hover .tooltip { visibility: visible; opacity: 1; }
         .defect-table { 
-            width: 100%; max-width: 600px; margin: 10px auto; border-collapse: collapse; 
-            background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            width: 100%; max-width: 800px; margin: 10px auto; border-collapse: collapse; 
+            background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 8px;
+            overflow: hidden;
         }
         .defect-table th, .defect-table td { 
-            border: 1px solid #ddd; padding: 8px; text-align: left; 
+            border: 1px solid #ddd; padding: 12px; text-align: left; 
         }
-        .defect-table th { background-color: #f2f2f2; }
+        .defect-table th { 
+            background-color: #f2f2f2; font-weight: bold; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .defect-table tbody tr:nth-child(even) { background-color: #f9f9f9; }
+        .defect-table tbody tr:hover { background-color: #e8f4f8; }
         .hidden { display: none; }
         .download-btn { 
-            margin: 10px 0; 
-            padding: 5px 10px; 
-            background-color: #4CAF50; 
-            color: white; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer; 
+            margin: 10px 0; padding: 8px 16px; 
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white; border: none; border-radius: 4px; 
+            cursor: pointer; font-weight: bold; transition: all 0.3s;
         }
-        .download-btn:hover { background-color: #45a049; }
+        .download-btn:hover { 
+            background: linear-gradient(135deg, #45a049, #3d8b40);
+            transform: translateY(-1px);
+        }
+        .section-title {
+            text-align: center; margin: 20px 0;
+            font-size: 24px; font-weight: bold;
+            color: #333; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .grade-a { border-left: 4px solid #4CAF50; }
+        .grade-b { border-left: 4px solid #2196F3; }
+        .grade-c { border-left: 4px solid #FF9800; }
+        .grade-d { border-left: 4px solid #f44336; }
+        .grade-e { border-left: 4px solid #9C27B0; }
     </style>
     
         <script>
@@ -64,24 +84,39 @@
 
             function toggleDefectTable(partnerId) {
                 const partner = idToPartnerMap[partnerId];
-                console.log("DEBUG: Toggling table for partner:", partner);
+                console.log("Toggling table for partner:", partner);
                 const table = document.getElementById(`defect-table-${partnerId}`);
-                if (table.classList.contains('hidden')) {
-                    table.classList.remove('hidden');
-                    const details = defectDetails[partner] || [];
-                    console.log("DEBUG: Details for partner:", partner, details);
-                    let tableBody = '';
-                    if (details.length === 0) {
-                        tableBody = '<tr><td colspan="3">불량 데이터 없음</td></tr>';
-                    } else {
-                        details.forEach(item => {
-                            tableBody += `<tr><td>${item.productInfo}</td><td>${item.defect}</td><td>${item.action}</td></tr>`;
-                        });
-                    }
-                    table.querySelector('tbody').innerHTML = tableBody;
-                } else {
+                
+                // 현재 테이블이 이미 표시되어 있으면 숨기기
+                if (!table.classList.contains('hidden')) {
                     table.classList.add('hidden');
+                    return;
                 }
+                
+                // 모든 테이블 숨기기 (다른 테이블이 열려있을 수 있음)
+                document.querySelectorAll('.defect-table').forEach(t => t.classList.add('hidden'));
+                
+                // 선택된 테이블 표시
+                table.classList.remove('hidden');
+                const details = defectDetails[partner] || [];
+                console.log("Details for partner:", partner, details);
+                
+                let tableBody = '';
+                if (details.length === 0) {
+                    tableBody = '<tr><td colspan="3" style="text-align: center; color: #666;">불량 데이터 없음</td></tr>';
+                } else {
+                    details.forEach((item, index) => {
+                        tableBody += `<tr>
+                            <td>${item.productInfo}</td>
+                            <td>${item.defect}</td>
+                            <td>${item.action}</td>
+                        </tr>`;
+                    });
+                }
+                table.querySelector('tbody').innerHTML = tableBody;
+                
+                // 테이블로 스크롤
+                table.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
 
             function downloadCSV(partnerId) {
@@ -125,37 +160,44 @@
         </script>
     </head>
     <body>
+        <div style="text-align: center; margin: 20px 0;">
+            <h1 style="color: #333; margin-bottom: 10px;">🏭 협력사 평가 대시보드</h1>
+            <p style="color: #666; font-size: 16px;">기준월: 2025-06</p>
+        </div>
         <div class="chart-section">
-            <h2 style="text-align: center;">🏆 기구 협력사 KPI 지수</h2>
+            <h2 class="section-title">🔧 기구 협력사 평가 지수</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card" onclick="toggleDefectTable('bat')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('bat')">
                     <div class="emoji">🥇</div>
                     <div class="label">BAT</div>
-                    <div class="tooltip" id="tooltip-bat">
-                        평가점수: 8.2 / A등급<br>
+                    <div class="tooltip">
+                        평가점수: 8.2점 (A등급)<br>
                         불량건수: 8건<br>
-                        누락비율: 0.4%
+                        누락비율: 0.4%<br>
+                        <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card" onclick="toggleDefectTable('tmsm')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('tmsm')">
                     <div class="emoji">🥈</div>
                     <div class="label">TMS(M)</div>
-                    <div class="tooltip" id="tooltip-tmsm">
-                        평가점수: 8.2 / A등급<br>
+                    <div class="tooltip">
+                        평가점수: 8.2점 (A등급)<br>
                         불량건수: 6건<br>
-                        누락비율: 0.1%
+                        누락비율: 0.1%<br>
+                        <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card" onclick="toggleDefectTable('fni')">
+                <div class="kpi-card grade-b" onclick="toggleDefectTable('fni')">
                     <div class="emoji">🥉</div>
                     <div class="label">FNI</div>
-                    <div class="tooltip" id="tooltip-fni">
-                        평가점수: 5.8 / B등급<br>
+                    <div class="tooltip">
+                        평가점수: 5.8점 (B등급)<br>
                         불량건수: 13건<br>
-                        누락비율: 6.3%
+                        누락비율: 6.3%<br>
+                        <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
@@ -195,36 +237,39 @@
             </table>
         </div>
         <div class="chart-section">
-            <h2 style="text-align: center;">🏆 전장 협력사 KPI 지수</h2>
+            <h2 class="section-title">⚡ 전장 협력사 평가 지수</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card" onclick="toggleDefectTable('cna')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('cna')">
                     <div class="emoji">🥇</div>
                     <div class="label">C&A</div>
-                    <div class="tooltip" id="tooltip-cna">
-                        평가점수: 10.0 / A등급<br>
+                    <div class="tooltip">
+                        평가점수: 10.0점 (A등급)<br>
                         불량건수: 0건<br>
-                        누락비율: 0.1%
+                        누락비율: 0.1%<br>
+                        <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card" onclick="toggleDefectTable('pns')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('pns')">
                     <div class="emoji">🥈</div>
                     <div class="label">P&S</div>
-                    <div class="tooltip" id="tooltip-pns">
-                        평가점수: 10.0 / A등급<br>
+                    <div class="tooltip">
+                        평가점수: 10.0점 (A등급)<br>
                         불량건수: 0건<br>
-                        누락비율: 0.7%
+                        누락비율: 0.7%<br>
+                        <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card" onclick="toggleDefectTable('tmse')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('tmse')">
                     <div class="emoji">🥉</div>
                     <div class="label">TMS(E)</div>
-                    <div class="tooltip" id="tooltip-tmse">
-                        평가점수: 8.2 / A등급<br>
+                    <div class="tooltip">
+                        평가점수: 8.2점 (A등급)<br>
                         불량건수: 2건<br>
-                        누락비율: 0.0%
+                        누락비율: 0.0%<br>
+                        <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
@@ -262,6 +307,10 @@
                 </thead>
                 <tbody></tbody>
             </table>
+        </div>
+        <div style="text-align: center; margin: 40px 0; color: #666; font-size: 14px;">
+            <p>📊 협력사별 평가는 불량건수(70%)와 누락비율(30%)을 가중평균하여 산출됩니다.</p>
+            <p>🏆 등급: A(우수) → B(양호) → C(보통) → D(개선필요) → E(불량)</p>
         </div>
     </body>
     </html>

@@ -225,6 +225,17 @@
             <div class="card-container">
                 
             <div class="defect-card">
+                <h3>🏭 DRAGON AB DUAL</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">1건</span></p>
+                    <p>주요 분류: <span class="defect-categories">기구작업불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
                 <h3>🏭 DRAGON AB SINGLE</h3>
                 <div class="defect-info">
                     <p>총 불량: <span class="defect-count">1건</span></p>
@@ -238,8 +249,8 @@
             <div class="defect-card">
                 <h3>🏭 GAIA-I</h3>
                 <div class="defect-info">
-                    <p>총 불량: <span class="defect-count">9건</span></p>
-                    <p>주요 분류: <span class="defect-categories">설계불량, 기구작업불량, 전장작업불량</span></p>
+                    <p>총 불량: <span class="defect-count">15건</span></p>
+                    <p>주요 분류: <span class="defect-categories">기구작업불량, 설계불량, 전장작업불량</span></p>
                 </div>
                 <button class="detail-btn" onclick="scrollToChart()">
                     📊 상세 분석 보기
@@ -249,8 +260,19 @@
             <div class="defect-card">
                 <h3>🏭 GAIA-I DUAL</h3>
                 <div class="defect-info">
-                    <p>총 불량: <span class="defect-count">8건</span></p>
+                    <p>총 불량: <span class="defect-count">13건</span></p>
                     <p>주요 분류: <span class="defect-categories">기구작업불량, 전장작업불량, 설계불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 GAIA-II</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">1건</span></p>
+                    <p>주요 분류: <span class="defect-categories">기구작업불량</span></p>
                 </div>
                 <button class="detail-btn" onclick="scrollToChart()">
                     📊 상세 분석 보기
@@ -260,7 +282,7 @@
             <div class="defect-card">
                 <h3>🏭 GAIA-II DUAL</h3>
                 <div class="defect-info">
-                    <p>총 불량: <span class="defect-count">6건</span></p>
+                    <p>총 불량: <span class="defect-count">7건</span></p>
                     <p>주요 분류: <span class="defect-categories">기구작업불량, 설계불량</span></p>
                 </div>
                 <button class="detail-btn" onclick="scrollToChart()">
@@ -273,6 +295,17 @@
                 <div class="defect-info">
                     <p>총 불량: <span class="defect-count">1건</span></p>
                     <p>주요 분류: <span class="defect-categories">부품불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 GAIA-P DUAL</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">2건</span></p>
+                    <p>주요 분류: <span class="defect-categories">기구작업불량</span></p>
                 </div>
                 <button class="detail-btn" onclick="scrollToChart()">
                     📊 상세 분석 보기
@@ -293,8 +326,8 @@
     </div>
 
     <!-- 데이터 스크립트 -->
-    <script id="bar-data" type="application/json">[{"bar_key": "기구작업불량 / Leak", "count": 5, "losstime": 32.0}, {"bar_key": "기구작업불량 / 오조립", "count": 6, "losstime": 0.0}, {"bar_key": "부품불량 / Leak", "count": 1, "losstime": 0.0}, {"bar_key": "부품불량 / 동작불량", "count": 2, "losstime": 180.0}, {"bar_key": "설계불량 / 설계불량", "count": 1, "losstime": 180.0}, {"bar_key": "설계불량 / 설계오류", "count": 6, "losstime": 220.0}, {"bar_key": "작업불량 / 기구작업", "count": 1, "losstime": 10.0}, {"bar_key": "전장작업불량 / 오배선", "count": 1, "losstime": 20.0}, {"bar_key": "전장작업불량 / 파손", "count": 2, "losstime": 22.0}]</script>
-    <script id="details-data" type="application/json">{"기구작업불량 / Leak": {"GAIA-I": [["BELLOWS INLET PIPE N2 PURGE 연결 NUT 미체결 / BELLOWS INLET PIPE N2 PURGE 연결 NUT 미체결 (N7)", "재체결", 2.0]], "GAIA-I DUAL": [["CDA Line BULKHEAD UNION 하단 NUT LEAK / BULKHEAD UNION 하단 NUT LEAK (체결상태이상무)", "재체결", 7.0], ["Wet 노즐 Teflon부 리크", "재작업", 10.0], ["Wet 노즐 테플론부 리크", "재작업", 0.0], ["DRAIN NUT 내부 O-RING 씹힘 / DRAIN 내부 O-RING 씹힘으로 인한 LEAK", "재작업", 13.0]]}, "기구작업불량 / 오조립": {"GAIA-I": [["리액터 클로 클램프 미완체결", "재작업", 0.0], ["H/J 케이블 묶음 장력 발생", "재작업", 0.0]], "GAIA-II DUAL": [["O2, LNG MFC 브라켓 고정 볼트 아이마킹 누락", "재작업", 0.0], ["MV500 메달 오류", "재작업", 0.0], ["열교환기 PCW-R 방향 스티커 역방향 부착", "재작업", 0.0], ["순환 라인 튜브 꺾임", "재작업", 0.0]]}, "부품불량 / Leak": {"DRAGON AB SINGLE": [["N2 라인 스피드 컨트롤러 리크", "파트 교체", 0.0]]}, "부품불량 / 동작불량": {"GAIA-I DUAL": [["Right Jacket Controller Ch12 ErH 발생", "", 60.0]], "GAIA-P": [["MMS R상 통전 불량", "대체품 교체", 120.0]]}, "설계불량 / 설계불량": {"GAIA-II DUAL": [["Left, Right Cir' Pump Nut 미변경(현물: Union Nut)", "도면 변경 및 재작업", 180.0]]}, "설계불량 / 설계오류": {"GAIA-I": [["Heating Jacket 1-6CH 중복 표기 (정상: 1-11CH)", "도면 수정", 11.0], ["Inlet부 조립도와 P&ID 상이", "P&ID 수정", 13.0], ["CDA Line 다연조 Sol, Scraper Tag Number 상이", "P&ID 수정", 13.0], ["P&ID 內 Drain Line Ball Valve 표기 누락", "P&ID 수정", 13.0]], "GAIA-I DUAL": [["PCW-S Line 표기 오류(정상: W.901 / 오류: HEX-500)", "도면 수정", 4.0]], "GAIA-II DUAL": [["Pump Out Line Nut 적용 오류(정상: Pump Nut / 오류: Union Nut)", "도면 및 BOM 수정", 166.0]]}, "작업불량 / 기구작업": {"GAIA-I": [["BCW Flow 방향 Sticker 미부착", "", 10.0]]}, "전장작업불량 / 오배선": {"GAIA-I": [["Scraper#4 Position Sensor 미점등, TBDI0/1 1/6 → 3/6 오배선으로 인한 감지불가", "", 20.0]]}, "전장작업불량 / 파손": {"GAIA-I DUAL": [["LEVEL SENSOR NUT 체결 LEAK / LEVEL SENSOR NUT 체결부 미세LEAK", "재작업", 14.0], ["LEVEL SENSOR NUT 체결 LEAK / LEVEL SENSOR NUT 체결 불량", "재작업", 8.0]]}}</script>
+    <script id="bar-data" type="application/json">[{"bar_key": "기구작업불량 / Leak", "count": 11, "losstime": 223.0}, {"bar_key": "기구작업불량 / 부품누락", "count": 2, "losstime": 14.0}, {"bar_key": "기구작업불량 / 사양불일치", "count": 1, "losstime": 18.0}, {"bar_key": "기구작업불량 / 오조립", "count": 8, "losstime": 10.0}, {"bar_key": "부품불량 / Leak", "count": 1, "losstime": 0.0}, {"bar_key": "부품불량 / 동작불량", "count": 2, "losstime": 180.0}, {"bar_key": "설계불량 / 설계불량", "count": 2, "losstime": 360.0}, {"bar_key": "설계불량 / 설계오류", "count": 8, "losstime": 372.0}, {"bar_key": "작업불량 / 기구작업", "count": 2, "losstime": 30.0}, {"bar_key": "전장작업불량 / 사양불일치", "count": 1, "losstime": 13.0}, {"bar_key": "전장작업불량 / 오배선", "count": 1, "losstime": 20.0}, {"bar_key": "전장작업불량 / 파손", "count": 2, "losstime": 22.0}]</script>
+    <script id="details-data" type="application/json">{"기구작업불량 / Leak": {"DRAGON AB DUAL": [["MALE ELBOW [40-8-8-K-PG] Fitting Nut LEAK(TEFLON)", "Leak", 8.0]], "GAIA-I": [["BELLOWS INLET PIPE N2 PURGE 연결 NUT 미체결 / BELLOWS INLET PIPE N2 PURGE 연결 NUT 미체결 (N7)", "재체결", 2.0], ["CDA Line Male Banjo 우레탄 튜브 삽입 불량 /CDA, N2(이류체) MALE BANJO 우레탄 튜브(C.820) 삽입불량", "재체결", 2.0], ["CIR LINE MALE ELBOW NUT부 LEAK", "LEAK", 8.0], ["MALE ELBOW TEFLON부 LEAK", "LEAK", 10.0]], "GAIA-I DUAL": [["DRAIN NUT 내부 O-RING 씹힘 / DRAIN 내부 O-RING 씹힘으로 인한 LEAK", "재작업", 13.0], ["Wet 노즐 Teflon부 리크", "재작업", 10.0], ["Wet 노즐 테플론부 리크", "재작업", 0.0], ["CDA Line BULKHEAD UNION 하단 NUT LEAK / BULKHEAD UNION 하단 NUT LEAK (체결상태이상무)", "재체결", 7.0]], "GAIA-II": [["BCW LINE REGULATOR BODY 체결부 LEAK / BCW LINE REGULATOR 내부 O-RING파손으로 인한 LEAK", "재조립", 18.0]], "GAIA-P DUAL": [["O-RING 손상으로 인한 Leak / PCW Line 가압중 Torch N2 Line으로 Leak 확인", "재조립", 145.0]]}, "기구작업불량 / 부품누락": {"GAIA-I": [["Normal Open 메달 및 태그 누락", "눈관리", 8.0]], "GAIA-P DUAL": [["PRESSURE SENSOR 스티커 부착 누락(PD700, PD700A)", "눈관리", 6.0]]}, "기구작업불량 / 사양불일치": {"GAIA-I DUAL": [["HJ CONTROLLER BRACKET 휨 현상", "재작업", 18.0]]}, "기구작업불량 / 오조립": {"GAIA-I": [["리액터 클로 클램프 미완체결", "재작업", 0.0], ["H/J 케이블 묶음 장력 발생", "재작업", 0.0], ["다연조 Solenoid Valve 브라켓 고정 Bolt I-marking 누락", "눈관리", 2.0]], "GAIA-I DUAL": [["HEAT EXCHANGE PCW COLD IN, OUT 스티커 오부", "눈관리", 8.0]], "GAIA-II DUAL": [["O2, LNG MFC 브라켓 고정 볼트 아이마킹 누락", "재작업", 0.0], ["MV500 메달 오류", "재작업", 0.0], ["열교환기 PCW-R 방향 스티커 역방향 부착", "재작업", 0.0], ["순환 라인 튜브 꺾임", "재작업", 0.0]]}, "부품불량 / Leak": {"DRAGON AB SINGLE": [["N2 라인 스피드 컨트롤러 리크", "파트 교체", 0.0]]}, "부품불량 / 동작불량": {"GAIA-I DUAL": [["Right Jacket Controller Ch12 ErH 발생", "", 60.0]], "GAIA-P": [["MMS R상 통전 불량", "대체품 교체", 120.0]]}, "설계불량 / 설계불량": {"GAIA-II DUAL": [["Left, Right Cir' Pump Nut 미변경(현물: Union Nut)", "도면 변경 및 재작업", 180.0], ["Left, Right Cir' Pump Nut 미변경(현물: Union Nut)", "도면 변경 및 재작업", 180.0]]}, "설계불량 / 설계오류": {"GAIA-I": [["Heating Jacket 1-6CH 중복 표기 (정상: 1-11CH)", "도면 수정", 11.0], ["Inlet부 조립도와 P&ID 상이", "P&ID 수정", 13.0], ["CDA Line 다연조 Sol, Scraper Tag Number 상이", "P&ID 수정", 13.0], ["P&ID 內 Drain Line Ball Valve 표기 누락", "P&ID 수정", 13.0], ["조립도 및 실물 HPS Ch9 존재하나, 채널링 도면 內 Ch9 정보 누락", "도면 수정", 74.0]], "GAIA-I DUAL": [["PCW-S Line 표기 오류(정상: W.901 / 오류: HEX-500)", "도면 수정", 4.0], ["CDA 다연조 Sol Tag 오류(정상: SV530A / 오류: SV510A)", "P&ID 수정", 78.0]], "GAIA-II DUAL": [["Pump Out Line Nut 적용 오류(정상: Pump Nut / 오류: Union Nut)", "도면 및 BOM 수정", 166.0]]}, "작업불량 / 기구작업": {"GAIA-I": [["BCW Flow 방향 Sticker 미부착", "", 10.0]], "GAIA-I DUAL": [["Right 열교환기 PCW-S ↔ PCW-R Flexible Tube 오조립", "", 20.0]]}, "전장작업불량 / 사양불일치": {"GAIA-I DUAL": [["TOWER LAMP 경광등 순서 오류 (실물 빨초노 - 도면 빨노초)", "파트교체", 13.0]]}, "전장작업불량 / 오배선": {"GAIA-I": [["Scraper#4 Position Sensor 미점등, TBDI0/1 1/6 → 3/6 오배선으로 인한 감지불가", "", 20.0]]}, "전장작업불량 / 파손": {"GAIA-I DUAL": [["LEVEL SENSOR NUT 체결 LEAK / LEVEL SENSOR NUT 체결부 미세LEAK", "재작업", 14.0], ["LEVEL SENSOR NUT 체결 LEAK / LEVEL SENSOR NUT 체결 불량", "재작업", 8.0]]}}</script>
 
     <script>
         // 스크롤 함수

@@ -346,8 +346,19 @@
             <h2 class="section-title">🔧 기구 협력사 평가 지수</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card grade-c" onclick="toggleDefectTable('bat')">
+                <div class="kpi-card grade-c" onclick="toggleDefectTable('tmsm')">
                     <div class="emoji">🥇</div>
+                    <div class="label">TMS(M)</div>
+                    <div class="tooltip">
+                        평가점수: 4.8점 (C등급)<br>
+                        불량건수: 16건<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmsm')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
+                        <small>클릭하여 상세보기</small>
+                    </div>
+                </div>
+        
+                <div class="kpi-card grade-c" onclick="toggleDefectTable('bat')">
+                    <div class="emoji">🥈</div>
                     <div class="label">BAT</div>
                     <div class="tooltip">
                         평가점수: 4.8점 (C등급)<br>
@@ -358,23 +369,12 @@
                 </div>
         
                 <div class="kpi-card grade-c" onclick="toggleDefectTable('fni')">
-                    <div class="emoji">🥈</div>
+                    <div class="emoji">🥉</div>
                     <div class="label">FNI</div>
                     <div class="tooltip">
                         평가점수: 4.8점 (C등급)<br>
                         불량건수: 22건<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('fni')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
-                        <small>클릭하여 상세보기</small>
-                    </div>
-                </div>
-        
-                <div class="kpi-card grade-c" onclick="toggleDefectTable('tmsm')">
-                    <div class="emoji">🥉</div>
-                    <div class="label">TMS(M)</div>
-                    <div class="tooltip">
-                        평가점수: 4.8점 (C등급)<br>
-                        불량건수: 16건<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmsm')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>

@@ -308,12 +308,12 @@
                             </tr>
                             <tr>
                                 <td><strong>불량률</strong></td>
-                                <td>(월간 불량 건수 ÷ 월간 검사 건수) ×100</td>
+                                <td>(월간 불량 건수 ÷ 월간 생산대수) ×100</td>
                                 <td><strong style="color: #d32f2f;">70%</strong></td>
                                 <td>
                                     <div class="tooltip-grade-detail">
                                         <strong>기구:</strong> A(&lt;6.0%) B(6.0~16.5%) C(16.5~27.6%) D(≥27.6%)<br>
-                                        <strong>전장:</strong> A(&lt;1.0%) B(1.0~3.6%) C(3.6~6.2%) D(≥6.2%)
+                                        <strong>전장:</strong> A(&lt;1.0%) B(1.0~3.6%) C(3.6~6.2%) D(6.2~7.5%) E(≥7.5%)
                                     </div>
                                 </td>
                             </tr>
@@ -331,11 +331,38 @@
                     </div>
                     
                     <div class="tooltip-section">
+                        <h4>🏭 생산대수 카운팅 기준</h4>
+                        <p><strong>기본 원칙:</strong> Chamber 수 기준 카운트</p>
+                        <table class="tooltip-table">
+                            <tr>
+                                <th>구분</th>
+                                <th>카운팅 방식</th>
+                                <th>예시</th>
+                            </tr>
+                            <tr>
+                                <td><strong>일반 제품</strong></td>
+                                <td>1 Chamber = 1대</td>
+                                <td>GAIA-I = 1대</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DUAL 제품</strong></td>
+                                <td>2 Chamber = 2대</td>
+                                <td>GAIA-I DUAL = 2대</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TMS(M)</strong></td>
+                                <td>직접 작업 + 반제품 기여</td>
+                                <td>DRAGON 직접작업 + 모든 제품 반제품 도킹</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="tooltip-section">
                         <h4>📈 최종 평가점수 계산</h4>
                         <p><strong>최종점수 = (불량률 점수 × 70%) + (NaN 비율 점수 × 30%)</strong></p>
                         <p style="color: #666; font-size: 12px;">
                             • 기구/전장 협력사별로 분리하여 순위 산정<br>
-                            • 동점시 불량건수가 적은 협력사가 상위 순위
+                            • 동점시 불량률이 낮은 협력사가 상위 순위
                         </p>
                     </div>
                 </div>
@@ -351,7 +378,9 @@
                     <div class="label">TMS(M)</div>
                     <div class="tooltip">
                         평가점수: 8.2점 (B등급)<br>
+                        불량률: 12.39%<br>
                         불량건수: 27건<br>
+                        생산대수: 218대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmsm')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
@@ -362,7 +391,9 @@
                     <div class="label">BAT</div>
                     <div class="tooltip">
                         평가점수: 8.2점 (B등급)<br>
+                        불량률: 16.39%<br>
                         불량건수: 20건<br>
+                        생산대수: 122대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('bat')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.2%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
@@ -373,7 +404,9 @@
                     <div class="label">FNI</div>
                     <div class="tooltip">
                         평가점수: 4.8점 (C등급)<br>
+                        불량률: 27.62%<br>
                         불량건수: 29건<br>
+                        생산대수: 105대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('fni')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
@@ -423,7 +456,9 @@
                     <div class="label">C&A</div>
                     <div class="tooltip">
                         평가점수: 8.2점 (B등급)<br>
+                        불량률: 2.67%<br>
                         불량건수: 2건<br>
+                        생산대수: 75대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('cna')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
@@ -434,7 +469,9 @@
                     <div class="label">P&S</div>
                     <div class="tooltip">
                         평가점수: 6.8점 (B등급)<br>
+                        불량률: 1.75%<br>
                         불량건수: 1건<br>
+                        생산대수: 57대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('pns')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">3.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
@@ -445,7 +482,9 @@
                     <div class="label">TMS(E)</div>
                     <div class="tooltip">
                         평가점수: 6.5점 (B등급)<br>
+                        불량률: 3.88%<br>
                         불량건수: 4건<br>
+                        생산대수: 103대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmse')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>협력사 평가 대시보드 - 2025-07</title>
+        <title>협력사 평가 대시보드 - 2025-08</title>
         
     <style>
         .chart-section { margin: 10px; }
@@ -153,8 +153,8 @@
     </style>
     
         <script>
-            const defectDetails = {"TMS(E)": [{"productInfo": "GBWS-5782/GAIA-I DUAL", "defect": "LEVEL SENSOR NUT 체결 LEAK / LEVEL SENSOR NUT 체결부 미세LEAK", "action": "재작업", "occurDate": "2025-07-01"}, {"productInfo": "GBWS-5753/GAIA-I", "defect": "Scraper#4 Position Sensor 미점등, TBDI0/1 1/6 → 3/6 오배선으로 인한 감지불가", "action": "", "occurDate": "2025-07-03"}, {"productInfo": "GBWS-5788/GAIA-I DUAL", "defect": "TOWER LAMP 경광등 순서 오류 (실물 빨초노 - 도면 빨노초)", "action": "파트교체", "occurDate": "2025-07-07"}, {"productInfo": "WS-0115/WET 1000", "defect": "LEVEL SENSOR P.P NUT 체결불량 / LEVEL SENSOR P.P NUT 체결불량으로 인한 LEAK", "action": "재체결", "occurDate": "2025-07-23"}], "BAT": [{"productInfo": "GBWS-5780/GAIA-I DUAL", "defect": "DRAIN NUT 내부 O-RING 씹힘 / DRAIN 내부 O-RING 씹힘으로 인한 LEAK", "action": "재작업", "occurDate": "2025-07-01"}, {"productInfo": "GBWS-5746/GAIA-II DUAL", "defect": "O2, LNG MFC 브라켓 고정 볼트 아이마킹 누락", "action": "재작업", "occurDate": "2025-07-01"}, {"productInfo": "GBWS-5746/GAIA-II DUAL", "defect": "MV500 메달 오류", "action": "재작업", "occurDate": "2025-07-01"}, {"productInfo": "GBWS-5745/GAIA-II DUAL", "defect": "열교환기 PCW-R 방향 스티커 역방향 부착", "action": "재작업", "occurDate": "2025-07-01"}, {"productInfo": "GBWS-5780/GAIA-I DUAL", "defect": "Wet 노즐 테플론부 리크", "action": "재작업", "occurDate": "2025-07-02"}, {"productInfo": "GBWS-5787/GAIA-I", "defect": "BELLOWS INLET PIPE N2 PURGE 연결 NUT 미체결 / BELLOWS INLET PIPE N2 PURGE 연결 NUT 미체결 (N7)", "action": "재체결", "occurDate": "2025-07-03"}, {"productInfo": "GBWS-5727/GAIA-I", "defect": "BCW Flow 방향 Sticker 미부착", "action": "", "occurDate": "2025-07-04"}, {"productInfo": "GBWS-5796/GAIA-I", "defect": "다연조 Solenoid Valve 브라켓 고정 Bolt I-marking 누락", "action": "눈관리", "occurDate": "2025-07-07"}, {"productInfo": "GBWS-5796/GAIA-I", "defect": "Normal Open 메달 및 태그 누락", "action": "눈관리", "occurDate": "2025-07-07"}, {"productInfo": "GBWS-5759/GAIA-II", "defect": "BCW LINE REGULATOR BODY 체결부 LEAK / BCW LINE REGULATOR 내부 O-RING파손으로 인한 LEAK", "action": "재조립", "occurDate": "2025-07-08"}, {"productInfo": "GBWS-5793/GAIA-I DUAL", "defect": "CDA Line Regulator IN, OUT 스티커 부착 누락", "action": "눈관리", "occurDate": "2025-07-10"}, {"productInfo": "GBWS-5792/GAIA-I DUAL", "defect": "CDA Line Regulator IN, OUT 스티커 부착 누락", "action": "눈관리", "occurDate": "2025-07-10"}, {"productInfo": "GBWS-5801/GAIA-I DUAL", "defect": "GN2 REDUUCER DOUBLE Y UNION (06) LEAK", "action": "파트교체", "occurDate": "2025-07-11"}, {"productInfo": "GPWS-0568/GAIA-P DUAL", "defect": "PCW Line P&ID 스티커 미부착", "action": "식별 조치", "occurDate": "2025-07-14"}, {"productInfo": "GBWS-5858/GAIA-I", "defect": "DRAIN LINE PUMP NUT LEAK / DRAIN LINE PUMP NUT부 체결불량으로 인한 LEAK", "action": "재체결", "occurDate": "2025-07-21"}, {"productInfo": "GBWS-5858/GAIA-I", "defect": "3WAY ACTUATOR VALVE I-marking 누락 / 3WAY ACTUATOR VALVE 브라켓 고정 볼트 I-marking 누락", "action": "식별 조치", "occurDate": "2025-07-22"}, {"productInfo": "GBWS-5858/GAIA-I", "defect": "KEY OPERATION VALVE KEY 누락 / PCW, BCW LINE KEY OPERATION VALVE KEY 누락", "action": "식별 조치", "occurDate": "2025-07-22"}, {"productInfo": "GBWS-5857/GAIA-I", "defect": "KEY OPERATION VALVE KEY 누락 / PCW, BCW LINE KEY OPERATION VALVE KEY 누락", "action": "식별 조치", "occurDate": "2025-07-22"}, {"productInfo": "GBWS-5886/GAIA-I DUAL", "defect": "BCW LINE P&ID 스티커 누락 / BCW LINE MAIN V/V 상단 P&ID 스티커 누락", "action": "식별 조치", "occurDate": "2025-07-28"}, {"productInfo": "GBWS-5876/GAIA-I", "defect": "UNION ELBOW I-marking 누락 / SCREW SCRAPER N2 PURGE UNION ELBOW I-marking 누락", "action": "식별 조치", "occurDate": "2025-07-29"}], "P&S": [{"productInfo": "GBWS-5780/GAIA-I DUAL", "defect": "LEVEL SENSOR NUT 체결 LEAK / LEVEL SENSOR NUT 체결 불량", "action": "재작업", "occurDate": "2025-07-01"}], "FNI": [{"productInfo": "GBWS-5749/GAIA-I", "defect": "리액터 클로 클램프 미완체결", "action": "재작업", "occurDate": "2025-07-01"}, {"productInfo": "GBWS-5749/GAIA-I", "defect": "H/J 케이블 묶음 장력 발생", "action": "재작업", "occurDate": "2025-07-01"}, {"productInfo": "GBWS-5807/GAIA-I DUAL", "defect": "CDA Line BULKHEAD UNION 하단 NUT LEAK / BULKHEAD UNION 하단 NUT LEAK (체결상태이상무)", "action": "재체결", "occurDate": "2025-07-04"}, {"productInfo": "GBWS-5808/GAIA-I", "defect": "CDA Line Male Banjo 우레탄 튜브 삽입 불량 /CDA, N2(이류체) MALE BANJO 우레탄 튜브(C.820) 삽입불량", "action": "재체결", "occurDate": "2025-07-07"}, {"productInfo": "GBWS-5807/GAIA-I DUAL", "defect": "Right 열교환기 PCW-S ↔ PCW-R Flexible Tube 오조립", "action": "", "occurDate": "2025-07-08"}, {"productInfo": "GBWS-5795/GAIA-I DUAL", "defect": "HJ CONTROLLER BRACKET 휨 현상", "action": "재작업", "occurDate": "2025-07-08"}, {"productInfo": "GPWS-0569/GAIA-P DUAL", "defect": "PRESSURE SENSOR 스티커 부착 누락(PD700, PD700A)", "action": "눈관리", "occurDate": "2025-07-08"}, {"productInfo": "GBWS-5795/GAIA-I DUAL", "defect": "CDA Tube, C.812A 원복 미 실시", "action": "재작업", "occurDate": "2025-07-09"}, {"productInfo": "GBWS-5813/GAIA-I", "defect": "PCW SUS TUBE 클리닝 미진행", "action": "눈관리", "occurDate": "2025-07-11"}, {"productInfo": "GBWS-5817/GAIA-I DUAL", "defect": "CDA Line Solenoid Valve 역방향 조립", "action": "재작업", "occurDate": "2025-07-14"}, {"productInfo": "GBWS-5791/GAIA-II DUAL", "defect": "WATER TANK FRAME BOLT 체결 불량 / WATER TANK FRAME BOLT SPRING WASHER 체결 불량", "action": "재체결", "occurDate": "2025-07-15"}, {"productInfo": "GBWS-5790/GAIA-II DUAL", "defect": "REGULATOR P&ID 스티커 미부착 / N2 Line Regulator 스티커 미부착", "action": "식별 조치", "occurDate": "2025-07-15"}, {"productInfo": "GBWS-5790/GAIA-II DUAL", "defect": "REGULATOR P&ID 스티커 미부착 / N2 Line Regulator 스티커 미부착", "action": "식별 조치", "occurDate": "2025-07-15"}, {"productInfo": "GBWS-5823/GAIA-I DUAL", "defect": "Speed Controller 역방향 조립 / SpeedController N.SCR110 역방향 조립", "action": "재작업", "occurDate": "2025-07-16"}, {"productInfo": "GBWS-5806/GAIA-II DUAL", "defect": "KEY OPERATION VALVE (In단) Fitting NUT Leak / KEY OPERATION VALVE (In단) Fitting NUT Leak", "action": "재체결", "occurDate": "2025-07-16"}, {"productInfo": "GBWS-5806/GAIA-II DUAL", "defect": "REDUCING UNION TEE (12,IN단) Fitting Nut Leak / REDUCING UNION TEE (12-12-04) 12 In단 Leak", "action": "재체결", "occurDate": "2025-07-16"}, {"productInfo": "GBWS-5839/GAIA-I DUAL", "defect": "DRAIN NUT 내부 O-RING 씹힘 / DRAIN NUT 내부 O-RING 씹힘으로 인한 LEAK", "action": "재작업", "occurDate": "2025-07-17"}, {"productInfo": "GBWS-5838/GAIA-I DUAL", "defect": "2WAY ACTUATOY VALVE 눈관리 교차 부착 (V200A↔V210A)", "action": "식별조치", "occurDate": "2025-07-17"}, {"productInfo": "GBWS-5836/GAIA-I DUAL", "defect": "BUNNER GAS NOZZLE COVER 휨으로 인한 IGNITION 불가", "action": "파트교체", "occurDate": "2025-07-17"}, {"productInfo": "GBWS-5806/GAIA-II DUAL", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부)", "action": "재체결", "occurDate": "2025-07-17"}, {"productInfo": "GBWS-5849/GAIA-I", "defect": "PUMP NUT WATER LEAK / DRAIN LINE PUMP NUT 체결불량으로 인한 WATER LEAK", "action": "재체결", "occurDate": "2025-07-21"}, {"productInfo": "GBWS-5845/GAIA-I DUAL", "defect": "O2 LINE P&ID 스티커 누락 / O2 LINE MAIN V/V 상단 P&ID 스티커 누락", "action": "식별 조치", "occurDate": "2025-07-22"}, {"productInfo": "GBWS-5855/GAIA-I", "defect": "TUBE 가열하여 연결하는 과정에서 녹은 부분이 HOLE에 막혀 정상 작동되지않음", "action": "재작업", "occurDate": "2025-07-23"}, {"productInfo": "GBWS-5826/GAIA-II", "defect": "Speed Controller Leak (Body) / AIR MANIFOLD N8 SPEED CONTROLLER FITTING 과체결로 인한 BODY LEAK", "action": "파트교체", "occurDate": "2025-07-23"}, {"productInfo": "GBWS-5825/GAIA-II", "defect": "O-Ring 씹힘 / REACTOR 125A CLAMP 내부 O-RING 씹힘으로 인한 LEAK", "action": "재조립", "occurDate": "2025-07-23"}, {"productInfo": "GBWS-5828/GAIA-II", "defect": "LNG Line REDUCING UNION TEE Fitting Nut Leak/LNG Line REDUCING UNION TEE 04-04-06 06(부) LEAK", "action": "재체결", "occurDate": "2025-07-24"}, {"productInfo": "GBWS-5827/GAIA-II", "defect": "Speed Controller Leak (Body) / AIR MANIFOLD N11 SPEED CONTROLLER FITTING 과체결로 인한 BODY LEAK", "action": "파트교체", "occurDate": "2025-07-24"}, {"productInfo": "GBWS-5869/GAIA-I DUAL", "defect": "TUBE 가열하여 연결하는 과정에서 녹은 부분이 HOLE에 막혀 정상 작동되지않음", "action": "재작업", "occurDate": "2025-07-28"}, {"productInfo": "GBWS-5879/GAIA-I", "defect": "3번 Inlet 부 Toggle Clamp 고정핀 작업 누락", "action": "재작업", "occurDate": "2025-07-29"}, {"productInfo": "GBWS-5891/GAIA-II", "defect": "INLET #2 H/J CONNECTOR 미체결", "action": "재체결", "occurDate": "2025-07-30"}], "TMS(M)": [{"productInfo": "GBWS-5745/GAIA-II DUAL", "defect": "순환 라인 튜브 꺾임", "action": "재작업", "occurDate": "2025-07-01"}, {"productInfo": "GBWS-5781/GAIA-I DUAL", "defect": "Wet 노즐 Teflon부 리크", "action": "재작업", "occurDate": "2025-07-02"}, {"productInfo": "DBW-3669/DRAGON AB DUAL", "defect": "MALE ELBOW [40-8-8-K-PG] Fitting Nut LEAK(TEFLON)", "action": "Leak", "occurDate": "2025-07-07"}, {"productInfo": "GPWS-0569/GAIA-P DUAL", "defect": "O-RING 손상으로 인한 Leak / PCW Line 가압중 Torch N2 Line으로 Leak 확인", "action": "재조립", "occurDate": "2025-07-07"}, {"productInfo": "GBWS-5799/GAIA-I", "defect": "CIR LINE MALE ELBOW NUT부 LEAK", "action": "LEAK", "occurDate": "2025-07-08"}, {"productInfo": "GBWS-5798/GAIA-I", "defect": "MALE ELBOW TEFLON부 LEAK", "action": "LEAK", "occurDate": "2025-07-08"}, {"productInfo": "GBWS-5795/GAIA-I DUAL", "defect": "HEAT EXCHANGE PCW COLD IN, OUT 스티커 오부", "action": "눈관리", "occurDate": "2025-07-08"}, {"productInfo": "GBWS-5815/GAIA-I DUAL", "defect": "N2 Purge Ball Valve P&ID 스티커 오부착", "action": "눈관리", "occurDate": "2025-07-10"}, {"productInfo": "GBWS-5832/GAIA-I", "defect": "MALE ELBOW Fitting Nut LEAK(TEFLON)", "action": "Teflon 작업", "occurDate": "2025-07-14"}, {"productInfo": "GBWS-5831/GAIA-I", "defect": "MALE ELBOW Fitting Nut LEAK(TEFLON)", "action": "Teflon 작업", "occurDate": "2025-07-14"}, {"productInfo": "GBWS-5831/GAIA-I", "defect": "MALE ELBOW Fitting Nut LEAK(TEFLON)", "action": "Teflon 작업", "occurDate": "2025-07-14"}, {"productInfo": "GBWS-5791/GAIA-II DUAL", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-07-15"}, {"productInfo": "GBWS-5791/GAIA-II DUAL", "defect": "CLAW CLAMP I-marking 누락 / Reactor Claw Clamp 체결 후 I-marking 누락 전 POINT", "action": "식별 조치", "occurDate": "2025-07-15"}, {"productInfo": "GBWS-5761/GAIA-I", "defect": "MALE ELBOW Fitting nut Water Leak (Teflon부)/Wet 노즐 Teflon부 리크", "action": "재체결", "occurDate": "2025-07-17"}, {"productInfo": "GBWS-5830/GAIA-I", "defect": "MALE ELBOW Fitting nut Water Leak (TEFLON) / Swirl Line Manifold MALE ELBOW TEFLON부 Leak", "action": "Teflon 작업", "occurDate": "2025-07-21"}, {"productInfo": "GBWS-5830/GAIA-I", "defect": "MALE ELBOW Fitting nut Water Leak (TEFLON) / Swirl Line Manifold MALE ELBOW TEFLON부 Leak", "action": "Teflon 작업", "occurDate": "2025-07-21"}, {"productInfo": "GBWS-5856/GAIA-I", "defect": "MALE ELBOW Fitting nut Water Leak (Teflon부) / Swirl Line Manifold MALE ELBOW TEFLON부 Leak", "action": "Teflon 작업", "occurDate": "2025-07-23"}, {"productInfo": "GBWS-5825/GAIA-II", "defect": "MALE ELBOW JACO FITTING NUT부 Leak /W.CIR MANIFOLD MALE ELBOW JACO FITTING NUT Leak", "action": "재체결", "occurDate": "2025-07-23"}, {"productInfo": "DBW-3675/DRAGON AB SINGLE", "defect": "UV IR SENSOR 스티커 오부착 / UV IR SENSOR 스티커 오부착 (실물:EVD03 정상:UVD03)", "action": "식별 조치", "occurDate": "2025-07-24"}, {"productInfo": "GBWS-5825/GAIA-II", "defect": "CLAW CLAMP 미완체결 / 리액터 클로 클램프 미완체결", "action": "재체결", "occurDate": "2025-07-24"}, {"productInfo": "GBWS-5886/GAIA-I DUAL", "defect": "MALE ELBOW Fitting nut Water Leak (TEFLON) / FLOW SENSOR 연결 MALE ELBOW 테프론부 LEAK (테프론자동권선Test,7바퀴)", "action": "Teflon 작업", "occurDate": "2025-07-28"}, {"productInfo": "GBWS-5886/GAIA-I DUAL", "defect": "MALE ELBOW Fitting nut Water Leak (TEFLON) / FLOW SENSOR 연결 MALE ELBOW 테프론부 LEAK (테프론자동권선Test,7바퀴)", "action": "Teflon 작업", "occurDate": "2025-07-28"}, {"productInfo": "GBWS-5886/GAIA-I DUAL", "defect": "MALE ELBOW Fitting nut Water Leak (TEFLON) / FLOW SENSOR 연결 MALE ELBOW 테프론부 LEAK (테프론자동권선Test,7바퀴)", "action": "Teflon 작업", "occurDate": "2025-07-28"}, {"productInfo": "GBWS-5885/GAIA-I DUAL", "defect": "MALE ELBOW Fitting nut Water Leak (TEFLON) / FLOW SENSOR 연결 MALE ELBOW 테프론부 LEAK (테프론자동권선Test,10바퀴)", "action": "Teflon 작업", "occurDate": "2025-07-28"}, {"productInfo": "GBWS-5879/GAIA-I", "defect": "CLAMP(NW25) 핀 미체결 / TOGGLE CLAMP 핀 미체결", "action": "재체결", "occurDate": "2025-07-28"}, {"productInfo": "GBWS-5872/GAIA-I", "defect": "MALE ELBOW LOCTITE 부족 Leak / 열교환기 COLD OUT PCW MALE ELBOW LEAK", "action": "재작업", "occurDate": "2025-07-28"}, {"productInfo": "GBWS-5876/GAIA-I", "defect": "CLAW CLAMP I-marking 누락 / Reactor Claw Clamp 체결 후 I-marking 누락", "action": "식별 조치", "occurDate": "2025-07-29"}, {"productInfo": "GBWS-5892/GAIA-II", "defect": "MALE CONNECTOR FITTING NUT WATER LEAK(Teflon부) / CIR WATER MANIFOLD MALE CONNECTOR Teflon 체결부 LEAK", "action": "Teflon 작업", "occurDate": "2025-07-30"}, {"productInfo": "GBWS-5891/GAIA-II", "defect": "1/2\" PFA TUBE 꺾임 / CIR WATER MANIFOLD MALE CONNECTOR 연결부 TUBE 꺾임", "action": "재작업", "occurDate": "2025-07-30"}], "C&A": [{"productInfo": "GBWS-5791/GAIA-II DUAL", "defect": "DOOR SWITCH 장착 불량 / Door Switch 미수평 장착으로 인해 Door Close 불가", "action": "재작업", "occurDate": "2025-07-15"}, {"productInfo": "GBWS-5839/GAIA-I DUAL", "defect": "SENSOR 내부 O-RING 조립부 체결 강도 부족 / LEVEL SENSOR 내부 O-RING 조립부 체결 강도 부족으로 인한 LEAK", "action": "재작업", "occurDate": "2025-07-17"}], "GST": [{"productInfo": "GBWS-8888/GAIA-I DUAL", "defect": "FEMALE Fitting Nut Leak / LNG LINE VCR FEMALE NUT 미완체결로 인한 LEAK", "action": "재체결", "occurDate": "2025-07-24"}, {"productInfo": "GBWS-8888/GAIA-I DUAL", "defect": "MOTOR SCRAPPER BODY LEAK / MOTOR SCRAPPER 구리스 도포부 LEAK", "action": "재작업", "occurDate": "2025-07-24"}, {"productInfo": "GBWS-8888/GAIA-I DUAL", "defect": "REDUCING UNION TEE (04) Fitting Nut Leak / PCW LINE REDUCING UNION TEE (12-12-04) 04, OUT단 Leak", "action": "재체결", "occurDate": "2025-07-24"}]};
-            const nanDetails = {"BAT": [{"week": "30W", "ratio": 0.0}, {"week": "29W", "ratio": 0.0}, {"week": "28W", "ratio": 0.72}, {"week": "27W", "ratio": 0.19}, {"week": "월평균", "ratio": 0.23}], "FNI": [{"week": "30W", "ratio": 0.0}, {"week": "29W", "ratio": 0.0}, {"week": "28W", "ratio": 0.0}, {"week": "27W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "TMS(M)": [{"week": "30W", "ratio": 0.0}, {"week": "29W", "ratio": 0.0}, {"week": "28W", "ratio": 0.0}, {"week": "27W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "C&A": [{"week": "30W", "ratio": 0.0}, {"week": "29W", "ratio": 0.0}, {"week": "28W", "ratio": 0.0}, {"week": "27W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "P&S": [{"week": "30W", "ratio": 0.0}, {"week": "29W", "ratio": 1.61}, {"week": "28W", "ratio": 0.0}, {"week": "27W", "ratio": 11.11}, {"week": "월평균", "ratio": 3.18}], "TMS(E)": [{"week": "30W", "ratio": 0.0}, {"week": "29W", "ratio": 0.0}, {"week": "28W", "ratio": 0.0}, {"week": "27W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}]};
+            const defectDetails = {"TMS(M)": [{"productInfo": "GBWS-5919/GAIA-II", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5918/GAIA-II", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5918/GAIA-II", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5917/GAIA-II", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5917/GAIA-II", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5916/GAIA-II", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5915/GAIA-II", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5915/GAIA-II", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5915/GAIA-II", "defect": "MALE CONNECTOR Fitting nut Water Leak (Teflon부) / Swirl Line ManiFold Teflon부 Leak", "action": "Teflon 작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5913/GAIA-I", "defect": "CIR WATER LINE 방향스티커 테이프 미부착 / CIR WATER LINE 방향스티커 부착후 테이핑 작업 미실시", "action": "식별 조치", "occurDate": "2025-08-05"}, {"productInfo": "GBWS-5769/GAIA-II", "defect": "FLOW SENSOR P&ID 라벨 오부착 / QUENCH FLOW SENSOR P&ID 라벨 오부착 (FD670 / FD660 교차부착)", "action": "식별 조치", "occurDate": "2025-08-01"}, {"productInfo": "GBWS-5820/GAIA-II DUAL", "defect": "MALE CONNECTOR FITTING NUT WATER LEAK(Teflon부) / CIR WATER MANIFOLD MALE CONNECTOR Teflon 체결부 LEAK", "action": "Teflon 작업", "occurDate": "2025-08-01"}], "FNI": [{"productInfo": "GBWS-5918/GAIA-II", "defect": "다연조 Solenoid Valve Bracket 고정 Bolt I-marking 누락 / 다연조 Solenoid Valve 브라켓 고정 Bolt I-marking 누락", "action": "식별 조치", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5910/GAIA-I DUAL", "defect": "SCREW SCRAPER BANJO ELBOW TUBE 삽입부 LEAK(PFA) / SCREW CYLINDER SCRAPER 장착 원터치 반조 삽입 튜브 컷팅불량", "action": "재작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5909/GAIA-I DUAL", "defect": "SCREW SCRAPER BANJO ELBOW TUBE 삽입부 LEAK(PFA) / SCREW CYLINDER SCRAPER 장착 원터치 반조 삽입 튜브 삽입불량", "action": "재체결", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5889/GAIA-I DUAL", "defect": "H/J CONNECTOR 미체결 / INLET #2 H/J CONNECTOR 미체결", "action": "재체결", "occurDate": "2025-08-04"}], "C&A": [{"productInfo": "GBWS-5918/GAIA-II", "defect": "LEVEL SENSOR P.P NUT LEAK / LEVEL SENSOR P.P NUT 체결불량으로 인한 LEAK", "action": "재체결", "occurDate": "2025-08-05"}], "BAT": [{"productInfo": "GBWS-5906/GAIA-I DUAL", "defect": "Right V-530A ↔ V-610A Tubing 오조립있습니다", "action": "Tubing 재작업", "occurDate": "2025-08-06"}, {"productInfo": "GBWS-5904/GAIA-I DUAL", "defect": "125A CLAMP I-MARKING 누락 / 125A ELBOW EXHAUST CLAMP I-MARKING 누락", "action": "식별 조치", "occurDate": "2025-08-05"}, {"productInfo": "GBWS-5770/GAIA-II", "defect": "HEAT EXCHANGER BRACKET 고정 볼트 I-MARKING 누락 / BRAZED PLATE HEAT EXCHANGER BRACKET 고정 볼트 I-MARKING 누락", "action": "식별 조치", "occurDate": "2025-08-04"}, {"productInfo": "GBWS-5769/GAIA-II", "defect": "HEAT EXCHANGER BRACKET 고정 볼트 I-MARKING 누락 / BRAZED PLATE HEAT EXCHANGER BRACKET 고정 볼트 I-MARKING 누락", "action": "식별 조치", "occurDate": "2025-08-01"}, {"productInfo": "GBWS-5657/GAIA-I DUAL", "defect": "REDUCING UNION TEE FITTING NUT LEAK / PCW LINE REDUCING UNION TEE 12-12-08 08부 미완체결", "action": "재체결", "occurDate": "2025-08-04"}], "TMS(E)": [{"productInfo": "GBWS-5889/GAIA-I DUAL", "defect": "DOOR SWITCH TB 라벨 스티커 입력 불량 / DOOR SWITCH TB (실물 DOOR SWITC H TB , 도면 DOOR SWITCH TB ) 줄맞춤", "action": "식별 조치", "occurDate": "2025-08-04"}, {"productInfo": "GBWS-5889/GAIA-I DUAL", "defect": "LED LAMP CP 라벨 스티커 입력 불량 / LED LAMP CP (실물CPD2 20 도면 CPD 220) 줄맞춤", "action": "식별 조치", "occurDate": "2025-08-04"}], "GST": [{"productInfo": "GBWS-8888/GAIA-I DUAL", "defect": "Interface 상부 단, CNM301,303 / 1,2 번 배선누락 (도면과상이)내재화설비", "action": "", "occurDate": "2025-08-06"}]};
+            const nanDetails = {"BAT": [{"week": "31W", "ratio": 0.79}, {"week": "월평균", "ratio": 0.79}], "FNI": [{"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "TMS(M)": [{"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "C&A": [{"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "P&S": [{"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "TMS(E)": [{"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}]};
             console.log("DEBUG: defectDetails:", defectDetails);
             console.log("DEBUG: nanDetails:", nanDetails);
 
@@ -367,47 +367,47 @@
                     </div>
                 </div>
             </div>
-            <p style="color: #666; font-size: 16px;">기준월: 2025-07</p>
+            <p style="color: #666; font-size: 16px;">기준월: 2025-08</p>
         </div>
         <div class="chart-section">
             <h2 class="section-title">🔧 기구 협력사 평가 지수</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card grade-b" onclick="toggleDefectTable('tmsm')">
-                    <div class="emoji">🥇</div>
-                    <div class="label">TMS(M)</div>
-                    <div class="tooltip">
-                        평가점수: 8.2점 (B등급)<br>
-                        불량률: 13.81%<br>
-                        불량건수: 29건<br>
-                        생산대수: 210대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmsm')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
-                        <small>클릭하여 상세보기</small>
-                    </div>
-                </div>
-        
                 <div class="kpi-card grade-b" onclick="toggleDefectTable('bat')">
-                    <div class="emoji">🥈</div>
+                    <div class="emoji">🥇</div>
                     <div class="label">BAT</div>
                     <div class="tooltip">
-                        평가점수: 6.5점 (B등급)<br>
-                        불량률: 16.95%<br>
-                        불량건수: 20건<br>
-                        생산대수: 118대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('bat')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.2%</span><br>
+                        평가점수: 8.2점 (B등급)<br>
+                        불량률: 14.29%<br>
+                        불량건수: 5건<br>
+                        생산대수: 35대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('bat')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.8%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card grade-c" onclick="toggleDefectTable('fni')">
-                    <div class="emoji">🥉</div>
+                <div class="kpi-card grade-b" onclick="toggleDefectTable('fni')">
+                    <div class="emoji">🥈</div>
                     <div class="label">FNI</div>
                     <div class="tooltip">
-                        평가점수: 4.8점 (C등급)<br>
-                        불량률: 30.00%<br>
-                        불량건수: 30건<br>
-                        생산대수: 100대<br>
+                        평가점수: 6.5점 (B등급)<br>
+                        불량률: 21.05%<br>
+                        불량건수: 4건<br>
+                        생산대수: 19대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('fni')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
+                        <small>클릭하여 상세보기</small>
+                    </div>
+                </div>
+        
+                <div class="kpi-card grade-b" onclick="toggleDefectTable('tmsm')">
+                    <div class="emoji">🥉</div>
+                    <div class="label">TMS(M)</div>
+                    <div class="tooltip">
+                        평가점수: 6.5점 (B등급)<br>
+                        불량률: 23.08%<br>
+                        불량건수: 12건<br>
+                        생산대수: 52대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmsm')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
@@ -451,41 +451,41 @@
             <h2 class="section-title">⚡ 전장 협력사 평가 지수</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card grade-b" onclick="toggleDefectTable('cna')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('pns')">
                     <div class="emoji">🥇</div>
-                    <div class="label">C&A</div>
-                    <div class="tooltip">
-                        평가점수: 8.2점 (B등급)<br>
-                        불량률: 2.86%<br>
-                        불량건수: 2건<br>
-                        생산대수: 70대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('cna')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
-                        <small>클릭하여 상세보기</small>
-                    </div>
-                </div>
-        
-                <div class="kpi-card grade-b" onclick="toggleDefectTable('pns')">
-                    <div class="emoji">🥈</div>
                     <div class="label">P&S</div>
                     <div class="tooltip">
-                        평가점수: 6.8점 (B등급)<br>
-                        불량률: 1.75%<br>
-                        불량건수: 1건<br>
-                        생산대수: 57대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('pns')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">3.0%</span><br>
+                        평가점수: 10.0점 (A등급)<br>
+                        불량률: 0.00%<br>
+                        불량건수: 0건<br>
+                        생산대수: 17대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('pns')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card grade-b" onclick="toggleDefectTable('tmse')">
-                    <div class="emoji">🥉</div>
+                <div class="kpi-card grade-d" onclick="toggleDefectTable('tmse')">
+                    <div class="emoji">🥈</div>
                     <div class="label">TMS(E)</div>
                     <div class="tooltip">
-                        평가점수: 6.5점 (B등급)<br>
-                        불량률: 4.04%<br>
-                        불량건수: 4건<br>
-                        생산대수: 99대<br>
+                        평가점수: 3.0점 (D등급)<br>
+                        불량률: 8.00%<br>
+                        불량건수: 2건<br>
+                        생산대수: 25대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmse')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
+                        <small>클릭하여 상세보기</small>
+                    </div>
+                </div>
+        
+                <div class="kpi-card grade-d" onclick="toggleDefectTable('cna')">
+                    <div class="emoji">🥉</div>
+                    <div class="label">C&A</div>
+                    <div class="tooltip">
+                        평가점수: 3.0점 (D등급)<br>
+                        불량률: 8.33%<br>
+                        불량건수: 1건<br>
+                        생산대수: 12대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('cna')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>

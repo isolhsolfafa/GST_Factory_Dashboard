@@ -276,12 +276,12 @@
                     
                     const row = [
                         `"${item.productInfo.replace(/"/g, '""')}"`,
+                        `"${(item.detectionStage || '').replace(/"/g, '""')}"`,
+                        `"${minorCategory.replace(/"/g, '""')}"`,
                         `"${item.defect.replace(/"/g, '""')}"`,
                         `"${item.action.replace(/"/g, '""')}"`,
                         `"${item.occurDate.replace(/"/g, '""')}"`,
-                        `"${minorCategory.replace(/"/g, '""')}"`,
                         `"${(item.worker || '').replace(/"/g, '""')}"`,
-                        `"${(item.detectionStage || '').replace(/"/g, '""')}"`,
                         `"${(item.defectPhoto || '').replace(/"/g, '""')}"`,
                         `"${(item.cause || '').replace(/"/g, '""')}"`,
                         `"${(item.countermeasure || '').replace(/"/g, '""')}"`

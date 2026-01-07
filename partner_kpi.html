@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>협력사 평가 대시보드 - 2025-12</title>
+        <title>협력사 평가 대시보드 - 2026-01</title>
         
     <style>
         .chart-section { margin: 10px; }
@@ -165,8 +165,8 @@
     </style>
     
         <script>
-            const defectDetails = {};
-            const nanDetails = {"BAT": [{"week": "52W", "ratio": 0.17}, {"week": "51W", "ratio": 1.43}, {"week": "50W", "ratio": 1.9}, {"week": "49W", "ratio": 0.36}, {"week": "월평균", "ratio": 0.96}], "FNI": [{"week": "52W", "ratio": 1.5}, {"week": "51W", "ratio": 1.71}, {"week": "50W", "ratio": 0.0}, {"week": "49W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.8}], "TMS(M)": [{"week": "52W", "ratio": 0.0}, {"week": "51W", "ratio": 0.0}, {"week": "50W", "ratio": 0.0}, {"week": "49W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "C&A": [{"week": "52W", "ratio": 0.0}, {"week": "51W", "ratio": 0.0}, {"week": "50W", "ratio": 0.0}, {"week": "49W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "P&S": [{"week": "52W", "ratio": 4.3}, {"week": "51W", "ratio": 0.0}, {"week": "50W", "ratio": 0.0}, {"week": "49W", "ratio": 0.0}, {"week": "월평균", "ratio": 1.08}], "TMS(E)": [{"week": "52W", "ratio": 0.0}, {"week": "51W", "ratio": 0.0}, {"week": "50W", "ratio": 0.0}, {"week": "49W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}]};
+            const defectDetails = {"BAT": [{"productInfo": "GBWS-6489/GAIA-I DUAL", "defect": "SOLENOID VALVE LEAK (10mm, 우레탄, OUT단, 삽입부족)", "action": "재체결", "occurDate": "2026-01-06", "category": "기구작업불량/오조립", "worker": "채은철BAT", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}], "TMS(M)": [{"productInfo": "GBWS-6482/GAIA-II", "defect": "UNION TEE FITTING NUT LEAK (1/2\", PVDF, 체결이상 무, 하단부)", "action": "재체결", "occurDate": "2026-01-05", "category": "기구작업불량/Leak", "worker": "이성균TMS", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GPWS-0649/GAIA-P DUAL", "defect": "MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "action": "Teflon 작업", "occurDate": "2026-01-06", "category": "기구작업불량/Leak", "worker": "이성균TMS", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GPWS-0649/GAIA-P DUAL", "defect": "MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "action": "Teflon 작업", "occurDate": "2026-01-06", "category": "기구작업불량/Leak", "worker": "이성균TMS", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GPWS-0649/GAIA-P DUAL", "defect": "MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "action": "Teflon 작업", "occurDate": "2026-01-06", "category": "기구작업불량/Leak", "worker": "이성균TMS", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GPWS-0649/GAIA-P DUAL", "defect": "MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "action": "Teflon 작업", "occurDate": "2026-01-06", "category": "기구작업불량/Leak", "worker": "이성균TMS", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GPWS-0649/GAIA-P DUAL", "defect": "MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "action": "Teflon 작업", "occurDate": "2026-01-06", "category": "기구작업불량/Leak", "worker": "이성균TMS", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}], "FNI": [{"productInfo": "GBWS-6473/GAIA-I DUAL", "defect": "SOLENOID VALVE TUBE 오조립 (6mm, 역방향조립)", "action": "재작업", "occurDate": "2026-01-06", "category": "기구작업불량/오조립", "worker": "이태훈FNI", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}]};
+            const nanDetails = {"BAT": [{"week": "1W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "FNI": [{"week": "1W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "TMS(M)": [{"week": "1W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "C&A": [{"week": "1W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "P&S": [{"week": "1W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "TMS(E)": [{"week": "1W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}]};
             console.log("DEBUG: defectDetails:", defectDetails);
             console.log("DEBUG: nanDetails:", nanDetails);
 
@@ -389,46 +389,46 @@
                     </div>
                 </div>
             </div>
-            <p style="color: #666; font-size: 16px;">기준월: 2025-12</p>
+            <p style="color: #666; font-size: 16px;">기준월: 2026-01</p>
         </div>
         <div class="chart-section">
             <h2 class="section-title">🔧 기구 협력사 평가 지수</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card grade-a" onclick="toggleDefectTable('bat')">
-                    <div class="emoji">🥇</div>
-                    <div class="label">BAT</div>
-                    <div class="tooltip">
-                        평가점수: 10.0점 (A등급)<br>
-                        불량률: 0.00%<br>
-                        불량건수: 0건<br>
-                        생산대수: 0대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('bat')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">1.0%</span><br>
-                        <small>클릭하여 상세보기</small>
-                    </div>
-                </div>
-        
                 <div class="kpi-card grade-a" onclick="toggleDefectTable('fni')">
-                    <div class="emoji">🥈</div>
+                    <div class="emoji">🥇</div>
                     <div class="label">FNI</div>
                     <div class="tooltip">
                         평가점수: 10.0점 (A등급)<br>
-                        불량률: 0.00%<br>
-                        불량건수: 0건<br>
-                        생산대수: 0대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('fni')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.8%</span><br>
+                        불량률: 4.17%<br>
+                        불량건수: 1건<br>
+                        생산대수: 24대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('fni')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card grade-a" onclick="toggleDefectTable('tmsm')">
+                <div class="kpi-card grade-b" onclick="toggleDefectTable('bat')">
+                    <div class="emoji">🥈</div>
+                    <div class="label">BAT</div>
+                    <div class="tooltip">
+                        평가점수: 8.2점 (B등급)<br>
+                        불량률: 6.67%<br>
+                        불량건수: 1건<br>
+                        생산대수: 15대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('bat')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
+                        <small>클릭하여 상세보기</small>
+                    </div>
+                </div>
+        
+                <div class="kpi-card grade-b" onclick="toggleDefectTable('tmsm')">
                     <div class="emoji">🥉</div>
                     <div class="label">TMS(M)</div>
                     <div class="tooltip">
-                        평가점수: 10.0점 (A등급)<br>
-                        불량률: 0.00%<br>
-                        불량건수: 0건<br>
-                        생산대수: 0대<br>
+                        평가점수: 6.5점 (B등급)<br>
+                        불량률: 16.67%<br>
+                        불량건수: 6건<br>
+                        생산대수: 36대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmsm')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
@@ -489,34 +489,34 @@
                         평가점수: 10.0점 (A등급)<br>
                         불량률: 0.00%<br>
                         불량건수: 0건<br>
-                        생산대수: 0대<br>
+                        생산대수: 20대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('cna')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card grade-a" onclick="toggleDefectTable('tmse')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('pns')">
                     <div class="emoji">🥈</div>
+                    <div class="label">P&S</div>
+                    <div class="tooltip">
+                        평가점수: 10.0점 (A등급)<br>
+                        불량률: 0.00%<br>
+                        불량건수: 0건<br>
+                        생산대수: 9대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('pns')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
+                        <small>클릭하여 상세보기</small>
+                    </div>
+                </div>
+        
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('tmse')">
+                    <div class="emoji">🥉</div>
                     <div class="label">TMS(E)</div>
                     <div class="tooltip">
                         평가점수: 10.0점 (A등급)<br>
                         불량률: 0.00%<br>
                         불량건수: 0건<br>
-                        생산대수: 0대<br>
+                        생산대수: 10대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmse')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
-                        <small>클릭하여 상세보기</small>
-                    </div>
-                </div>
-        
-                <div class="kpi-card grade-a" onclick="toggleDefectTable('pns')">
-                    <div class="emoji">🥉</div>
-                    <div class="label">P&S</div>
-                    <div class="tooltip">
-                        평가점수: 9.2점 (A등급)<br>
-                        불량률: 0.00%<br>
-                        불량건수: 0건<br>
-                        생산대수: 0대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('pns')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">1.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>

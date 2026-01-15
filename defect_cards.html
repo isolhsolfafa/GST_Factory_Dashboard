@@ -225,10 +225,21 @@
             <div class="card-container">
                 
             <div class="defect-card">
+                <h3>🏭 GAIA-I</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">3건</span></p>
+                    <p>주요 분류: <span class="defect-categories">부품불량, 기구작업불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
                 <h3>🏭 GAIA-I DUAL</h3>
                 <div class="defect-info">
-                    <p>총 불량: <span class="defect-count">6건</span></p>
-                    <p>주요 분류: <span class="defect-categories">부품불량, 기구작업불량</span></p>
+                    <p>총 불량: <span class="defect-count">46건</span></p>
+                    <p>주요 분류: <span class="defect-categories">기구작업불량, 부품불량, 설계불량</span></p>
                 </div>
                 <button class="detail-btn" onclick="scrollToChart()">
                     📊 상세 분석 보기
@@ -238,8 +249,30 @@
             <div class="defect-card">
                 <h3>🏭 GAIA-II</h3>
                 <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">2건</span></p>
+                    <p>주요 분류: <span class="defect-categories">기구작업불량, 설계불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 GAIA-II DUAL</h3>
+                <div class="defect-info">
                     <p>총 불량: <span class="defect-count">1건</span></p>
-                    <p>주요 분류: <span class="defect-categories">기구작업불량</span></p>
+                    <p>주요 분류: <span class="defect-categories">설계불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 GAIA-P</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">8건</span></p>
+                    <p>주요 분류: <span class="defect-categories">설계불량, 기구작업불량, 부품불량</span></p>
                 </div>
                 <button class="detail-btn" onclick="scrollToChart()">
                     📊 상세 분석 보기
@@ -249,8 +282,19 @@
             <div class="defect-card">
                 <h3>🏭 GAIA-P DUAL</h3>
                 <div class="defect-info">
-                    <p>총 불량: <span class="defect-count">5건</span></p>
-                    <p>주요 분류: <span class="defect-categories">기구작업불량</span></p>
+                    <p>총 불량: <span class="defect-count">10건</span></p>
+                    <p>주요 분류: <span class="defect-categories">기구작업불량, 전장작업불량</span></p>
+                </div>
+                <button class="detail-btn" onclick="scrollToChart()">
+                    📊 상세 분석 보기
+                </button>
+            </div>
+            
+            <div class="defect-card">
+                <h3>🏭 SWS-I</h3>
+                <div class="defect-info">
+                    <p>총 불량: <span class="defect-count">3건</span></p>
+                    <p>주요 분류: <span class="defect-categories">기구작업불량, 부품불량</span></p>
                 </div>
                 <button class="detail-btn" onclick="scrollToChart()">
                     📊 상세 분석 보기
@@ -271,8 +315,8 @@
     </div>
 
     <!-- 데이터 스크립트 -->
-    <script id="bar-data" type="application/json">[{"bar_key": "기구작업불량 / Leak", "count": 6, "losstime": 45}, {"bar_key": "기구작업불량 / 오조립", "count": 2, "losstime": 13}, {"bar_key": "부품불량 / Leak", "count": 4, "losstime": 10}]</script>
-    <script id="details-data" type="application/json">{"기구작업불량 / Leak": {"GAIA-II": [["UNION TEE FITTING NUT LEAK (1/2\", PVDF, 체결이상 무, 하단부)", "재체결", 4]], "GAIA-P DUAL": [["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 8], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 8], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 9], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 8], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 8]]}, "기구작업불량 / 오조립": {"GAIA-I DUAL": [["SOLENOID VALVE LEAK (10mm, 우레탄, OUT단, 삽입부족)", "재체결", 2], ["SOLENOID VALVE TUBE 오조립 (6mm, 역방향조립)", "재작업", 11]]}, "부품불량 / Leak": {"GAIA-I DUAL": [["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 3], ["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 2], ["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 2], ["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 3]]}}</script>
+    <script id="bar-data" type="application/json">[{"bar_key": "기구작업불량 / Leak", "count": 30, "losstime": 136.0}, {"bar_key": "기구작업불량 / 눈관리", "count": 5, "losstime": 5.0}, {"bar_key": "기구작업불량 / 오조립", "count": 4, "losstime": 18.0}, {"bar_key": "기구작업불량 / 작업누락", "count": 6, "losstime": 6.0}, {"bar_key": "부품불량 / Leak", "count": 14, "losstime": 19.0}, {"bar_key": "부품불량 / 사양불일치", "count": 1, "losstime": 5.0}, {"bar_key": "부품불량 / 외관불량", "count": 1, "losstime": 5.0}, {"bar_key": "설계불량 / 설계오류", "count": 9, "losstime": 0.0}, {"bar_key": "전장작업불량 / 배선누락", "count": 1, "losstime": 1.0}, {"bar_key": "전장작업불량 / 설정오류", "count": 1, "losstime": 10.0}, {"bar_key": "전장작업불량 / 오배선", "count": 1, "losstime": 10.0}]</script>
+    <script id="details-data" type="application/json">{"기구작업불량 / Leak": {"GAIA-I": [["UNION TEE FITTING NUT LEAK (1/2\", PVDF, 체결이상 무, 하단부)", "재체결", 1.0]], "GAIA-I DUAL": [["BULKHEAD UNION FITTING NUT LEAK (3/4\", IN단, 체결불량)", "재체결", 3.0], ["MALE CONNECTOR TEFLON부 LEAK (NPT3/8, PP, 체결이상 무)", "Teflon 작업", 7.0], ["ADJUSTABLE ELBOW FITTING NUT LEAK (1/2\", OUT단, 체결이상 무)", "재체결", 2.0], ["MALE CONNECTOR FITTING NUT LEAK (1/2\", PVDF, 체결이상 무)", "재체결", 2.0], ["MALE CONNECTOR TEFLON부 LEAK (NPT3/8, PP, 체결이상 무)", "Teflon 작업", 10.0], ["ADJUSTABLE ELBOW FITTING NUT LEAK (1/2\", IN단, 미완체결)", "재체결", 2.0], ["BULKHEAD UNION LEAK (6mm, 우레탄, IN단, 삽입부족)", "재체결", 1.0], ["BULKHEAD UNION LEAK (6mm, PFA, IN단, TUBE 컷팅불량)", "재작업", 1.0], ["UNION ELBOW FITTOUTG NUT LEAK (3/4\", SUS, OUT, 체결불량)", "재체결", 1.0], ["CHECK VALVE FITTING NUT LEAK (1/4\", OUT단, 체결이상 무)", "재체결", 3.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 9.0], ["MALE ELBOW FITTING NUT LEAK (1/2\", PVDF, 체결이상 무)", "재체결", 1.0], ["PUMP NUT LEAK (25A, PP, 체결불량)", "재체결", 3.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 7.0], ["MALE CONNECTOR TEFLON부 LEAK (NPT1/4, PVDF, 체결이상 무)", "Teflon 작업", 5.0], ["PUMP NUT LEAK (25A, PP, 체결불량)", "재체결", 3.0]], "GAIA-II": [["UNION TEE FITTING NUT LEAK (1/2\", PVDF, 체결이상 무, 하단부)", "재체결", 3.0]], "GAIA-P": [["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 7.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 7.0]], "GAIA-P DUAL": [["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 7.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 8.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 6.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 7.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 7.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 7.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 7.0], ["MALE ELBOW TEFLON부 LEAK (NPT1/2, PVDF, 체결이상 무)", "Teflon 작업", 7.0]], "SWS-I": [["UNION ELBOW FITTING NUT LEAK (6mm, SUS, OUT, 체결불량)", "재체결", 1.0], ["UNION TEE FITTING NUT LEAK (3/8\", PVDF, 미완체결, 우측상단)", "재체결", 1.0]]}, "기구작업불량 / 눈관리": {"GAIA-I DUAL": [["BALL VALVE MEDAL 누락 (1/4\")", "식별 조치", 1.0], ["BALL VALVE MEDAL 누락 (1/4\")", "식별 조치", 1.0], ["BALL VALVE MEDAL 누락 (1/4\")", "식별 조치", 1.0], ["BALL VALVE MEDAL 누락 (1/4\")", "식별 조치", 1.0]], "GAIA-P": [["방향스티커 오부착 (Q. CIR WATER)", "식별 조치", 1.0]]}, "기구작업불량 / 오조립": {"GAIA-I DUAL": [["MALE ELBOW FITTING NUT LEAK (3/4\", SUS, 체결불량)", "재체결", 2.0], ["SOLENOID VALVE LEAK (10mm, 우레탄, OUT단, 삽입부족)", "재체결", 1.0], ["SOLENOID VALVE TUBE 오조립 (6mm, 역방향조립)", "재작업", 10.0], ["H/J CONTROLLER CABLE 오체결 (교차연결)", "재체결", 5.0]]}, "기구작업불량 / 작업누락": {"GAIA-I DUAL": [["커넥터 장착누락", "재체결", 1.0], ["ADJUSTABLE ELBOW FITTING NUT LEAK (3/8\", IN단, 미완체결)", "재체결", 1.0], ["BULKHEAD UNION LEAK (6mm, 우레탄, IN단, 미삽입)", "재체결", 1.0], ["UNION TEE FITTING NUT LEAK (3/8\", SUS, 미완체결, 좌측상단)", "재체결", 1.0], ["UNION TEE FITTING NUT LEAK (3/8\", SUS, 미완체결, 좌측상단)", "재체결", 1.0]], "GAIA-P DUAL": [["BULKHEAD UNION FITTING NUT LEAK (1/2\", IN단, 미완체결)", "재체결", 1.0]]}, "부품불량 / Leak": {"GAIA-I": [["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 1.0], ["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 1.0]], "GAIA-I DUAL": [["BULKHEAD UNION LEAK (6mm, PFA, IN단)", "파트교체", 2.0], ["SPEED CONTROLLER LEAK (PFA, IN단)", "파트교체", 1.0], ["BULKHEAD UNION LEAK (6mm, PFA, IN단)", "파트교체", 2.0], ["BULKHEAD UNION LEAK (6mm, PFA, IN단)", "파트교체", 2.0], ["SPEED CONTROLLER LEAK (우레탄, IN단)", "파트교체", 1.0], ["REDUCER DOUBLE Y UNION LEAK (6mm, 우레탄)", "파트교체", 1.0], ["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 1.0], ["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 1.0], ["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 1.0], ["SPEED CONTROLLER LEAK (PFA, OUT단)", "파트교체", 1.0]], "GAIA-P": [["REDUCER DOUBLE Y UNION LEAK (6mm, 우레탄)", "파트교체", 1.0]], "SWS-I": [["REDUCER DOUBLE Y UNION LEAK (6mm, 우레탄)", "파트교체", 3.0]]}, "부품불량 / 사양불일치": {"GAIA-I DUAL": [["Flame Guide 높이 치수 오류", "대체품 교체", 5.0]]}, "부품불량 / 외관불량": {"GAIA-P": [["Cabinet 전면 Door 도장 상태 불량(얼룩짐)", "현장 조치", 5.0]]}, "설계불량 / 설계오류": {"GAIA-I DUAL": [["PAB Sensor 모델링(8ea), BOM(10ea) 수량 상이", "모델링 수정", 0.0], ["Heating Jacket 도면 內 Front, Back 반대 표기", "", 0.0], ["P&ID 內 Waste Gas Line Purge단 Ball Valve Tag 누락", "도면 수정", 0.0], ["Burner CDA, O2 연결부 반대 표기", "도면 수정", 0.0]], "GAIA-II": [["전장 도면 內 AC Cable 1차측, 2차측 색 상이", "도면 수정", 0.0]], "GAIA-II DUAL": [["Waste Gas Line Inlet Pipe 4 수량 오류(실 사용: 2ea / BOM: 3ea)", "도면 및 BOM 수정", 0.0]], "GAIA-P": [["모델링상 N2 Line Union Y 수량 오류(정상: 5개, 모델링: 4개)", "모델링 수정", 0.0], ["Option 3에 사용되는 Terminal Block 사양 오류", "도면 수정", 0.0], ["전장 Panel, Main Power Box Hole 불일치", "", 0.0]]}, "전장작업불량 / 배선누락": {"GAIA-I DUAL": [["접지케이블 누락", "재작업", 1.0]]}, "전장작업불량 / 설정오류": {"GAIA-I DUAL": [["H/J Controller Alarm 출력 불량(작업자 세팅 오류)", "대체품 교체", 10.0]]}, "전장작업불량 / 오배선": {"GAIA-P DUAL": [["SMPS 통신 케이블 오배선 (교차)", "재작업", 10.0]]}}</script>
 
     <script>
         // 스크롤 함수

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>협력사 평가 대시보드 - 2026-02</title>
+        <title>협력사 평가 대시보드 - 2025-08</title>
         
     <style>
         .chart-section { margin: 10px; }
@@ -57,18 +57,6 @@
         .download-btn:hover { 
             background: linear-gradient(135deg, #45a049, #3d8b40);
             transform: translateY(-1px);
-        }
-        .dashboard-btn { 
-            margin: 10px 0; padding: 8px 16px; 
-            background: linear-gradient(135deg, #2196F3, #1976D2);
-            color: white; border: none; border-radius: 4px; 
-            cursor: pointer; font-weight: bold; transition: all 0.3s;
-            text-decoration: none; display: inline-block;
-        }
-        .dashboard-btn:hover { 
-            background: linear-gradient(135deg, #1976D2, #1565C0);
-            transform: translateY(-1px);
-            color: white; text-decoration: none;
         }
         .section-title {
             text-align: center; margin: 20px 0;
@@ -165,8 +153,8 @@
     </style>
     
         <script>
-            const defectDetails = {"FNI": [{"productInfo": "GBWS-6628/GAIA-I DUAL", "defect": "UNION TEE FITTING NUT LEAK (3/4\", SUS, 미완체결, 우측상단)", "action": "재체결", "occurDate": "2026-02-05", "category": "기구작업/불완전 체결", "worker": "김남진FNI", "defectLocation": "PCW-S(R)", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6618/GAIA-I DUAL", "defect": "REDUCING UNION TEE FITTING NUT LEAK (3/8\", SUS, 미완체결, 좌측상단)", "action": "재체결", "occurDate": "2026-02-04", "category": "기구작업/불완전 체결", "worker": "박동길FNI", "defectLocation": "CDA LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6608/GAIA-I DUAL", "defect": "MALE ELBOW FITTING NUT LEAK (3/4\", SUS, 미완체결)", "action": "재체결", "occurDate": "2026-02-04", "category": "기구작업/불완전 체결", "worker": "박주성FNI", "defectLocation": "PCW-S(R) LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6608/GAIA-I DUAL", "defect": "MALE BANJO 삽입튜브 오조립 (우레탄, 10mm, IN/OUT단 교차 연결)", "action": "재작업", "occurDate": "2026-02-04", "category": "기구작업/체결 오류", "worker": "전우민FNI", "defectLocation": "PCV401A", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6607/GAIA-I DUAL", "defect": "BULKHEAD UNION FITTING NUT LEAK (3/8\", IN단, 미완체결)", "action": "재체결", "occurDate": "2026-02-04", "category": "기구작업/불완전 체결", "worker": "서정원FNI", "defectLocation": "CDA LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6607/GAIA-I DUAL", "defect": "MALE CONNECTOR FITTING NUT LEAK (1/4\", PP, 체결이상 무)", "action": "재체결", "occurDate": "2026-02-04", "category": "기구작업/검사기준 불명확", "worker": "박연파FNI", "defectLocation": "T01", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6605/GAIA-I DUAL", "defect": "PORT TOP 흔들림", "action": "재체결", "occurDate": "2026-02-03", "category": "기구작업/재확인 누락", "worker": "이영식FNI", "defectLocation": "LEFT BURNER", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6597/GAIA-I DUAL", "defect": "COCK VALVE MEDAL 누락 (PVC, 1/4\")", "action": "식별 조치", "occurDate": "2026-02-02", "category": "기구작업/눈관리 누락", "worker": "이영식FNI", "defectLocation": "DRAIN LINE / HV600", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6588/GAIA-I DUAL", "defect": "UNION NUT LEAK (20A, PP, O-RING 이탈)", "action": "재조립", "occurDate": "2026-02-01", "category": "기구작업/체결 누락", "worker": "박동길FNI", "defectLocation": "DRAIN LINE", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}], "C&A": [{"productInfo": "GBWS-6619/GAIA-I DUAL", "defect": "Sol Valve(SV420 ↔ SV850)", "action": "재작업", "occurDate": "2026-02-05", "category": "전장작업/오배선", "worker": "C&A백상걸", "defectLocation": "Sol Valve", "detectionStage": "기능검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6595/GAIA-I DUAL", "defect": "케이블 오배선", "action": "재작업", "occurDate": "2026-02-01", "category": "전장작업/오배선(사용불가)", "worker": "김인욱C&A", "defectLocation": "FE660", "detectionStage": "제조품질검사", "defectPhoto": "", "cause": "", "countermeasure": ""}], "BAT": [{"productInfo": "GBWS-6636/GAIA-I DUAL", "defect": "UNION TEE FITTING NUT LEAK (1/2\", SUS, 미완체결, 하단부)", "action": "재체결", "occurDate": "2026-02-04", "category": "기구작업/불완전 체결", "worker": "김범곤BAT", "defectLocation": "BCW LINE / FLOW SENSOR 체결부", "detectionStage": "기능검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6625/GAIA-I DUAL", "defect": "UNION ELBOW FITTING NUT LEAK (3/8\", SUS, IN, 미완체결)", "action": "재체결", "occurDate": "2026-02-05", "category": "기구작업/불완전 체결", "worker": "이영남BAT", "defectLocation": "PE130", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6604/GAIA-I DUAL", "defect": "Drain Line Nut부 leak(1/4\", IN단, 미완체결)", "action": "재체결", "occurDate": "2026-02-05", "category": "기구작업/불완전 체결", "worker": "오승열BAT", "defectLocation": "Right Drain Lin", "detectionStage": "기능검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6604/GAIA-I DUAL", "defect": "VCR FLEXIBLE TUBE LEAK(650L,OUT단,체결강도부족)", "action": "재체결", "occurDate": "2026-02-04", "category": "기구작업/불완전 체결", "worker": "조동래BAT", "defectLocation": "LNG LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6604/GAIA-I DUAL", "defect": "ADJUSTABLE ELBOW FITTING NUT LEAK (3/4\", IN단, 미완체결)", "action": "재체결", "occurDate": "2026-02-04", "category": "기구작업/불완전 체결", "worker": "정대한BAT", "defectLocation": "PCW-R LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6615/GAIA-I DUAL", "defect": "UNION ELBOW FITTING NUT LEAK (6mm, SUS, IN, FERRULE 물림X)", "action": "재체결", "occurDate": "2026-02-02", "category": "기구작업/체결 누락", "worker": "조동래BAT", "defectLocation": "N.V120B", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6614/GAIA-I DUAL", "defect": "NW 50 CLAMP 체결불량 (알류미늄/사선체결)", "action": "재체결", "occurDate": "2026-02-02", "category": "기구작업/체결 오류", "worker": "간영웅BAT", "defectLocation": "BYPASS #4", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6600/GAIA-II DUAL", "defect": "MALE ELBOW FITTING NUT LEAK (1\", SUS, 체결이상 무)", "action": "재체결", "occurDate": "2026-02-03", "category": "기구작업/Seal 미흡", "worker": "김범곤BAT", "defectLocation": "PCW-S(R) LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6600/GAIA-II DUAL", "defect": "MALE CONNECTOR FITTING NUT LEAK (1/4\", SUS, 미완체결)", "action": "재체결", "occurDate": "2026-02-03", "category": "기구작업/불완전 체결", "worker": "조동래BAT", "defectLocation": "BCW LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6600/GAIA-II DUAL", "defect": "BULKHEAD UNION LEAK (6mm, 우레탄, IN단, 미삽입)", "action": "재체결", "occurDate": "2026-02-03", "category": "기구작업/체결 누락", "worker": "조동래BAT", "defectLocation": "GN2 LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6600/GAIA-II DUAL", "defect": "BULKHEAD UNION LEAK (6mm, 우레탄, IN단, 미삽입)", "action": "재체결", "occurDate": "2026-02-03", "category": "기구작업/체결 누락", "worker": "조동래BAT", "defectLocation": "GN2 LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6600/GAIA-II DUAL", "defect": "O-RING 씹힘 (PVC, EPDM, 125A, BLK)", "action": "재작업", "occurDate": "2026-02-03", "category": "기구작업/불완전 체결", "worker": "간연웅BAT", "defectLocation": "EXHAUST ELBOW 체결부", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6600/GAIA-II DUAL", "defect": "MALE PIPE WELD CONNECTOR FITTING NUT LEAK (1/4\", SUS, 미완체결)", "action": "재체결", "occurDate": "2026-02-03", "category": "기구작업/불완전 체결", "worker": "조동래BAT", "defectLocation": "INLET #4", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}, {"productInfo": "GBWS-6600/GAIA-II DUAL", "defect": "UNION NUT LEAK (25A, PP, 미완체결)", "action": "재체결", "occurDate": "2026-02-03", "category": "기구작업/불완전 체결", "worker": "간연웅BAT", "defectLocation": "DRAIN LINE", "detectionStage": "가압검사", "defectPhoto": "", "cause": "", "countermeasure": ""}], "P&S": [{"productInfo": "GBWS-6600/GAIA-II DUAL", "defect": "NOISE FILTER 사양불량", "action": "재작업", "occurDate": "2026-02-04", "category": "전장작업/오사양 장착", "worker": "정민호P&S", "defectLocation": "NF1", "detectionStage": "외관검사", "defectPhoto": "", "cause": "", "countermeasure": ""}]};
-            const nanDetails = {"BAT": [{"week": "5W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "FNI": [{"week": "5W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "TMS(M)": [{"week": "5W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "C&A": [{"week": "5W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "P&S": [{"week": "5W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "TMS(E)": [{"week": "5W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}]};
+            const defectDetails = {};
+            const nanDetails = {"BAT": [{"week": "35W", "ratio": 0.0}, {"week": "34W", "ratio": 0.43}, {"week": "33W", "ratio": 0.23}, {"week": "32W", "ratio": 0.46}, {"week": "31W", "ratio": 0.79}, {"week": "월평균", "ratio": 0.38}], "FNI": [{"week": "35W", "ratio": 0.0}, {"week": "34W", "ratio": 0.0}, {"week": "33W", "ratio": 0.0}, {"week": "32W", "ratio": 0.0}, {"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "TMS(M)": [{"week": "35W", "ratio": 0.0}, {"week": "34W", "ratio": 0.0}, {"week": "33W", "ratio": 0.0}, {"week": "32W", "ratio": 0.0}, {"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "C&A": [{"week": "35W", "ratio": 0.0}, {"week": "34W", "ratio": 0.0}, {"week": "33W", "ratio": 0.0}, {"week": "32W", "ratio": 0.0}, {"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}], "P&S": [{"week": "35W", "ratio": 14.23}, {"week": "34W", "ratio": 7.86}, {"week": "33W", "ratio": 0.0}, {"week": "32W", "ratio": 0.0}, {"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 4.42}], "TMS(E)": [{"week": "35W", "ratio": 0.0}, {"week": "34W", "ratio": 0.0}, {"week": "33W", "ratio": 0.0}, {"week": "32W", "ratio": 0.0}, {"week": "31W", "ratio": 0.0}, {"week": "월평균", "ratio": 0.0}]};
             console.log("DEBUG: defectDetails:", defectDetails);
             console.log("DEBUG: nanDetails:", nanDetails);
 
@@ -267,25 +255,14 @@
                 }
 
                 let csvContent = '﻿';
-                csvContent += '제품정보,검출단계,중분류,상세불량내용,상세조치내용,발생일,작업자,불량발생위치,불량사진,원인,대책방안\n';
+                csvContent += '제품정보,상세불량내용,상세조치내용,발생일\n';
 
                 details.forEach(item => {
-                    // 카테고리에서 중분류 분리
-                    const categoryParts = (item.category || '/').split('/');
-                    const minorCategory = categoryParts[1] || '';
-                    
                     const row = [
                         `"${item.productInfo.replace(/"/g, '""')}"`,
-                        `"${(item.detectionStage || '').replace(/"/g, '""')}"`,
-                        `"${minorCategory.replace(/"/g, '""')}"`,
                         `"${item.defect.replace(/"/g, '""')}"`,
                         `"${item.action.replace(/"/g, '""')}"`,
-                        `"${item.occurDate.replace(/"/g, '""')}"`,
-                        `"${(item.worker || '').replace(/"/g, '""')}"`,
-                        `"${(item.defectLocation || '').replace(/"/g, '""')}"`,
-                        `"${(item.defectPhoto || '').replace(/"/g, '""')}"`,
-                        `"${(item.cause || '').replace(/"/g, '""')}"`,
-                        `"${(item.countermeasure || '').replace(/"/g, '""')}"`
+                        `"${item.occurDate.replace(/"/g, '""')}"`
                     ];
                     csvContent += row.join(',') + '\n';
                 });
@@ -390,47 +367,47 @@
                     </div>
                 </div>
             </div>
-            <p style="color: #666; font-size: 16px;">기준월: 2026-02</p>
+            <p style="color: #666; font-size: 16px;">기준월: 2025-08</p>
         </div>
         <div class="chart-section">
             <h2 class="section-title">🔧 기구 협력사 평가 지수</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card grade-a" onclick="toggleDefectTable('tmsm')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('bat')">
                     <div class="emoji">🥇</div>
-                    <div class="label">TMS(M)</div>
+                    <div class="label">BAT</div>
                     <div class="tooltip">
                         평가점수: 10.0점 (A등급)<br>
                         불량률: 0.00%<br>
                         불량건수: 0건<br>
-                        생산대수: 82대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmsm')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
+                        생산대수: 0대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('bat')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.4%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card grade-b" onclick="toggleDefectTable('fni')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('fni')">
                     <div class="emoji">🥈</div>
                     <div class="label">FNI</div>
                     <div class="tooltip">
-                        평가점수: 6.5점 (B등급)<br>
-                        불량률: 19.15%<br>
-                        불량건수: 9건<br>
-                        생산대수: 47대<br>
+                        평가점수: 10.0점 (A등급)<br>
+                        불량률: 0.00%<br>
+                        불량건수: 0건<br>
+                        생산대수: 0대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('fni')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
-                <div class="kpi-card grade-c" onclick="toggleDefectTable('bat')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('tmsm')">
                     <div class="emoji">🥉</div>
-                    <div class="label">BAT</div>
+                    <div class="label">TMS(M)</div>
                     <div class="tooltip">
-                        평가점수: 4.8점 (C등급)<br>
-                        불량률: 40.00%<br>
-                        불량건수: 14건<br>
-                        생산대수: 35대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('bat')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
+                        평가점수: 10.0점 (A등급)<br>
+                        불량률: 0.00%<br>
+                        불량건수: 0건<br>
+                        생산대수: 0대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmsm')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
@@ -440,10 +417,7 @@
                 <thead>
                     <tr>
                         <th colspan="4">
-                            <button class="download-btn" onclick="downloadCSV('bat')">📥 CSV 다운로드</button>
-                            <a href="https://nan-dashboard.netlify.app/" target="_blank" class="dashboard-btn" style="margin-left: 10px;">
-                                📊 NaN 대시보드
-                            </a>
+                            <button class="download-btn" onclick="downloadCSV('bat')">CSV 다운로드</button>
                         </th>
                     </tr>
                     <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th><th>발생일</th></tr>
@@ -454,10 +428,7 @@
                 <thead>
                     <tr>
                         <th colspan="4">
-                            <button class="download-btn" onclick="downloadCSV('fni')">📥 CSV 다운로드</button>
-                            <a href="https://nan-dashboard.netlify.app/" target="_blank" class="dashboard-btn" style="margin-left: 10px;">
-                                📊 NaN 대시보드
-                            </a>
+                            <button class="download-btn" onclick="downloadCSV('fni')">CSV 다운로드</button>
                         </th>
                     </tr>
                     <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th><th>발생일</th></tr>
@@ -468,10 +439,7 @@
                 <thead>
                     <tr>
                         <th colspan="4">
-                            <button class="download-btn" onclick="downloadCSV('tmsm')">📥 CSV 다운로드</button>
-                            <a href="https://nan-dashboard.netlify.app/" target="_blank" class="dashboard-btn" style="margin-left: 10px;">
-                                📊 NaN 대시보드
-                            </a>
+                            <button class="download-btn" onclick="downloadCSV('tmsm')">CSV 다운로드</button>
                         </th>
                     </tr>
                     <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th><th>발생일</th></tr>
@@ -483,41 +451,41 @@
             <h2 class="section-title">⚡ 전장 협력사 평가 지수</h2>
             <div class="kpi-container">
     
-                <div class="kpi-card grade-a" onclick="toggleDefectTable('tmse')">
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('cna')">
                     <div class="emoji">🥇</div>
+                    <div class="label">C&A</div>
+                    <div class="tooltip">
+                        평가점수: 10.0점 (A등급)<br>
+                        불량률: 0.00%<br>
+                        불량건수: 0건<br>
+                        생산대수: 0대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('cna')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
+                        <small>클릭하여 상세보기</small>
+                    </div>
+                </div>
+        
+                <div class="kpi-card grade-a" onclick="toggleDefectTable('tmse')">
+                    <div class="emoji">🥈</div>
                     <div class="label">TMS(E)</div>
                     <div class="tooltip">
                         평가점수: 10.0점 (A등급)<br>
                         불량률: 0.00%<br>
                         불량건수: 0건<br>
-                        생산대수: 37대<br>
+                        생산대수: 0대<br>
                         누락비율: <span onclick="event.stopPropagation(); toggleNanTable('tmse')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
         
                 <div class="kpi-card grade-b" onclick="toggleDefectTable('pns')">
-                    <div class="emoji">🥈</div>
+                    <div class="emoji">🥉</div>
                     <div class="label">P&S</div>
                     <div class="tooltip">
-                        평가점수: 6.5점 (B등급)<br>
-                        불량률: 3.70%<br>
-                        불량건수: 1건<br>
-                        생산대수: 27대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('pns')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
-                        <small>클릭하여 상세보기</small>
-                    </div>
-                </div>
-        
-                <div class="kpi-card grade-d" onclick="toggleDefectTable('cna')">
-                    <div class="emoji">🥉</div>
-                    <div class="label">C&A</div>
-                    <div class="tooltip">
-                        평가점수: 3.0점 (D등급)<br>
-                        불량률: 11.11%<br>
-                        불량건수: 2건<br>
-                        생산대수: 18대<br>
-                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('cna')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">0.0%</span><br>
+                        평가점수: 8.5점 (B등급)<br>
+                        불량률: 0.00%<br>
+                        불량건수: 0건<br>
+                        생산대수: 0대<br>
+                        누락비율: <span onclick="event.stopPropagation(); toggleNanTable('pns')" style="color: #ffeb3b; cursor: pointer; text-decoration: underline;">4.9%</span><br>
                         <small>클릭하여 상세보기</small>
                     </div>
                 </div>
@@ -527,10 +495,7 @@
                 <thead>
                     <tr>
                         <th colspan="4">
-                            <button class="download-btn" onclick="downloadCSV('pns')">📥 CSV 다운로드</button>
-                            <a href="https://nan-dashboard.netlify.app/" target="_blank" class="dashboard-btn" style="margin-left: 10px;">
-                                📊 NaN 대시보드
-                            </a>
+                            <button class="download-btn" onclick="downloadCSV('pns')">CSV 다운로드</button>
                         </th>
                     </tr>
                     <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th><th>발생일</th></tr>
@@ -541,10 +506,7 @@
                 <thead>
                     <tr>
                         <th colspan="4">
-                            <button class="download-btn" onclick="downloadCSV('tmse')">📥 CSV 다운로드</button>
-                            <a href="https://nan-dashboard.netlify.app/" target="_blank" class="dashboard-btn" style="margin-left: 10px;">
-                                📊 NaN 대시보드
-                            </a>
+                            <button class="download-btn" onclick="downloadCSV('tmse')">CSV 다운로드</button>
                         </th>
                     </tr>
                     <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th><th>발생일</th></tr>
@@ -555,10 +517,7 @@
                 <thead>
                     <tr>
                         <th colspan="4">
-                            <button class="download-btn" onclick="downloadCSV('cna')">📥 CSV 다운로드</button>
-                            <a href="https://nan-dashboard.netlify.app/" target="_blank" class="dashboard-btn" style="margin-left: 10px;">
-                                📊 NaN 대시보드
-                            </a>
+                            <button class="download-btn" onclick="downloadCSV('cna')">CSV 다운로드</button>
                         </th>
                     </tr>
                     <tr><th>제품정보</th><th>상세불량내용</th><th>상세조치내용</th><th>발생일</th></tr>
@@ -676,7 +635,6 @@
         <div style="text-align: center; margin: 40px 0; color: #666; font-size: 14px;">
             <p>🏆 등급: A(우수) → B(양호) → C(보통) → D(개선필요) → E(불량)</p>
             <p>📋 협력사 카드를 클릭하면 해당 월의 불량 상세 내역을 확인할 수 있습니다.</p>
-            <p>📋 NaN 대시보드를 클릭하면 상세 누락 내역을 확인 할 있습니다.</p>
             <p>📊 누락률(노란색)을 클릭하면 주간별 추이를 확인할 수 있습니다.</p>
         </div>
     </body>
